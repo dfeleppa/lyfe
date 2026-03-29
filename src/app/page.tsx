@@ -41,8 +41,8 @@ function Nav() {
       }`}
     >
       {/* Logo */}
-      <a href="#" className="font-display text-xl font-medium tracking-widest uppercase text-white">
-        Elev8
+      <a href="#">
+        <img src="/lflogo.png" alt="Logo" className="h-10 w-auto" />
       </a>
 
       {/* Desktop nav */}
@@ -127,13 +127,8 @@ function Hero() {
         }}
       />
 
-      {/* Hero image placeholder — replace with <video> or <Image> */}
-      {/*
-        Add a full-bleed background image or video here. Example:
-        <video autoPlay muted loop playsInline className="absolute inset-0 z-0 h-full w-full object-cover opacity-40">
-          <source src="/hero.mp4" type="video/mp4" />
-        </video>
-      */}
+      {/* Hero background image */}
+      <img src="/hero.jpg" alt="" className="absolute inset-0 z-0 h-full w-full object-cover opacity-40" />
 
       {/* Content */}
       <div className="relative z-10 mx-auto max-w-5xl px-6 text-center">
