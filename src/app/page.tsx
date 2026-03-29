@@ -269,13 +269,16 @@ function Classes() {
           </h2>
         </div>
 
-        <div className="grid gap-12 md:grid-cols-3">
+        <div className="grid gap-px bg-white/8 lg:grid-cols-3">
           {pillars.map((p, i) => (
-            <div key={i} className={`reveal reveal-delay-${i + 1}`}>
-              <h3 className="font-display text-2xl font-normal leading-snug text-white mb-4">
+            <div key={i} className={`reveal reveal-delay-${i + 1} bg-black p-10 lg:p-12`}>
+              <p className="mb-8 font-sans text-xs font-semibold uppercase tracking-widest text-white/20">
+                {String(i + 1).padStart(2, "0")}
+              </p>
+              <h3 className="mb-5 font-display text-3xl font-normal leading-tight text-white">
                 {p.heading}
               </h3>
-              <p className="font-sans text-sm leading-relaxed text-white/60">
+              <p className="font-sans text-sm leading-relaxed text-white/50">
                 {p.body}
               </p>
             </div>
