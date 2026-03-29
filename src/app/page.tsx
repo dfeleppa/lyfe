@@ -36,13 +36,11 @@ function Nav() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 flex items-center justify-between px-6 py-5 transition-all duration-300 md:px-12 ${
-        scrolled ? "nav-scrolled" : "bg-transparent"
-      }`}
+      className="fixed inset-x-0 top-0 z-50 flex items-center justify-between px-6 py-5 transition-all duration-300 md:px-12 bg-[#1a1a1a]/80 backdrop-blur-sm"
     >
       {/* Logo */}
       <a href="#">
-        <img src="/lflogo.png" alt="Logo" className="h-10 w-auto" />
+        <img src="/lflogo-white.png" alt="Logo" className="h-10 w-auto" />
       </a>
 
       {/* Desktop nav */}
