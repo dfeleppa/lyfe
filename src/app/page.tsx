@@ -45,13 +45,19 @@ function Nav() {
 
       {/* Desktop nav */}
       <nav className="hidden items-center gap-10 md:flex">
-        {["Classes", "Coaches", "Results", "Locations"].map((item) => (
+        {[
+          { label: "Pricing", href: "#pricing" },
+          { label: "Membership", href: "#membership" },
+          { label: "Schedule", href: "#schedule" },
+          { label: "Location", href: "#locations" },
+          { label: "Contact", href: "#contact" },
+        ].map((item) => (
           <a
-            key={item}
-            href={`#${item.toLowerCase()}`}
+            key={item.label}
+            href={item.href}
             className="font-sans text-xs font-medium uppercase tracking-widest text-white/50 transition hover:text-white"
           >
-            {item}
+            {item.label}
           </a>
         ))}
       </nav>
@@ -144,41 +150,21 @@ function Hero() {
         </p>
 
         {/* Email capture */}
-        <form onSubmit={handleSubmit} className="mx-auto mt-12 flex max-w-md flex-col gap-3 sm:flex-row">
-          {!submitted ? (
-            <>
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Your email address"
-                required
-                className="field flex-1 px-5 py-4 text-sm"
-              />
-              <button
-                type="submit"
-                className="bg-white px-8 py-4 font-sans text-xs font-bold uppercase tracking-widest text-black transition hover:bg-white/90 active:scale-95"
-              >
-                Reserve My Spot
-              </button>
-            </>
-          ) : (
-            <div className="w-full border border-white/15 px-6 py-4 text-center font-sans text-sm text-white/70">
-              You&rsquo;re on the list — we&rsquo;ll be in touch shortly.
-            </div>
-          )}
-        </form>
-
-        <p className="mt-4 font-sans text-xs text-white/25">
-          No credit card required. First class is on us.
-        </p>
+        <div className="mx-auto mt-12 flex max-w-md flex-col gap-3 sm:flex-row">
+          <a
+            href="#trial"
+            className="bg-white px-8 py-4 font-sans text-xs font-bold uppercase tracking-widest text-black transition hover:bg-white/90 active:scale-95"
+          >
+            Get Started
+          </a>
+        </div>
       </div>
 
       {/* Scroll cue */}
       <div className="absolute bottom-10 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-2">
-        <span className="font-sans text-[10px] uppercase tracking-widest text-white/25">Scroll</span>
+        <span className="font-sans text-[10px] uppercase tracking-widest text-white/80">Scroll</span>
         <div className="flex h-8 w-px flex-col overflow-hidden">
-          <div className="h-full w-px animate-[scrollLine_1.6s_ease_infinite] bg-white/30" />
+          <div className="h-full w-px animate-[scrollLine_1.6s_ease_infinite] bg-white/80" />
         </div>
       </div>
     </section>
@@ -187,18 +173,16 @@ function Hero() {
 
 // ─── Trust bar ────────────────────────────────────────────────────────────────
 const TRUST_ITEMS = [
-  "500+ Active Members",
-  "★★★★★  4.9 Google Rating",
-  "Expert Programming",
-  "Elite Coaches",
-  "Proven Results",
-  "Community Driven",
-  "500+ Active Members",
-  "★★★★★  4.9 Google Rating",
-  "Expert Programming",
-  "Elite Coaches",
-  "Proven Results",
-  "Community Driven",
+  "★★★★★  5.0 Google Rating (61 Reviews)",
+  "Strength & Conditioning",
+  "Endurance",
+  "Hybrid Training",
+  "Nutrition",
+  "★★★★★  5.0 Google Rating (61 Reviews)",
+  "Strength & Conditioning",
+  "Endurance",
+  "Hybrid Training",
+  "Nutrition",
 ];
 
 function TrustBar() {
@@ -658,7 +642,7 @@ function Footer() {
               { label: "Coaches", href: "#coaches" },
               { label: "Results", href: "#results" },
               { label: "Locations", href: "#locations" },
-              { label: "Book Free Class", href: "#trial" },
+              { label: "Get Started", href: "#trial" },
               { label: "Member Login", href: "https://app.daneff.com" },
             ].map((link) => (
               <a
