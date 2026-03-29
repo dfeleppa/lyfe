@@ -135,7 +135,7 @@ function Hero() {
       <img src="/hero.jpg" alt="" className="absolute inset-0 z-0 h-full w-full object-cover opacity-40" />
 
       {/* Content */}
-      <div className="relative z-10 mx-auto max-w-5xl px-6 text-center">
+      <div className="relative z-10 mx-auto max-w-5xl w-full px-6 text-left">
         <p className="mb-6 font-sans text-xs font-semibold uppercase tracking-widest text-white/80">
           Group Fitness — Reimagined
         </p>
@@ -144,13 +144,12 @@ function Hero() {
           The Gym That Works Hard, <em className="italic">Together.</em>
         </h1>
 
-        <p className="mx-auto mt-8 max-w-xl font-sans text-base font-light leading-relaxed text-white/80 md:text-lg">
-          Group fitness engineered for people who demand results. Expert programming,
-          elite coaches, and a community that pushes you further than you'd go alone.
+        <p className="mt-8 max-w-xl font-sans text-base font-light leading-relaxed text-white/80 md:text-lg">
+          Group fitness in Baldwin, NY for people who want real coaching, purposeful programming, and a community that pushes you and keeps it fun.
         </p>
 
-        {/* Email capture */}
-        <div className="mx-auto mt-12 flex max-w-md flex-col gap-3 sm:flex-row">
+        {/* CTA */}
+        <div className="mt-12 flex max-w-md flex-col gap-3 sm:flex-row">
           <a
             href="#trial"
             className="bg-white px-8 py-4 font-sans text-xs font-bold uppercase tracking-widest text-black transition hover:bg-white/90 active:scale-95"
@@ -242,61 +241,49 @@ const CLASSES = [
 ];
 
 function Classes() {
+  const pillars = [
+    {
+      heading: "No more boring workouts alone!",
+      body: "Seeking a gym that fosters a strong sense of community? Look no further than Lyfe Fitness located in Baldwin! We embrace individuals of all fitness levels and are committed to supporting your journey towards self-improvement.",
+    },
+    {
+      heading: "No More Feeling Lost In The Gym!",
+      body: "Lyfe Fitness offers an enjoyable training environment where you don't have to be an athlete to join in! Our coaches provide expert guidance and tailor your daily workouts to suit your individual needs.",
+    },
+    {
+      heading: "No more wasting time!",
+      body: "Are you prepared to reach your goals and enhance your quality of life? Join us and benefit from professional coaching that will empower your success. We'll assist you in crafting a personalized success plan and offer the necessary support to help you reach your aspirations.",
+    },
+  ];
+
   return (
-    <section id="classes" className="bg-black py-28 md:py-36">
+    <section id="classes" className="bg-white py-28 md:py-36">
       <div className="mx-auto max-w-7xl px-6 md:px-12">
-        {/* Heading */}
         <div className="reveal mb-16">
-          <p className="mb-4 font-sans text-xs font-semibold uppercase tracking-widest text-white/35">
+          <p className="mb-4 font-sans text-xs font-semibold uppercase tracking-widest text-black/40">
             What We Offer
           </p>
-          <h2 className="font-display text-[clamp(2.5rem,6vw,5rem)] font-normal leading-[1] tracking-display text-white">
-            Every class.{" "}
-            <em className="italic">Built to push</em> you.
-          </h2>
         </div>
 
-        {/* Scrollable cards */}
-        <div className="flex gap-5 overflow-x-auto pb-4 scrollbar-hide snap-x snap-mandatory">
-          {CLASSES.map((cls, i) => (
-            <div
-              key={cls.name}
-              className={`reveal reveal-delay-${Math.min(i + 1, 5)} class-card group relative flex-shrink-0 snap-start`}
-              style={{ width: "clamp(280px, 32vw, 380px)", aspectRatio: "3/4" }}
-            >
-              {/* Background */}
-              <div
-                className={`class-img absolute inset-0 bg-gradient-to-b ${cls.bg}`}
-              />
-
-              {/* Placeholder for real photo */}
-              {/*
-                Replace the gradient above with:
-                <Image src={cls.image} alt={cls.name} fill className="class-img object-cover" />
-              */}
-
-              {/* Overlay content (shown on hover) */}
-              <div className="class-overlay absolute inset-0 flex flex-col justify-end bg-black/70 p-7">
-                <p className="font-sans text-xs uppercase tracking-widest text-white/50 mb-2">{cls.tag}</p>
-                <h3 className="font-display text-2xl font-normal italic text-white mb-3">{cls.name}</h3>
-                <p className="font-sans text-sm leading-relaxed text-white/65">{cls.description}</p>
-              </div>
-
-              {/* Default (always visible) label */}
-              <div className="absolute bottom-0 inset-x-0 p-7 transition-opacity group-hover:opacity-0">
-                <p className="font-sans text-[10px] uppercase tracking-widest text-white/35 mb-1">{cls.tag}</p>
-                <h3 className="font-display text-2xl font-normal text-white">{cls.name}</h3>
-              </div>
+        <div className="grid gap-12 md:grid-cols-3">
+          {pillars.map((p, i) => (
+            <div key={i} className={`reveal reveal-delay-${i + 1}`}>
+              <h3 className="font-display text-2xl font-normal leading-snug text-black mb-4">
+                {p.heading}
+              </h3>
+              <p className="font-sans text-sm leading-relaxed text-black/60">
+                {p.body}
+              </p>
             </div>
           ))}
         </div>
 
-        <div className="mt-12 reveal">
+        <div className="mt-16 reveal">
           <a
             href="#trial"
-            className="inline-block border border-white/15 px-8 py-3 font-sans text-xs font-semibold uppercase tracking-widest text-white/70 transition hover:border-white/40 hover:text-white"
+            className="inline-block border border-black/20 px-8 py-3 font-sans text-xs font-semibold uppercase tracking-widest text-black/60 transition hover:border-black/50 hover:text-black"
           >
-            Book a Free Class
+            Get Started
           </a>
         </div>
       </div>
@@ -687,8 +674,6 @@ export default function LandingPage() {
     <>
       <Nav />
       <Hero />
-      <TrustBar />
-      <StatsStrip />
       <Classes />
       <Features />
       <Testimonials />
