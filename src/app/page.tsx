@@ -36,7 +36,7 @@ function Nav() {
 
   return (
     <header
-      className="fixed inset-x-0 top-0 z-50 flex items-center justify-between px-6 py-5 transition-all duration-300 md:px-12 bg-[#1a1a1a]/80 backdrop-blur-sm"
+      className="fixed inset-x-0 top-0 z-50 flex items-center justify-between px-6 py-5 transition-all duration-300 md:px-12 bg-[#0d0d0d]/90 backdrop-blur-sm"
     >
       {/* Logo */}
       <a href="#">
@@ -115,7 +115,7 @@ function Hero() {
   }
 
   return (
-    <section className="relative flex min-h-[75vh] flex-col items-center justify-center overflow-hidden bg-black dot-grid noise">
+    <section className="relative flex min-h-[65vh] flex-col items-center justify-center overflow-hidden bg-black dot-grid noise">
       {/* Radial gradient vignette */}
       <div
         className="pointer-events-none absolute inset-0 z-0"
@@ -130,16 +130,15 @@ function Hero() {
 
       {/* Content */}
       <div className="relative z-10 mx-auto max-w-5xl px-6 text-center">
-        <p className="mb-6 font-sans text-xs font-semibold uppercase tracking-widest text-white/40">
+        <p className="mb-6 font-sans text-xs font-semibold uppercase tracking-widest text-white/80">
           Group Fitness — Reimagined
         </p>
 
         <h1 className="font-display text-[clamp(3rem,9vw,7.5rem)] font-normal leading-[0.95] tracking-tightest text-white">
-          Train like you{" "}
-          <em className="italic">mean</em> it.
+          The Gym That Works Hard, <em className="italic">Together.</em>
         </h1>
 
-        <p className="mx-auto mt-8 max-w-xl font-sans text-base font-light leading-relaxed text-white/55 md:text-lg">
+        <p className="mx-auto mt-8 max-w-xl font-sans text-base font-light leading-relaxed text-white/80 md:text-lg">
           Group fitness engineered for people who demand results. Expert programming,
           elite coaches, and a community that pushes you further than you'd go alone.
         </p>
