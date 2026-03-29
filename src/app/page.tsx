@@ -257,28 +257,28 @@ function Classes() {
   ];
 
   return (
-    <section id="classes" className="bg-black py-28 md:py-36">
+    <section id="classes" className="bg-white py-28 md:py-36">
       <div className="mx-auto max-w-7xl px-6 md:px-12">
         <div className="reveal mb-16">
-          <p className="mb-4 font-sans text-xs font-semibold uppercase tracking-widest text-white/40">
+          <p className="mb-4 font-sans text-xs font-semibold uppercase tracking-widest text-black/40">
             What We Offer
           </p>
-          <h2 className="font-display text-[clamp(2.5rem,6vw,5rem)] font-normal leading-[1] tracking-display text-white">
+          <h2 className="font-display text-[clamp(2.5rem,6vw,5rem)] font-normal leading-[1] tracking-display text-black">
             Every class.{" "}
             <em className="italic">Built to push</em> you.
           </h2>
         </div>
 
-        <div className="grid gap-px bg-white/8 lg:grid-cols-3">
+        <div className="grid gap-px bg-black/8 lg:grid-cols-3">
           {pillars.map((p, i) => (
-            <div key={i} className={`reveal reveal-delay-${i + 1} bg-black p-10 lg:p-12`}>
-              <p className="mb-8 font-sans text-xs font-semibold uppercase tracking-widest text-white/20">
+            <div key={i} className={`reveal reveal-delay-${i + 1} bg-white p-10 lg:p-12`}>
+              <p className="mb-8 font-sans text-xs font-semibold uppercase tracking-widest text-black/20">
                 {String(i + 1).padStart(2, "0")}
               </p>
-              <h3 className="mb-5 font-display text-3xl font-normal leading-tight text-white">
+              <h3 className="mb-5 font-display text-3xl font-normal leading-tight text-black">
                 {p.heading}
               </h3>
-              <p className="font-sans text-sm leading-relaxed text-white/50">
+              <p className="font-sans text-sm leading-relaxed text-black/50">
                 {p.body}
               </p>
             </div>
@@ -288,7 +288,7 @@ function Classes() {
         <div className="mt-16 reveal">
           <a
             href="#trial"
-            className="inline-block bg-white px-8 py-3 font-sans text-xs font-semibold uppercase tracking-widest text-black transition hover:bg-white/90"
+            className="inline-block bg-black px-8 py-3 font-sans text-xs font-semibold uppercase tracking-widest text-white transition hover:bg-black/80"
           >
             Get Started
           </a>
@@ -319,31 +319,31 @@ const FEATURES = [
 
 function Features() {
   return (
-    <section id="coaches" className="border-t border-black/8 bg-white py-28 md:py-36">
+    <section id="coaches" className="border-t border-white/8 bg-black py-28 md:py-36">
       <div className="mx-auto max-w-7xl px-6 md:px-12">
         <div className="reveal mb-20">
-          <p className="mb-4 font-sans text-xs font-semibold uppercase tracking-widest text-black/35">
+          <p className="mb-4 font-sans text-xs font-semibold uppercase tracking-widest text-white/35">
             The Difference
           </p>
-          <h2 className="font-display text-[clamp(2.5rem,6vw,5rem)] font-normal leading-[1] tracking-display text-black">
+          <h2 className="font-display text-[clamp(2.5rem,6vw,5rem)] font-normal leading-[1] tracking-display text-white">
             This isn&rsquo;t just{" "}
             <em className="italic">a gym.</em>
           </h2>
         </div>
 
-        <div className="grid gap-px bg-black/8 lg:grid-cols-3">
+        <div className="grid gap-px bg-white/8 lg:grid-cols-3">
           {FEATURES.map((f, i) => (
             <div
               key={f.number}
-              className={`reveal reveal-delay-${i + 1} bg-white p-10 lg:p-12`}
+              className={`reveal reveal-delay-${i + 1} bg-black p-10 lg:p-12`}
             >
-              <p className="mb-8 font-sans text-xs font-semibold uppercase tracking-widest text-black/20">
+              <p className="mb-8 font-sans text-xs font-semibold uppercase tracking-widest text-white/20">
                 {f.number}
               </p>
-              <h3 className="mb-5 font-display text-3xl font-normal leading-tight text-black">
+              <h3 className="mb-5 font-display text-3xl font-normal leading-tight text-white">
                 {f.title}
               </h3>
-              <p className="font-sans text-sm leading-relaxed text-black/50">{f.body}</p>
+              <p className="font-sans text-sm leading-relaxed text-white/50">{f.body}</p>
             </div>
           ))}
         </div>
