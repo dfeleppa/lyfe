@@ -263,6 +263,10 @@ function Classes() {
           <p className="mb-4 font-sans text-xs font-semibold uppercase tracking-widest text-black/40">
             What We Offer
           </p>
+          <h2 className="font-display text-[clamp(2.5rem,6vw,5rem)] font-normal leading-[1] tracking-display text-black">
+            Every class.{" "}
+            <em className="italic">Built to push</em> you.
+          </h2>
         </div>
 
         <div className="grid gap-12 md:grid-cols-3">
@@ -281,7 +285,7 @@ function Classes() {
         <div className="mt-16 reveal">
           <a
             href="#trial"
-            className="inline-block border border-black/20 px-8 py-3 font-sans text-xs font-semibold uppercase tracking-widest text-black/60 transition hover:border-black/50 hover:text-black"
+            className="inline-block bg-black px-8 py-3 font-sans text-xs font-semibold uppercase tracking-widest text-white transition hover:bg-black/80"
           >
             Get Started
           </a>
