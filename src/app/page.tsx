@@ -117,7 +117,7 @@ function Hero() {
   }
 
   return (
-    <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-black dot-grid noise">
+    <section className="relative flex min-h-[75vh] flex-col items-center justify-center overflow-hidden bg-black dot-grid noise">
       {/* Radial gradient vignette */}
       <div
         className="pointer-events-none absolute inset-0 z-0"
