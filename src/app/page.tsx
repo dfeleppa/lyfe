@@ -285,7 +285,7 @@ function Classes() {
           ))}
         </div>
 
-        <div className="mt-16 reveal">
+        <div className="mt-16 reveal flex justify-center">
           <a
             href="#trial"
             className="inline-block bg-black px-8 py-3 font-sans text-xs font-semibold uppercase tracking-widest text-white transition hover:bg-black/80"
