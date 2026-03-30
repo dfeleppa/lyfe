@@ -660,6 +660,12 @@ function Footer() {
 
           {/* Contact */}
           <div className="font-sans text-sm text-white/35 space-y-2">
+            <p>851 Merrick Rd, Baldwin, NY 11510</p>
+            <p>
+              <a href="tel:5165880532" className="hover:text-white transition">
+                Text or Call: (516) 588-0532
+              </a>
+            </p>
             <p>hello@daneff.com</p>
             <p>Mon – Sat: 5:30am – 8pm</p>
             <p>Sun: 7am – 12pm</p>
