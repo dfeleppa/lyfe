@@ -365,31 +365,31 @@ function Features() {
 const TESTIMONIALS = [
   {
     quote:
+      "More Than Just a Gym – A Place to Grow. Joining this gym has been one of the best decisions I've ever made. From the start, it's been so much more than just a place to work out — it's a space where I've genuinely improved my skills, pushed past limits, & grown in ways I never expected. Whether it's refining technique, learning new movements, or pushing through a grueling workout, Lyfe has been nothing short of phenomenal...",
+    name: "Dave A.",
+    role: "Google Review",
+    initials: "DA",
+  },
+  {
+    quote:
       "I've tried every gym in the city. Elev8 is the only one where I've actually made consistent progress. The programming is serious and the coaches hold you accountable.",
     name: "James R.",
-    role: "Managing Director",
+    role: "Google Review",
     initials: "JR",
   },
   {
     quote:
       "The community here is unlike anything I've experienced. You walk in a stranger and leave feeling like you've trained with a team that actually wants you to win.",
     name: "Sarah M.",
-    role: "Founder & CEO",
+    role: "Google Review",
     initials: "SM",
   },
   {
     quote:
       "Down 14kg and the strongest I've ever been. The coaches know their craft and the programming adapts to where you are, not where you wish you were.",
     name: "Daniel K.",
-    role: "Operations Director",
+    role: "Google Review",
     initials: "DK",
-  },
-  {
-    quote:
-      "I've been training for 10 years. Moving to Elev8 was the single best decision I made for my fitness. The Olympic lifting program alone is worth it.",
-    name: "Priya N.",
-    role: "Entrepreneur",
-    initials: "PN",
   },
 ];
 
@@ -426,7 +426,7 @@ function Testimonials() {
             <em className="italic">showed up.</em>
           </h2>
           <p className="mt-6 font-sans text-xs uppercase tracking-widest text-white/30">
-            ★★★★★ &nbsp; 4.9 · Google Reviews
+            ★★★★★ &nbsp; 5.0 · Google Reviews · 61 Reviews
           </p>
         </div>
 
