@@ -259,7 +259,7 @@ function Classes() {
   return (
     <section id="classes" className="bg-white py-16 md:py-24">
       <div className="mx-auto max-w-7xl px-6 md:px-12">
-        <div className="reveal mb-16">
+        <div className="reveal mb-8">
           <p className="mb-4 font-sans text-xs font-semibold uppercase tracking-widest text-black/40">
             The Difference
           </p>
@@ -321,7 +321,7 @@ function Features() {
   return (
     <section id="coaches" className="border-t border-white/8 bg-black py-16 md:py-24">
       <div className="mx-auto max-w-7xl px-6 md:px-12">
-        <div className="reveal mb-20">
+        <div className="reveal mb-8">
           <p className="mb-4 font-sans text-xs font-semibold uppercase tracking-widest text-white/35">
             What We Offer
           </p>
@@ -417,7 +417,7 @@ function Testimonials() {
   return (
     <section id="results" className="border-t border-white/8 bg-black py-16 md:py-24">
       <div className="mx-auto max-w-5xl px-6 text-center md:px-12">
-        <div className="reveal mb-16">
+        <div className="reveal mb-8">
           <p className="mb-4 font-sans text-xs font-semibold uppercase tracking-widest text-white/35">
             Member Stories
           </p>
