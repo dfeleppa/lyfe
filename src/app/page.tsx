@@ -372,27 +372,6 @@ const TESTIMONIALS = [
   },
   {
     quote:
-      "I've tried every gym in the city. Elev8 is the only one where I've actually made consistent progress. The programming is serious and the coaches hold you accountable.",
-    name: "James R.",
-    role: "Google Review",
-    initials: "JR",
-  },
-  {
-    quote:
-      "The community here is unlike anything I've experienced. You walk in a stranger and leave feeling like you've trained with a team that actually wants you to win.",
-    name: "Sarah M.",
-    role: "Google Review",
-    initials: "SM",
-  },
-  {
-    quote:
-      "Down 14kg and the strongest I've ever been. The coaches know their craft and the programming adapts to where you are, not where you wish you were.",
-    name: "Daniel K.",
-    role: "Google Review",
-    initials: "DK",
-  },
-  {
-    quote:
       "I recently moved to the area and had been searching for a home gym. I tried a few places, but none offered the sense of community and support I was looking for.... until I found LYFE Fitness. You don't often find gyms where the owners and coaches genuinely care about their members and emphasize proper form, warm-ups, and overall well-being. From day one, I've felt welcomed, challenged, and supported. This has been one of the best fitness experiences I've ever had, and I'd recommend LYFE to anyone looking not just for results, but for a positive, encouraging community. LYFE is hands down the best gym in Baldwin!",
     name: "Clairiola E.",
     role: "Google Review",
