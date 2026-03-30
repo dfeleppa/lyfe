@@ -412,6 +412,13 @@ const TESTIMONIALS = [
     role: "Google Review",
     initials: "SP",
   },
+  {
+    quote:
+      "For many years I've been guilty of paying for gym memberships and failed to go consistently because honestly, it starts to get boring. I've also spent on home exercise equipment which ends up becoming a designated clothing rack — but I can proudly say, I've consistently been going to Lyfe Fitness since 12/2021. I used to lack motivation and confidence but with the guidance of the amazing coaches (especially Coach Dan) and the encouraging fellow members, I started to do things I thought I could never do. The highlight for me is seeing how much stronger and healthier my husband and son are now since we've joined. Going as a family has become a routine and our quality bonding time together. We've grown stronger as a family and it's been so fun. We are Lyfers for life!",
+    name: "Cathy P.",
+    role: "Google Review",
+    initials: "CP",
+  },
 ];
 
 function Testimonials() {
