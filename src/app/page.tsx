@@ -261,11 +261,11 @@ function Classes() {
       <div className="mx-auto max-w-7xl px-6 md:px-12">
         <div className="reveal mb-16">
           <p className="mb-4 font-sans text-xs font-semibold uppercase tracking-widest text-black/40">
-            What We Offer
+            The Difference
           </p>
           <h2 className="font-display text-[clamp(2.5rem,6vw,5rem)] font-normal leading-[1] tracking-display text-black">
-            Every class.{" "}
-            <em className="italic">Built to push</em> you.
+            This isn&rsquo;t just{" "}
+            <em className="italic">a gym.</em>
           </h2>
         </div>
 
@@ -323,11 +323,11 @@ function Features() {
       <div className="mx-auto max-w-7xl px-6 md:px-12">
         <div className="reveal mb-20">
           <p className="mb-4 font-sans text-xs font-semibold uppercase tracking-widest text-white/35">
-            The Difference
+            What We Offer
           </p>
           <h2 className="font-display text-[clamp(2.5rem,6vw,5rem)] font-normal leading-[1] tracking-display text-white">
-            This isn&rsquo;t just{" "}
-            <em className="italic">a gym.</em>
+            Every class.{" "}
+            <em className="italic">Built to push</em> you.
           </h2>
         </div>
 
