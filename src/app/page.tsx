@@ -391,6 +391,13 @@ const TESTIMONIALS = [
     role: "Google Review",
     initials: "DK",
   },
+  {
+    quote:
+      "I recently moved to the area and had been searching for a home gym. I tried a few places, but none offered the sense of community and support I was looking for.... until I found LYFE Fitness. You don't often find gyms where the owners and coaches genuinely care about their members and emphasize proper form, warm-ups, and overall well-being. From day one, I've felt welcomed, challenged, and supported. This has been one of the best fitness experiences I've ever had, and I'd recommend LYFE to anyone looking not just for results, but for a positive, encouraging community. LYFE is hands down the best gym in Baldwin!",
+    name: "Clairiola E.",
+    role: "Google Review",
+    initials: "CE",
+  },
 ];
 
 function Testimonials() {
