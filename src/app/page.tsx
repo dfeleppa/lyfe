@@ -405,6 +405,13 @@ const TESTIMONIALS = [
     role: "Google Review",
     initials: "NB",
   },
+  {
+    quote:
+      "Me and my Wife started a year ago OUR life has changed tremendously. Mentally and physically we have gotten better and stronger. Thank you so Much Dan u changed our lives. Lyfe Fitness is so much fun the members are so supportive and friendly. It's definitely 1 of the best life decisions we have made — definitely looking forward to continuing our journey together in CrossFit. DAN u are truly an inspiration and amazing person THANKS a million to everyone that supported us at LYFE FITNESS.",
+    name: "Steve P.",
+    role: "Google Review",
+    initials: "SP",
+  },
 ];
 
 function Testimonials() {
