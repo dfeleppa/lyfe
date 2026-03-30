@@ -50,7 +50,7 @@ function Nav() {
           { label: "Membership", href: "#membership" },
           { label: "Schedule", href: "#schedule" },
           { label: "Location", href: "#locations" },
-          { label: "Contact", href: "#contact" },
+          { label: "Member Login", href: "https://app.daneff.com" },
         ].map((item) => (
           <a
             key={item.label}
@@ -67,7 +67,7 @@ function Nav() {
         href="#trial"
         className="hidden rounded-none border border-white/20 px-6 py-2.5 font-sans text-xs font-semibold uppercase tracking-widest text-white transition hover:bg-white hover:text-black md:block"
       >
-        Book Free Class
+        Get Started
       </a>
 
       {/* Mobile hamburger */}
