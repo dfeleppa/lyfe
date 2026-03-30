@@ -243,16 +243,16 @@ const CLASSES = [
 function Classes() {
   const pillars = [
     {
-      heading: "No more boring workouts alone!",
-      body: "Seeking a gym that fosters a strong sense of community? Look no further than Lyfe Fitness located in Baldwin! We embrace individuals of all fitness levels and are committed to supporting your journey towards self-improvement.",
+      heading: "Group Fitness",
+      body: "Our coach-led group fitness class is for everyone! We use a combination of cardio, bodyweight and weights to maximize your hour with us. The workouts are different every day with a huge emphasis on getting you started safely whatever your current age or ability.",
     },
     {
-      heading: "No More Feeling Lost In The Gym!",
-      body: "Lyfe Fitness offers an enjoyable training environment where you don't have to be an athlete to join in! Our coaches provide expert guidance and tailor your daily workouts to suit your individual needs.",
+      heading: "Personal Training",
+      body: "Achieve your goals one-on-one with our coaches who provide personalized programming and in-person sessions tailored to your specific needs. Benefit from targeted training that is designed to help you reach your desired goals.",
     },
     {
-      heading: "No more wasting time!",
-      body: "Are you prepared to reach your goals and enhance your quality of life? Join us and benefit from professional coaching that will empower your success. We'll assist you in crafting a personalized success plan and offer the necessary support to help you reach your aspirations.",
+      heading: "Nutrition",
+      body: "Our coaches are in your corner — bringing the accountability, knowledge, and motivation to help you dial in a nutrition approach that actually works for your body.",
     },
   ];
 
@@ -337,7 +337,7 @@ function Features() {
               key={f.number}
               className={`reveal reveal-delay-${i + 1} bg-black p-10 lg:p-12`}
             >
-              <p className="mb-8 font-sans text-xs font-semibold uppercase tracking-widest text-white/20">
+              <p className="mb-8 font-sans text-xs font-semibold uppercase tracking-widest text-white/60">
                 {f.number}
               </p>
               <h3 className="mb-5 font-display text-3xl font-normal leading-tight text-white">
@@ -346,6 +346,15 @@ function Features() {
               <p className="font-sans text-sm leading-relaxed text-white/50">{f.body}</p>
             </div>
           ))}
+        </div>
+
+        <div className="mt-16 reveal flex justify-center">
+          <a
+            href="#trial"
+            className="inline-block bg-white px-8 py-3 font-sans text-xs font-semibold uppercase tracking-widest text-black transition hover:bg-white/90"
+          >
+            Get Started
+          </a>
         </div>
       </div>
     </section>
