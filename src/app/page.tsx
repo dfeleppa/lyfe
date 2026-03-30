@@ -40,7 +40,7 @@ function Nav() {
     >
       {/* Logo */}
       <a href="#">
-        <img src="/lflogo-white2.png" alt="Logo" className="h-10 w-auto" />
+        <img src="/lfwhite.png" alt="Logo" className="h-10 w-auto" />
       </a>
 
       {/* Desktop nav */}
