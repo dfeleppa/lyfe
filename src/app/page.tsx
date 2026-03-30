@@ -243,16 +243,16 @@ const CLASSES = [
 function Classes() {
   const pillars = [
     {
-      heading: "Group Fitness",
-      body: "Our coach-led group fitness class is for everyone! We use a combination of cardio, bodyweight and weights to maximize your hour with us. The workouts are different every day with a huge emphasis on getting you started safely whatever your current age or ability.",
+      heading: "No more boring workouts alone!",
+      body: "Seeking a gym that fosters a strong sense of community? Look no further than Lyfe Fitness located in Baldwin! We embrace individuals of all fitness levels and are committed to supporting your journey towards self-improvement.",
     },
     {
-      heading: "Personal Training",
-      body: "Achieve your goals one-on-one with our coaches who provide personalized programming and in-person sessions tailored to your specific needs. Benefit from targeted training that is designed to help you reach your desired goals.",
+      heading: "No More Feeling Lost In The Gym!",
+      body: "Lyfe Fitness offers an enjoyable training environment where you don't have to be an athlete to join in! Our coaches provide expert guidance and tailor your daily workouts to suit your individual needs.",
     },
     {
-      heading: "Nutrition",
-      body: "Our coaches are in your corner — bringing the accountability, knowledge, and motivation to help you dial in a nutrition approach that actually works for your body.",
+      heading: "No more wasting time!",
+      body: "Are you prepared to reach your goals and enhance your quality of life? Join us and benefit from professional coaching that will empower your success. We'll assist you in crafting a personalized success plan and offer the necessary support to help you reach your aspirations.",
     },
   ];
 
@@ -302,18 +302,18 @@ function Classes() {
 const FEATURES = [
   {
     number: "01",
-    title: "Expert Programming",
-    body: "Every session is designed with intent. No random workouts — a structured system that builds on itself week after week.",
+    title: "Group Fitness",
+    body: "Our coach-led group fitness class is for everyone! We use a combination of cardio, bodyweight and weights to maximize your hour with us. The workouts are different every day with a huge emphasis on getting you started safely whatever your current age or ability.",
   },
   {
     number: "02",
-    title: "Elite Coaches",
-    body: "Our coaches don't just run class — they correct your movement, track your progress, and push you when it matters most.",
+    title: "Personal Training",
+    body: "Achieve your goals one-on-one with our coaches who provide personalized programming and in-person sessions tailored to your specific needs. Benefit from targeted training that is designed to help you reach your desired goals.",
   },
   {
     number: "03",
-    title: "Real Community",
-    body: "Train alongside members who are as serious as you are. The room has standards, and it raises yours.",
+    title: "Nutrition",
+    body: "Our coaches are in your corner — bringing the accountability, knowledge, and motivation to help you dial in a nutrition approach that actually works for your body.",
   },
 ];
 
