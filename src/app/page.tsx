@@ -398,6 +398,13 @@ const TESTIMONIALS = [
     role: "Google Review",
     initials: "CE",
   },
+  {
+    quote:
+      "A year ago I was looking for a gym and came across Lyfe fitness. On my tryout I was blown away by the hospitality and the feeling of a great community, everyone makes you feel like home/family. One of the best decisions I've ever made.",
+    name: "Nesha B.",
+    role: "Google Review",
+    initials: "NB",
+  },
 ];
 
 function Testimonials() {
