@@ -147,7 +147,7 @@ function Hero() {
         </p>
 
         <h1 className="font-display text-[clamp(3rem,9vw,7.5rem)] font-normal leading-[0.95] tracking-tightest text-white">
-          The Gym That Works Hard, <em className="italic">Together.</em>
+          The Gym That Works Hard, <em className="italic text-pink-500">Together.</em>
         </h1>
 
         <p className="mt-8 max-w-xl font-sans text-base font-light leading-relaxed text-white/80 md:text-lg">
