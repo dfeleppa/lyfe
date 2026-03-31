@@ -85,14 +85,20 @@ function Nav() {
       {/* Mobile menu */}
       {open && (
         <div className="absolute inset-x-0 top-full flex flex-col gap-0 border-t border-white/10 bg-black/95 backdrop-blur-xl md:hidden">
-          {["Classes", "Coaches", "Results", "Locations"].map((item) => (
+          {[
+            { label: "Pricing", href: "#pricing" },
+            { label: "Membership", href: "#membership" },
+            { label: "Schedule", href: "#schedule" },
+            { label: "Location", href: "#locations" },
+            { label: "Member Login", href: "https://app.daneff.com" },
+          ].map((item) => (
             <a
-              key={item}
-              href={`#${item.toLowerCase()}`}
+              key={item.label}
+              href={item.href}
               onClick={() => setOpen(false)}
               className="border-b border-white/8 px-6 py-5 font-sans text-sm uppercase tracking-widest text-white/60 transition hover:text-white"
             >
-              {item}
+              {item.label}
             </a>
           ))}
           <a
@@ -100,7 +106,7 @@ function Nav() {
             onClick={() => setOpen(false)}
             className="mx-6 my-4 border border-white/20 px-6 py-3 text-center font-sans text-xs font-semibold uppercase tracking-widest text-white transition hover:bg-white hover:text-black"
           >
-            Book Free Class
+            Get Started
           </a>
         </div>
       )}
