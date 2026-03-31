@@ -147,7 +147,7 @@ function Hero() {
         </p>
 
         <h1 className="font-display text-[clamp(3rem,9vw,7.5rem)] font-normal leading-[0.95] tracking-tightest text-white">
-          The Gym That Works Hard, <em className="italic text-pink-500">Together.</em>
+          The Gym That Works Hard, <em className="italic">Together.</em>
         </h1>
 
         <p className="mt-8 max-w-xl font-sans text-base font-light leading-relaxed text-white/80 md:text-lg">
@@ -277,26 +277,28 @@ function Classes() {
 
         <div className="grid gap-px bg-black/8 lg:grid-cols-3">
           {pillars.map((p, i) => (
-            <div key={i} className={`reveal reveal-delay-${i + 1} overflow-hidden`}>
-              {/* 4:5 image with full overlay */}
+            <div key={i} className={`reveal reveal-delay-${i + 1} bg-white overflow-hidden`}>
+              {/* 4:5 image with number + heading overlay */}
               <div className="relative aspect-[4/5] overflow-hidden">
                 <img
                   src={`/diff${i + 1}.jpg`}
                   alt=""
                   className="absolute inset-0 h-full w-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-8">
                   <p className="mb-3 font-sans text-xs font-semibold uppercase tracking-widest text-white/50">
                     {String(i + 1).padStart(2, "0")}
                   </p>
-                  <h3 className="mb-4 font-display text-2xl font-normal leading-tight text-white">
+                  <h3 className="font-display text-2xl font-normal leading-tight text-white">
                     {p.heading}
                   </h3>
-                  <p className="font-sans text-sm leading-relaxed text-white/65">
-                    {p.body}
-                  </p>
                 </div>
+              </div>
+              <div className="p-10 lg:p-12">
+                <p className="font-sans text-sm leading-relaxed text-black/70">
+                  {p.body}
+                </p>
               </div>
             </div>
           ))}
