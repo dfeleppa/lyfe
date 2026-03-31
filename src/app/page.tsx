@@ -278,22 +278,24 @@ function Classes() {
         <div className="grid gap-px bg-black/8 lg:grid-cols-3">
           {pillars.map((p, i) => (
             <div key={i} className={`reveal reveal-delay-${i + 1} bg-white overflow-hidden`}>
-              {/* Image with number overlay */}
-              <div className="relative h-56 lg:h-64 overflow-hidden">
+              {/* Image with number + heading overlay */}
+              <div className="relative h-72 lg:h-80 overflow-hidden">
                 <img
                   src={`/diff${i + 1}.jpg`}
                   alt=""
                   className="absolute inset-0 h-full w-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
-                <p className="absolute bottom-4 left-6 font-sans text-xs font-semibold uppercase tracking-widest text-white/70">
-                  {String(i + 1).padStart(2, "0")}
-                </p>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-7">
+                  <p className="mb-3 font-sans text-xs font-semibold uppercase tracking-widest text-white/60">
+                    {String(i + 1).padStart(2, "0")}
+                  </p>
+                  <h3 className="font-display text-2xl font-normal leading-tight text-white">
+                    {p.heading}
+                  </h3>
+                </div>
               </div>
               <div className="p-10 lg:p-12">
-                <h3 className="mb-5 font-display text-3xl font-normal leading-tight text-black">
-                  {p.heading}
-                </h3>
                 <p className="font-sans text-sm leading-relaxed text-black/50">
                   {p.body}
                 </p>
@@ -302,7 +304,7 @@ function Classes() {
           ))}
         </div>
 
-        <div className="mt-16 reveal flex justify-center">
+        <div className="mt-8 reveal flex justify-center">
           <a
             href="#trial"
             className="inline-block bg-black px-8 py-3 font-sans text-xs font-semibold uppercase tracking-widest text-white transition hover:bg-black/80"
@@ -365,7 +367,7 @@ function Features() {
           ))}
         </div>
 
-        <div className="mt-16 reveal flex justify-center">
+        <div className="mt-8 reveal flex justify-center">
           <a
             href="#trial"
             className="inline-block bg-white px-8 py-3 font-sans text-xs font-semibold uppercase tracking-widest text-black transition hover:bg-white/90"
