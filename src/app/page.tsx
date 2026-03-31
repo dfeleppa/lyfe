@@ -286,13 +286,13 @@ function Classes() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-8">
-                  <p className="mb-3 font-sans text-xs font-semibold uppercase tracking-widest text-white/50">
+                  <p className="mb-3 font-sans text-xs font-semibold uppercase tracking-widest text-white/80">
                     {String(i + 1).padStart(2, "0")}
                   </p>
-                  <h3 className="mb-4 font-display text-2xl font-normal leading-tight text-white">
+                  <h3 className="mb-4 font-display text-4xl font-bold leading-tight text-white">
                     {p.heading}
                   </h3>
-                  <p className="font-sans text-sm leading-relaxed text-white/65">
+                  <p className="font-sans text-sm leading-relaxed text-white/90">
                     {p.body}
                   </p>
                 </div>
