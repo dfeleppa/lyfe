@@ -349,17 +349,24 @@ function Features() {
 
         <div className="grid gap-px bg-white/8 lg:grid-cols-3">
           {FEATURES.map((f, i) => (
-            <div
-              key={f.number}
-              className={`reveal reveal-delay-${i + 1} bg-black p-10 lg:p-12`}
-            >
-              <p className="mb-8 font-sans text-xs font-semibold uppercase tracking-widest text-white/60">
-                {f.number}
-              </p>
-              <h3 className="mb-5 font-display text-3xl font-normal leading-tight text-white">
-                {f.title}
-              </h3>
-              <p className="font-sans text-sm leading-relaxed text-white/50">{f.body}</p>
+            <div key={f.number} className={`reveal reveal-delay-${i + 1} overflow-hidden`}>
+              <div className="relative aspect-[4/5] overflow-hidden">
+                <img
+                  src={`/offer${i + 1}.jpg`}
+                  alt=""
+                  className="absolute inset-0 h-full w-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-8">
+                  <p className="mb-3 font-sans text-xs font-semibold uppercase tracking-widest text-white/80">
+                    {f.number}
+                  </p>
+                  <h3 className="mb-4 font-display text-4xl font-bold leading-tight text-white">
+                    {f.title}
+                  </h3>
+                  <p className="font-sans text-sm leading-relaxed text-white/90">{f.body}</p>
+                </div>
+              </div>
             </div>
           ))}
         </div>
