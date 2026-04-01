@@ -601,16 +601,16 @@ function LeadForm() {
   }
 
   return (
-    <section id="trial" className="border-t border-white/8 bg-black py-16 md:py-24">
+    <section id="trial" className="border-t border-black/8 bg-white py-16 md:py-24">
       <div className="mx-auto max-w-3xl px-6 text-center md:px-12">
         <div className="reveal">
-          <p className="mb-4 font-sans text-xs font-semibold uppercase tracking-widest text-white/35">
+          <p className="mb-4 font-sans text-xs font-semibold uppercase tracking-widest text-black/40">
             Get Started
           </p>
-          <h2 className="font-display text-[clamp(2.5rem,6vw,5rem)] font-normal leading-[1] tracking-display text-white">
+          <h2 className="font-display text-[clamp(2.5rem,6vw,5rem)] font-normal leading-[1] tracking-display text-black">
             Your <em className="italic">first class</em> is on us.
           </h2>
-          <p className="mx-auto mt-6 max-w-md font-sans text-base font-light text-white/45">
+          <p className="mx-auto mt-6 max-w-md font-sans text-base font-light text-black/50">
             Reserve your spot. No commitment, no credit card. We&rsquo;ll reach out to
             confirm your free session.
           </p>
@@ -626,14 +626,14 @@ function LeadForm() {
                   value={form.name}
                   onChange={(e) => update("name", e.target.value)}
                   required
-                  className="field w-full px-5 py-4 text-sm"
+                  className="field-light w-full px-5 py-4 text-sm"
                 />
                 <input
                   type="tel"
                   placeholder="Phone number"
                   value={form.phone}
                   onChange={(e) => update("phone", e.target.value)}
-                  className="field w-full px-5 py-4 text-sm"
+                  className="field-light w-full px-5 py-4 text-sm"
                 />
               </div>
               <input
@@ -642,7 +642,7 @@ function LeadForm() {
                 value={form.email}
                 onChange={(e) => update("email", e.target.value)}
                 required
-                className="field w-full px-5 py-4 text-sm"
+                className="field-light w-full px-5 py-4 text-sm"
               />
               {error && <p className="font-sans text-sm text-red-400">{error}</p>}
               <button
@@ -652,16 +652,16 @@ function LeadForm() {
               >
                 {submitting ? "Sending..." : "Reserve My Free Class →"}
               </button>
-              <p className="font-sans text-xs text-white/25">
+              <p className="font-sans text-xs text-black/30">
                 No credit card required. We&rsquo;ll never share your information.
               </p>
             </form>
           ) : (
-            <div className="glass-card p-12">
-              <p className="font-display text-3xl font-normal italic text-white">
+            <div className="border border-black/10 bg-black/[0.03] p-12">
+              <p className="font-display text-3xl font-normal italic text-black">
                 You&rsquo;re in.
               </p>
-              <p className="mt-4 font-sans text-sm text-white/50">
+              <p className="mt-4 font-sans text-sm text-black/50">
                 We&rsquo;ll reach out within 24 hours to confirm your free class. Check your inbox.
               </p>
             </div>
