@@ -1,6 +1,7 @@
 "use client";
 
-import { type FormEvent, useEffect, useRef, useState } from "react";
+import Script from "next/script";
+import { useEffect, useRef, useState } from "react";
 
 function useReveal() {
   useEffect(() => {
@@ -34,8 +35,7 @@ const REVEAL_DELAYS = ["", "reveal-delay-1", "reveal-delay-2", "reveal-delay-3",
 const NAV_ITEMS = [
   { label: "Membership & Pricing", href: "/pricing" },
   { label: "Schedule", href: "/schedule" },
-  { label: "Location", href: "#location" },
-  { label: "Contact Us", href: "#trial" },
+  { label: "Location / Contact", href: "#location" },
   { label: "Member Login", href: "https://app.daneff.com" },
 ];
 
@@ -153,7 +153,7 @@ function Nav() {
 
         <div className="flex items-center gap-3">
           <a
-            href="#trial"
+            href="#location"
             data-open-crm-popup="true"
             className="hidden rounded-[4px] bg-pink-500 px-6 py-2.5 font-sans text-xs font-semibold uppercase tracking-widest text-white transition hover:bg-pink-400 md:block"
           >
@@ -187,7 +187,7 @@ function Nav() {
             </a>
           ))}
           <a
-            href="#trial"
+            href="#location"
             data-open-crm-popup="true"
             onClick={() => setOpen(false)}
             className="mx-6 my-4 rounded-[4px] bg-pink-500 px-6 py-3 text-center font-sans text-xs font-semibold uppercase tracking-widest text-white transition hover:bg-black"
@@ -228,7 +228,7 @@ function Hero() {
 
           <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
             <a
-              href="#trial"
+              href="#location"
               data-open-crm-popup="true"
               className="inline-flex items-center justify-center rounded-[4px] bg-white px-7 py-4 font-sans text-xs font-semibold uppercase tracking-[0.24em] text-black transition hover:bg-[#ec4899] hover:text-white"
             >
@@ -311,7 +311,7 @@ function Difference() {
 
         <div className="reveal mt-10 flex justify-center lg:justify-start">
           <a
-            href="#trial"
+            href="#location"
             data-open-crm-popup="true"
             className="inline-flex items-center justify-center rounded-[4px] border border-black/12 bg-black px-7 py-4 font-sans text-xs font-semibold uppercase tracking-[0.24em] text-white transition hover:bg-[#db2777]"
           >
@@ -464,7 +464,7 @@ function Testimonials() {
               5.0 Google rating across 61 reviews
             </p>
             <a
-              href="#trial"
+              href="#location"
               className="inline-flex items-center justify-center rounded-[4px] border border-black/12 px-6 py-3 font-sans text-xs font-semibold uppercase tracking-[0.24em] text-black transition hover:border-black hover:bg-black hover:text-white"
             >
               Learn More
@@ -476,22 +476,21 @@ function Testimonials() {
   );
 }
 
-function Location() {
+function LocationContact() {
   return (
     <section id="location" className="border-t border-white/10 bg-[#09090c] py-20 md:py-28">
       <div className="mx-auto max-w-7xl px-6 md:px-12">
         <div className="reveal">
-          <div>
-            <p className="mb-4 font-sans text-xs font-semibold uppercase tracking-[0.28em] text-white/38">
-              Visit the gym
-            </p>
-            <h2 className="font-display text-[clamp(2.75rem,6vw,5.25rem)] font-normal leading-[0.98] tracking-display text-white">
-              Schedule your <em className="italic text-[#f472b6]">no-sweat</em> intro to meet the team.
-            </h2>
-          </div>
+          <p className="mb-4 font-sans text-xs font-semibold uppercase tracking-[0.28em] text-white/38">
+            Visit us &amp; get started
+          </p>
+          <h2 className="font-display text-[clamp(2.75rem,6vw,5.25rem)] font-normal leading-[0.98] tracking-display text-white">
+            The Best Gym Near Me In Baldwin.
+          </h2>
         </div>
 
-        <div className="mt-12 grid gap-6 lg:grid-cols-[minmax(0,1.1fr)_360px] lg:items-stretch">
+        <div className="mt-12 grid gap-6 lg:grid-cols-[minmax(0,1.1fr)_360px] lg:items-start">
+          {/* Map */}
           <div className="reveal overflow-hidden rounded-[36px] border border-white/10 bg-white/[0.03] shadow-[0_24px_80px_rgba(0,0,0,0.22)]">
             <div className="overflow-hidden rounded-[28px]" style={{ aspectRatio: "16 / 9" }}>
               <iframe
@@ -507,11 +506,12 @@ function Location() {
             </div>
           </div>
 
-          <div className="reveal reveal-delay-2 flex flex-col justify-between rounded-[36px] border border-white/10 bg-white/[0.04] p-8 shadow-[0_24px_80px_rgba(0,0,0,0.22)]">
-            <div className="space-y-7 font-sans text-white/72">
+          {/* Right column: info card + form card */}
+          <div className="reveal reveal-delay-2 flex flex-col gap-6">
+            <div className="flex flex-col gap-6 rounded-[36px] border border-white/10 bg-white/[0.04] p-8 font-sans text-white/72 shadow-[0_24px_80px_rgba(0,0,0,0.22)]">
               <div>
                 <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.24em] text-white/38">Address</p>
-                <p className="text-lg text-white">851 Merrick Rd, Baldwin, NY 11510</p>
+                <p className="text-base text-white">851 Merrick Rd, Baldwin, NY 11510</p>
               </div>
               <div>
                 <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.24em] text-white/38">Hours</p>
@@ -529,16 +529,16 @@ function Location() {
                   daniel@trainlyfe.com
                 </a>
               </div>
+              <a
+                href="https://maps.google.com/?q=851+Merrick+Rd+Baldwin+NY+11510"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center justify-center rounded-[4px] bg-white px-6 py-4 font-sans text-xs font-semibold uppercase tracking-[0.24em] text-black transition hover:bg-[#ec4899] hover:text-white"
+              >
+                Get Directions
+              </a>
             </div>
 
-            <a
-              href="https://maps.google.com/?q=851+Merrick+Rd+Baldwin+NY+11510"
-              target="_blank"
-              rel="noreferrer"
-              className="mt-8 inline-flex items-center justify-center rounded-[4px] bg-white px-6 py-4 font-sans text-xs font-semibold uppercase tracking-[0.24em] text-black transition hover:bg-[#ec4899] hover:text-white"
-            >
-              Get Directions
-            </a>
           </div>
         </div>
       </div>
@@ -546,113 +546,43 @@ function Location() {
   );
 }
 
+
 function LeadForm() {
-  const [form, setForm] = useState({ name: "", email: "", phone: "" });
-  const [submitting, setSubmitting] = useState(false);
-  const [done, setDone] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-
-  function update(field: keyof typeof form, value: string) {
-    setForm((current) => ({ ...current, [field]: value }));
-  }
-
-  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    setSubmitting(true);
-    setError(null);
-
-    try {
-      const response = await fetch("/api/lead", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
-      });
-
-      if (!response.ok) {
-        throw new Error("Something went wrong.");
-      }
-
-      setDone(true);
-    } catch {
-      setError("Something went wrong. Please try again or email us directly.");
-    } finally {
-      setSubmitting(false);
-    }
-  }
-
   return (
-    <section id="trial" className="border-t border-black/10 bg-[#efe5d7] py-20 text-black md:py-28">
-      <div className="mx-auto grid max-w-7xl gap-10 px-6 md:px-12 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1fr)] lg:items-start">
-        <div className="reveal">
-          <p className="mb-4 font-sans text-xs font-semibold uppercase tracking-[0.28em] text-black/38">
-            Start here
-          </p>
-          <h2 className="font-display text-[clamp(2.75rem,6vw,5.25rem)] font-normal leading-[0.98] tracking-display text-black">
-            Your first week is <em className="italic text-[#db2777]">on us.</em>
-          </h2>
-          <p className="mt-6 max-w-xl font-sans text-base leading-8 text-black/64 md:text-lg">
-            Leave your info and our team will reach out to get you started.
-          </p>
-
-        </div>
-
-        <div className="reveal reveal-delay-2 rounded-[36px] border border-black/10 bg-white p-6 shadow-[0_30px_90px_rgba(0,0,0,0.12)] md:p-8">
-          {!done ? (
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="grid gap-4 sm:grid-cols-2">
-                <input
-                  type="text"
-                  id="lead-name"
-                  name="name"
-                  autoComplete="name"
-                  placeholder="Full name"
-                  value={form.name}
-                  onChange={(event) => update("name", event.target.value)}
-                  required
-                  className="field-light w-full rounded-2xl px-5 py-4 text-sm"
-                />
-                <input
-                  type="tel"
-                  id="lead-phone"
-                  name="phone"
-                  autoComplete="tel"
-                  placeholder="Phone number"
-                  value={form.phone}
-                  onChange={(event) => update("phone", event.target.value)}
-                  className="field-light w-full rounded-2xl px-5 py-4 text-sm"
-                />
-              </div>
-              <input
-                type="email"
-                id="lead-email"
-                name="email"
-                autoComplete="email"
-                placeholder="Email address"
-                value={form.email}
-                onChange={(event) => update("email", event.target.value)}
-                required
-                className="field-light w-full rounded-2xl px-5 py-4 text-sm"
-              />
-              {error ? <p className="font-sans text-sm text-red-500">{error}</p> : null}
-              <button
-                type="submit"
-                disabled={submitting}
-                className="w-full rounded-[4px] bg-black py-5 font-sans text-xs font-semibold uppercase tracking-[0.24em] text-white transition hover:bg-[#db2777] disabled:opacity-60"
-              >
-                {submitting ? "Sending..." : "Submit"}
-              </button>
-              <p className="font-sans text-xs leading-6 text-black/35">
-                We only use your information to coordinate your visit.
-              </p>
-            </form>
-          ) : (
-            <div className="rounded-[30px] border border-black/10 bg-[#f7f1e8] p-10 text-center">
-              <p className="font-display text-4xl italic text-black">You&apos;re in.</p>
-              <p className="mt-4 font-sans text-sm leading-7 text-black/60">
-                The team will reach out within 24 hours to confirm your free week and help you pick the right first class.
-              </p>
-            </div>
-          )}
+    <section id="trial" className="bg-[#efe5d7] py-20 md:py-28">
+      <div className="mx-auto max-w-7xl px-6 md:px-12">
+        <div className="grid gap-8 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:items-start">
+          <div className="reveal lg:pt-4">
+            <p className="mb-4 font-sans text-xs font-semibold uppercase tracking-[0.28em] text-black/40">
+              Start here
+            </p>
+            <h2 className="font-display text-[clamp(2.75rem,6vw,5.25rem)] font-normal leading-[0.98] tracking-display text-black">
+              Your first week is <em className="italic text-[#ec4899]">on us.</em>
+            </h2>
+            <p className="mt-6 max-w-md font-sans text-base leading-7 text-black/65">
+              Leave your info and our team will reach out to get you started.
+            </p>
+          </div>
+          <div className="reveal reveal-delay-2 rounded-[24px] bg-white shadow-[0_18px_60px_rgba(0,0,0,0.15)]">
+            <iframe
+              src="https://link.gymntx.com/widget/form/qtz9BpzFGxwbX54pvvKx"
+              style={{ width: "100%", height: "566px", border: "none", borderRadius: "4px" }}
+              id="inline-qtz9BpzFGxwbX54pvvKx"
+              data-layout="{'id':'INLINE'}"
+              data-trigger-type="alwaysShow"
+              data-trigger-value=""
+              data-activation-type="alwaysActivated"
+              data-activation-value=""
+              data-deactivation-type="neverDeactivate"
+              data-deactivation-value=""
+              data-form-name="WEBSITE - Getting Started Optin*"
+              data-height="566"
+              data-layout-iframe-id="inline-qtz9BpzFGxwbX54pvvKx"
+              data-form-id="qtz9BpzFGxwbX54pvvKx"
+              title="WEBSITE - Getting Started Optin*"
+            />
+            <Script src="https://link.gymntx.com/js/form_embed.js" strategy="afterInteractive" />
+          </div>
         </div>
       </div>
     </section>
@@ -681,7 +611,7 @@ function Footer() {
                 {item.label}
               </a>
             ))}
-            <a href="#trial" className="font-sans text-sm text-white/55 transition hover:text-white">
+            <a href="#location" className="font-sans text-sm text-white/55 transition hover:text-white">
               Free Week
             </a>
           </div>
@@ -733,7 +663,7 @@ export default function LandingPage() {
       <Difference />
       <Programs />
       <Testimonials />
-      <Location />
+      <LocationContact />
       <LeadForm />
       <Footer />
     </>

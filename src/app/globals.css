@@ -168,6 +168,25 @@
   box-shadow: 0 0 0 4px rgba(219, 39, 119, 0.08);
 }
 
+/* ── Dark form input (for dark-background sections) ─────────────────────────── */
+.field-dark {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+  outline: none;
+  transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+}
+
+.field-dark::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.field-dark:focus {
+  border-color: rgba(244, 114, 182, 0.65);
+  background: rgba(255, 255, 255, 0.09);
+  box-shadow: 0 0 0 4px rgba(244, 114, 182, 0.1);
+}
+
 .hero-orb {
   position: absolute;
   z-index: 0;
