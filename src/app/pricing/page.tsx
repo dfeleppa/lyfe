@@ -51,6 +51,7 @@ function Nav() {
         <div className="flex items-center gap-3">
           <a
             href="/#trial"
+            data-open-crm-popup="true"
             className="hidden rounded-[4px] bg-pink-500 px-6 py-2.5 font-sans text-xs font-semibold uppercase tracking-widest text-white transition hover:bg-pink-400 md:block"
           >
             Get Started
@@ -84,6 +85,7 @@ function Nav() {
           ))}
           <a
             href="/#trial"
+            data-open-crm-popup="true"
             onClick={() => setOpen(false)}
             className="mx-6 my-4 rounded-[4px] bg-pink-500 px-6 py-3 text-center font-sans text-xs font-semibold uppercase tracking-widest text-white transition hover:bg-black"
           >
@@ -132,9 +134,9 @@ export default function PricingPage() {
               <h2 className="mt-3 font-display text-[clamp(2.2rem,5vw,3.5rem)] leading-[0.95] text-white">
                 Lyfe Membership
               </h2>
-              <p className="mt-4 font-sans text-base text-white/70">Starting at</p>
+              <p className="mt-4 font-sans text-base text-white/70">As low as</p>
               <p className="mt-1 font-display text-[clamp(3rem,6vw,4.5rem)] font-normal leading-none text-white">
-                $134.99<span className="ml-2 font-sans text-base text-white/70">/mo.</span>
+                $5<span className="ml-2 font-sans text-base text-white/70">/class</span>
               </p>
 
               <ul className="mt-8 space-y-3">
@@ -160,9 +162,10 @@ export default function PricingPage() {
 
               <a
                 href="/#trial"
+                data-open-pricing-popup="true"
                 className="mt-10 inline-flex items-center justify-center rounded-[4px] bg-[#ec4899] px-7 py-4 font-sans text-xs font-semibold uppercase tracking-[0.24em] text-white transition hover:bg-[#db2777]"
               >
-                Get Started
+                Get Pricing
               </a>
 
               <div className="mt-6 border-t border-white/10 pt-6">
@@ -216,7 +219,8 @@ export default function PricingPage() {
 
               <a
                 href="/#trial"
-                className="mt-10 inline-flex items-center justify-center rounded-[4px] border border-white/15 bg-white/5 px-7 py-4 font-sans text-xs font-semibold uppercase tracking-[0.24em] text-white transition hover:bg-white/10"
+                data-open-crm-popup="true"
+                className="mt-10 inline-flex items-center justify-center rounded-[4px] bg-[#ec4899] px-7 py-4 font-sans text-xs font-semibold uppercase tracking-[0.24em] text-white transition hover:bg-[#db2777]"
               >
                 Get Started
               </a>

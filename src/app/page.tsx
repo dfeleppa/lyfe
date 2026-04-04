@@ -48,7 +48,7 @@ const DIFFERENCE_PILLARS = [
   {
     heading: "Coaching that meets you where you are",
     body: "Whether you are starting fresh or returning after time away, movements are scaled intelligently so you can improve without feeling lost or out of place.",
-    image: "/diff2.jpg",
+    image: "/offer3.jpg",
   },
   {
     heading: "Programming with a point of view",
@@ -74,7 +74,7 @@ const PROGRAMS = [
     number: "03",
     title: "Nutrition Coaching",
     body: "Simple, practical nutrition guidance that supports your training and helps results last outside the gym walls.",
-    image: "/offer3.jpg",
+    image: "/diff2.jpg",
   },
 ];
 
@@ -154,6 +154,7 @@ function Nav() {
         <div className="flex items-center gap-3">
           <a
             href="#trial"
+            data-open-crm-popup="true"
             className="hidden rounded-[4px] bg-pink-500 px-6 py-2.5 font-sans text-xs font-semibold uppercase tracking-widest text-white transition hover:bg-pink-400 md:block"
           >
             Get Started
@@ -187,6 +188,7 @@ function Nav() {
           ))}
           <a
             href="#trial"
+            data-open-crm-popup="true"
             onClick={() => setOpen(false)}
             className="mx-6 my-4 rounded-[4px] bg-pink-500 px-6 py-3 text-center font-sans text-xs font-semibold uppercase tracking-widest text-white transition hover:bg-black"
           >
@@ -227,6 +229,7 @@ function Hero() {
           <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
             <a
               href="#trial"
+              data-open-crm-popup="true"
               className="inline-flex items-center justify-center rounded-[4px] bg-white px-7 py-4 font-sans text-xs font-semibold uppercase tracking-[0.24em] text-black transition hover:bg-[#ec4899] hover:text-white"
             >
               Get Started
@@ -309,6 +312,7 @@ function Difference() {
         <div className="reveal mt-10 flex justify-center lg:justify-start">
           <a
             href="#trial"
+            data-open-crm-popup="true"
             className="inline-flex items-center justify-center rounded-[4px] border border-black/12 bg-black px-7 py-4 font-sans text-xs font-semibold uppercase tracking-[0.24em] text-white transition hover:bg-[#db2777]"
           >
             Get Started

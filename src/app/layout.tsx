@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Inter } from "next/font/google";
+import GlobalCRMPopup from "./components/GlobalCRMPopup";
+import GlobalPricingPopup from "./components/GlobalPricingPopup";
 import "./globals.css";
 
 // Display font — stands in for Reckless Neue until font files are added.
@@ -42,7 +44,11 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${cormorant.variable} ${inter.variable}`}>
-      <body className="bg-black text-white font-sans antialiased">{children}</body>
+      <body className="bg-black text-white font-sans antialiased">
+        {children}
+        <GlobalCRMPopup />
+        <GlobalPricingPopup />
+      </body>
     </html>
   );
 }

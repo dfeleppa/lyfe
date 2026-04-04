@@ -170,6 +170,7 @@ function Nav() {
         <div className="flex items-center gap-3">
           <a
             href="/#trial"
+            data-open-crm-popup="true"
             className="hidden rounded-[4px] bg-pink-500 px-6 py-2.5 font-sans text-xs font-semibold uppercase tracking-widest text-white transition hover:bg-pink-400 md:block"
           >
             Get Started
@@ -203,6 +204,7 @@ function Nav() {
           ))}
           <a
             href="/#trial"
+            data-open-crm-popup="true"
             onClick={() => setOpen(false)}
             className="mx-6 my-4 rounded-[4px] bg-pink-500 px-6 py-3 text-center font-sans text-xs font-semibold uppercase tracking-widest text-white transition hover:bg-black"
           >
@@ -239,6 +241,7 @@ export default function SchedulePage() {
           </p>
           <a
             href="https://app.daneff.com"
+            data-open-crm-popup="true"
             target="_blank"
             rel="noreferrer"
             className="mt-8 inline-flex items-center rounded-[4px] bg-[#ec4899] px-7 py-3.5 font-sans text-xs font-semibold uppercase tracking-[0.24em] text-white transition hover:bg-[#db2777]"
