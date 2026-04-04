@@ -218,7 +218,7 @@ export default function PricingPage() {
                 href="/#trial"
                 className="mt-10 inline-flex items-center justify-center rounded-[4px] border border-white/15 bg-white/5 px-7 py-4 font-sans text-xs font-semibold uppercase tracking-[0.24em] text-white transition hover:bg-white/10"
               >
-                Contact Us
+                Get Started
               </a>
             </div>
           </div>

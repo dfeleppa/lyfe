@@ -235,7 +235,7 @@ export default function SchedulePage() {
             <em className="text-[#ec4899]">Show up ready.</em>
           </h1>
           <p className="mt-8 max-w-xl font-sans text-base leading-8 text-white/60 md:text-lg">
-            Classes run every week. New to Lyfe? Come in for a free intro and we&apos;ll get you started right.
+            New to Lyfe? Come in for a free intro and we&apos;ll get you started right.
           </p>
           <a
             href="https://app.daneff.com"
