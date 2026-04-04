@@ -19,22 +19,22 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Elev8 | Group Fitness Built for Results",
+  title: "Lyfe Fitness | Group Training in Baldwin, NY",
   description:
-    "Premium group fitness for people who are serious about performance. Expert programming, elite coaches, real community. Book your first class free.",
+    "Coach-led group fitness in Baldwin, NY. Purposeful programming, real coaching, and a community that makes consistency easier. Start your free week.",
   openGraph: {
-    title: "Elev8 | Group Fitness Built for Results",
+    title: "Lyfe Fitness | Group Training in Baldwin, NY",
     description:
-      "Premium group fitness for people who are serious about performance. Expert programming, elite coaches, real community.",
+      "Coach-led group fitness in Baldwin, NY with purposeful programming, real coaching, and a strong community.",
     url: "https://daneff.com",
-    siteName: "Elev8",
+    siteName: "Lyfe Fitness",
     locale: "en_US",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Elev8 | Group Fitness Built for Results",
-    description: "Premium group fitness for people who are serious about performance.",
+    title: "Lyfe Fitness | Group Training in Baldwin, NY",
+    description: "Coach-led group fitness in Baldwin, NY. Start your free week.",
   },
   metadataBase: new URL("https://daneff.com"),
 };

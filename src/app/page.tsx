@@ -1,97 +1,181 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import Link from "next/link";
+import { type FormEvent, useEffect, useRef, useState } from "react";
 
-// ─── Scroll reveal hook ───────────────────────────────────────────────────────
 function useReveal() {
   useEffect(() => {
-    const els = document.querySelectorAll(".reveal");
-    const io = new IntersectionObserver(
+    const elements = document.querySelectorAll(".reveal");
+
+    if (typeof IntersectionObserver === "undefined") {
+      elements.forEach((element) => element.classList.add("visible"));
+      return;
+    }
+
+    const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) {
-            e.target.classList.add("visible");
-            io.unobserve(e.target);
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
           }
         });
       },
       { threshold: 0.12 }
     );
-    els.forEach((el) => io.observe(el));
-    return () => io.disconnect();
+
+    elements.forEach((element) => observer.observe(element));
+
+    return () => observer.disconnect();
   }, []);
 }
 
-// ─── Nav ─────────────────────────────────────────────────────────────────────
+const REVEAL_DELAYS = ["", "reveal-delay-1", "reveal-delay-2", "reveal-delay-3", "reveal-delay-4"];
+
+const NAV_ITEMS = [
+  { label: "Pricing", href: "#offerings" },
+  { label: "Membership", href: "#trial" },
+  { label: "Schedule", href: "#location" },
+  { label: "Location", href: "#location" },
+  { label: "Member Login", href: "https://app.daneff.com" },
+];
+
+const DIFFERENCE_PILLARS = [
+  {
+    heading: "A room that pulls you forward",
+    body: "You are not left wandering through equipment or guessing the workout. Every class has structure, coaching, and a pace that keeps you moving with purpose.",
+    image: "/diff1.jpg",
+  },
+  {
+    heading: "Coaching that meets you where you are",
+    body: "Whether you are starting fresh or returning after time away, movements are scaled intelligently so you can improve without feeling lost or out of place.",
+    image: "/diff2.jpg",
+  },
+  {
+    heading: "Programming with a point of view",
+    body: "Strength, conditioning, recovery, and progression are planned to build momentum over time instead of piling up random hard days.",
+    image: "/diff3.jpg",
+  },
+];
+
+const PROGRAMS = [
+  {
+    number: "01",
+    title: "Group Fitness",
+    body: "High-energy sessions that blend strength, cardio, and athletic conditioning into a coached class that keeps everyone working with intent.",
+    image: "/offer1.jpg",
+  },
+  {
+    number: "02",
+    title: "Personal Training",
+    body: "One-on-one sessions for members who want more individualized progressions, closer accountability, or extra support around a specific goal.",
+    image: "/offer2.jpg",
+  },
+  {
+    number: "03",
+    title: "Nutrition Coaching",
+    body: "Simple, practical nutrition guidance that supports your training and helps results last outside the gym walls.",
+    image: "/offer3.jpg",
+  },
+];
+
+const TESTIMONIALS = [
+  {
+    quote:
+      "Joining this gym has been one of the best decisions I have ever made. It is so much more than a place to work out. I have improved my skills, pushed past limits, and grown in ways I never expected.",
+    name: "Dave A.",
+    role: "Google Review",
+    initials: "DA",
+    image: "/ca.png",
+  },
+  {
+    quote:
+      "I tried a few places after moving to the area, but none offered the sense of community and support I was looking for until I found Lyfe Fitness. From day one, I felt welcomed, challenged, and supported.",
+    name: "Clairiola E.",
+    role: "Google Review",
+    initials: "CE",
+    image: "/ce.png",
+  },
+  {
+    quote:
+      "On my tryout I was blown away by the hospitality and the feeling of a great community. Everyone makes you feel at home. One of the best decisions I have ever made.",
+    name: "Nesha B.",
+    role: "Google Review",
+    initials: "NB",
+  },
+  {
+    quote:
+      "With the guidance of the coaches and the encouraging members, I started doing things I thought I could never do. Going as a family became part of our routine, and it has been one of the best decisions we have made.",
+    name: "Cathy P.",
+    role: "Google Review",
+    initials: "CP",
+    image: "/cjp.png",
+  },
+];
+
 function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const handler = () => setScrolled(window.scrollY > 40);
-    window.addEventListener("scroll", handler, { passive: true });
-    return () => window.removeEventListener("scroll", handler);
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
     <header
-      className="fixed inset-x-0 top-0 z-50 flex items-center justify-between px-6 py-5 transition-all duration-300 md:px-12 bg-[#0d0d0d]/90 backdrop-blur-sm"
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+        scrolled ? "px-3 pt-3 md:px-6" : "px-0 pt-0"
+      }`}
     >
-      {/* Logo */}
-      <a href="#">
-        <img src="/lflogo1.png" alt="Logo" className="h-10 w-auto" />
-      </a>
+      <div
+        className={`mx-auto flex w-full max-w-7xl items-center justify-between border border-white/10 bg-black/70 px-6 py-4 backdrop-blur-xl transition-all duration-300 md:px-8 ${
+          scrolled ? "rounded-[28px] shadow-[0_24px_80px_rgba(0,0,0,0.35)]" : "rounded-none border-x-0 border-t-0"
+        }`}
+      >
+        <a href="#top" className="flex items-center gap-4">
+          <img src="/lflogo1.png" alt="Lyfe Fitness logo" className="h-10 w-auto" />
+        </a>
 
-      {/* Desktop nav */}
-      <nav className="hidden items-center gap-10 md:flex">
-        {[
-          { label: "Pricing", href: "#pricing" },
-          { label: "Membership", href: "#membership" },
-          { label: "Schedule", href: "#schedule" },
-          { label: "Location", href: "#location" },
-          { label: "Member Login", href: "https://app.daneff.com" },
-        ].map((item) => (
+        <nav className="hidden items-center gap-8 md:flex">
+          {NAV_ITEMS.map((item) => (
+            <a
+              key={item.label}
+              href={item.href}
+              className="font-sans text-[11px] font-semibold uppercase tracking-[0.24em] text-white/55 transition hover:text-white"
+            >
+              {item.label}
+            </a>
+          ))}
+        </nav>
+
+        <div className="flex items-center gap-3">
           <a
-            key={item.label}
-            href={item.href}
-            className="font-sans text-xs font-medium uppercase tracking-widest text-white/50 transition hover:text-white"
+            href="#trial"
+            className="hidden rounded-[4px] bg-pink-500 px-6 py-2.5 font-sans text-xs font-semibold uppercase tracking-widest text-white transition hover:bg-pink-400 md:block"
           >
-            {item.label}
+            Get Started
           </a>
-        ))}
-      </nav>
 
-      {/* CTA */}
-      <a
-        href="#trial"
-        className="hidden rounded-none bg-pink-500 px-6 py-2.5 font-sans text-xs font-semibold uppercase tracking-widest text-white transition hover:bg-pink-400 md:block"
-      >
-        Get Started
-      </a>
+          <button
+            type="button"
+            onClick={() => setOpen((value) => !value)}
+            className="flex h-11 w-11 flex-col items-center justify-center gap-1.5 rounded-[4px] md:hidden"
+            aria-label="Menu"
+            aria-expanded={open}
+          >
+            <span className={`block h-px w-5 bg-white transition-all ${open ? "translate-y-[7px] rotate-45" : ""}`} />
+            <span className={`block h-px w-5 bg-white transition-all ${open ? "opacity-0" : ""}`} />
+            <span className={`block h-px w-5 bg-white transition-all ${open ? "-translate-y-[7px] -rotate-45" : ""}`} />
+          </button>
+        </div>
+      </div>
 
-      {/* Mobile hamburger */}
-      <button
-        type="button"
-        onClick={() => setOpen((o) => !o)}
-        className="flex flex-col gap-1.5 md:hidden"
-        aria-label="Menu"
-      >
-        <span className={`block h-px w-6 bg-white transition-all ${open ? "translate-y-2 rotate-45" : ""}`} />
-        <span className={`block h-px w-6 bg-white transition-all ${open ? "opacity-0" : ""}`} />
-        <span className={`block h-px w-6 bg-white transition-all ${open ? "-translate-y-2 -rotate-45" : ""}`} />
-      </button>
-
-      {/* Mobile menu */}
       {open && (
         <div className="absolute inset-x-0 top-full flex flex-col gap-0 border-t border-white/10 bg-black/95 backdrop-blur-xl md:hidden">
-          {[
-            { label: "Pricing", href: "#pricing" },
-            { label: "Membership", href: "#membership" },
-            { label: "Schedule", href: "#schedule" },
-            { label: "Location", href: "#location" },
-            { label: "Member Login", href: "https://app.daneff.com" },
-          ].map((item) => (
+          {NAV_ITEMS.map((item) => (
             <a
               key={item.label}
               href={item.href}
@@ -104,7 +188,7 @@ function Nav() {
           <a
             href="#trial"
             onClick={() => setOpen(false)}
-            className="mx-6 my-4 border border-white/20 px-6 py-3 text-center font-sans text-xs font-semibold uppercase tracking-widest text-white transition hover:bg-white hover:text-black"
+            className="mx-6 my-4 rounded-[4px] bg-pink-500 px-6 py-3 text-center font-sans text-xs font-semibold uppercase tracking-widest text-white transition hover:bg-black"
           >
             Get Started
           </a>
@@ -114,89 +198,68 @@ function Nav() {
   );
 }
 
-// ─── Hero ─────────────────────────────────────────────────────────────────────
 function Hero() {
-  const [email, setEmail] = useState("");
-  const [submitted, setSubmitted] = useState(false);
-
-  async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    if (!email.trim()) return;
-    // TODO: wire to your CRM / email list
-    setSubmitted(true);
-  }
-
   return (
-    <section className="relative flex min-h-[65vh] flex-col items-center justify-center overflow-hidden bg-black dot-grid noise">
-      {/* Radial gradient vignette */}
-      <div
-        className="pointer-events-none absolute inset-0 z-0"
-        style={{
-          background:
-            "radial-gradient(ellipse 80% 70% at 50% 50%, rgba(20,20,20,0.0) 0%, rgba(0,0,0,0.95) 100%)",
-        }}
-      />
+    <section id="top" className="relative overflow-hidden border-b border-white/10 pb-16 pt-32 md:pb-24 md:pt-40">
+      <div className="hero-orb left-[-12rem] top-[8rem]" />
+      <div className="hero-orb hero-orb-alt right-[-8rem] top-[18rem]" />
+      <div className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.16),transparent_32%),linear-gradient(180deg,rgba(7,7,9,0.2)_0%,rgba(7,7,9,0.95)_72%,rgba(7,7,9,1)_100%)]" />
+      <img src="/hero.jpg" alt="Athletes training at Lyfe Fitness" className="absolute inset-0 z-0 h-full w-full object-cover opacity-30" />
 
-      {/* Hero background image */}
-      <img src="/hero.jpg" alt="" className="absolute inset-0 z-0 h-full w-full object-cover opacity-40" />
+      <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-12">
+        <div className="reveal max-w-4xl">
+          <p className="font-sans text-xs font-semibold uppercase tracking-[0.28em] text-[#f472b6]">
+            Group Fitness - Reimagined
+          </p>
+          <h1 className="mt-6 max-w-5xl font-display text-[clamp(3.5rem,9vw,8rem)] font-normal leading-[0.92] tracking-tightest text-white">
+            Coaching.
+            <br />
+            Results.
+            <br />
+            <em className="text-[#ec4899]">Community</em>
+          </h1>
 
-      {/* Content */}
-      <div className="relative z-10 mx-auto max-w-5xl w-full px-6 text-left">
-        <p className="mb-6 font-sans text-xs font-semibold uppercase tracking-widest text-white/80">
-          Group Fitness — Reimagined
-        </p>
+          <p className="mt-8 max-w-2xl font-sans text-base leading-8 text-white/72 md:text-lg">
+            Lyfe Fitness gives Baldwin members a better way to train: coach-led classes,
+            thoughtful programming, and a room full of people who make consistency easier.
+          </p>
 
-        <h1 className="font-display text-[clamp(3rem,9vw,7.5rem)] font-normal leading-[0.95] tracking-tightest text-white">
-          The Gym That Works Hard, <em className="italic text-pink-500">Together.</em>
-        </h1>
-
-        <p className="mt-8 max-w-xl font-sans text-base font-light leading-relaxed text-white/80 md:text-lg">
-          Group fitness in Baldwin, NY for people who want real coaching, purposeful programming, and a community that pushes you and keeps it fun.
-        </p>
-
-        {/* CTA */}
-        <div className="mt-12 flex max-w-md flex-col gap-3 sm:flex-row">
-          <a
-            href="#trial"
-            className="bg-pink-500 px-8 py-4 font-sans text-xs font-bold uppercase tracking-widest text-white transition hover:bg-pink-400 active:scale-95"
-          >
-            Get Started
-          </a>
-        </div>
-      </div>
-
-      {/* Scroll cue */}
-      <div className="absolute bottom-10 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-2">
-        <span className="font-sans text-[10px] uppercase tracking-widest text-white/80">Scroll</span>
-        <div className="flex h-8 w-px flex-col overflow-hidden">
-          <div className="h-full w-px animate-[scrollLine_1.6s_ease_infinite] bg-white/80" />
+          <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
+            <a
+              href="#trial"
+              className="inline-flex items-center justify-center rounded-[4px] bg-white px-7 py-4 font-sans text-xs font-semibold uppercase tracking-[0.24em] text-black transition hover:bg-[#ec4899] hover:text-white"
+            >
+              Get Started
+            </a>
+          </div>
         </div>
       </div>
     </section>
   );
 }
 
-// ─── Trust bar ────────────────────────────────────────────────────────────────
-const TRUST_ITEMS = [
-  "★★★★★  5.0 Google Rating (61 Reviews)",
-  "Strength & Conditioning",
-  "Endurance",
-  "Hybrid Training",
-  "Nutrition",
-  "★★★★★  5.0 Google Rating (61 Reviews)",
-  "Strength & Conditioning",
-  "Endurance",
-  "Hybrid Training",
-  "Nutrition",
-];
-
 function TrustBar() {
+  const items = [
+    "5.0 Google rating",
+    "Coach-led group training",
+    "Strength and conditioning",
+    "Beginner-friendly coaching",
+    "Nutrition support",
+    "Baldwin, NY",
+    "5.0 Google rating",
+    "Coach-led group training",
+    "Strength and conditioning",
+    "Beginner-friendly coaching",
+    "Nutrition support",
+    "Baldwin, NY",
+  ];
+
   return (
-    <div className="overflow-hidden border-y border-white/8 bg-black/60 py-4">
-      <div className="flex animate-marquee marquee-track whitespace-nowrap gap-16">
-        {TRUST_ITEMS.map((item, i) => (
-          <span key={i} className="flex items-center gap-4">
-            <span className="font-sans text-xs font-semibold uppercase tracking-widest text-white/40">
+    <div className="overflow-hidden border-y border-white/10 bg-[#0d0d10] py-4">
+      <div className="marquee-track flex animate-marquee gap-16 whitespace-nowrap">
+        {items.map((item, index) => (
+          <span key={`${item}-${index}`} className="flex items-center gap-4">
+            <span className="font-sans text-xs font-semibold uppercase tracking-[0.24em] text-white/45">
               {item}
             </span>
             <span className="h-px w-8 bg-white/15" />
@@ -207,104 +270,46 @@ function TrustBar() {
   );
 }
 
-// ─── Classes ──────────────────────────────────────────────────────────────────
-const CLASSES = [
-  {
-    name: "Strength & Conditioning",
-    tag: "45 min",
-    description:
-      "Barbell work, accessory lifts, and metcons built around proven periodization. Every session has a purpose.",
-    bg: "from-zinc-900 to-neutral-950",
-  },
-  {
-    name: "Olympic Lifting",
-    tag: "60 min",
-    description:
-      "Technique-first coaching on the snatch and clean & jerk. Open to all levels — progress is the only metric.",
-    bg: "from-stone-900 to-zinc-950",
-  },
-  {
-    name: "Open Gym",
-    tag: "Flexible",
-    description:
-      "Structured free access with programming on the board. Coach present to guide your session.",
-    bg: "from-neutral-900 to-stone-950",
-  },
-  {
-    name: "Endurance",
-    tag: "50 min",
-    description:
-      "Running, rowing, and assault bike intervals scaled to your threshold. Engine work that transfers everywhere.",
-    bg: "from-zinc-950 to-neutral-900",
-  },
-  {
-    name: "Skills & Gymnastics",
-    tag: "45 min",
-    description:
-      "Handstands, ring work, pull-up progressions. Build the movement quality that changes everything else.",
-    bg: "from-stone-950 to-zinc-900",
-  },
-];
-
-function Classes() {
-  const pillars = [
-    {
-      heading: "No more boring workouts alone!",
-      body: "Seeking a gym that fosters a strong sense of community? Look no further than Lyfe Fitness located in Baldwin! We embrace individuals of all fitness levels and are committed to supporting your journey towards self-improvement.",
-    },
-    {
-      heading: "No More Feeling Lost In The Gym!",
-      body: "Lyfe Fitness offers an enjoyable training environment where you don't have to be an athlete to join in! Our coaches provide expert guidance and tailor your daily workouts to suit your individual needs.",
-    },
-    {
-      heading: "No more wasting time!",
-      body: "Are you prepared to reach your goals and enhance your quality of life? Join us and benefit from professional coaching that will empower your success. We'll assist you in crafting a personalized success plan and offer the necessary support to help you reach your aspirations.",
-    },
-  ];
-
+function Difference() {
   return (
-    <section id="classes" className="bg-white py-16 md:py-24">
+    <section id="difference" className="bg-[#f5f0e8] py-20 text-black md:py-28">
       <div className="mx-auto max-w-7xl px-6 md:px-12">
-        <div className="reveal mb-8">
-          <p className="mb-4 font-sans text-xs font-semibold uppercase tracking-widest text-black/40">
-            The Difference
-          </p>
-          <h2 className="font-display text-[clamp(2.5rem,6vw,5rem)] font-normal leading-[1] tracking-display text-black">
-            This isn&rsquo;t just{" "}
-            <em className="italic">a gym.</em>
-          </h2>
+        <div className="reveal">
+          <div>
+            <p className="mb-4 font-sans text-xs font-semibold uppercase tracking-[0.28em] text-black/40">
+              Why Lyfe Fitness
+            </p>
+            <h2 className="font-display text-[clamp(2.75rem,6vw,5.5rem)] font-normal leading-[0.98] tracking-display text-black">
+              This isn’t just a <em className="italic text-[#db2777]">gym.</em>
+            </h2>
+          </div>
         </div>
 
-        <div className="grid gap-px bg-black/8 lg:grid-cols-3">
-          {pillars.map((p, i) => (
-            <div key={i} className={`reveal reveal-delay-${i + 1} overflow-hidden`}>
+        <div className="mt-12 grid gap-6 lg:grid-cols-3">
+          {DIFFERENCE_PILLARS.map((pillar, index) => (
+            <article
+              key={pillar.heading}
+              className={`reveal ${REVEAL_DELAYS[index + 1]} overflow-hidden rounded-none border border-black/8 bg-black text-white shadow-[0_30px_80px_rgba(0,0,0,0.14)]`}
+            >
               <div className="relative aspect-[4/5] overflow-hidden">
-                <img
-                  src={`/diff${i + 1}.jpg`}
-                  alt=""
-                  className="absolute inset-0 h-full w-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-8">
-                  <p className="mb-3 font-sans text-xs font-semibold uppercase tracking-widest text-white/80">
-                    {String(i + 1).padStart(2, "0")}
+                <img src={pillar.image} alt={pillar.heading} className="absolute inset-0 h-full w-full object-cover" />
+                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.12)_0%,rgba(0,0,0,0.22)_30%,rgba(0,0,0,0.88)_100%)]" />
+                <div className="absolute inset-x-0 bottom-0 p-8">
+                  <p className="mb-3 font-sans text-[10px] font-semibold uppercase tracking-[0.24em] text-[#f472b6]">
+                    0{index + 1}
                   </p>
-                  <h3 className="mb-4 font-display text-4xl font-bold leading-tight text-white">
-                    {p.heading}
-                  </h3>
-                  <p className="font-sans text-sm leading-relaxed text-white/90">
-                    {p.body}
-                  </p>
+                  <h3 className="font-display text-4xl leading-tight text-white">{pillar.heading}</h3>
+                  <p className="mt-4 font-sans text-sm leading-7 text-white/76">{pillar.body}</p>
                 </div>
               </div>
-            </div>
+            </article>
           ))}
         </div>
 
-        <div className="mt-8 reveal flex justify-center">
+        <div className="reveal mt-10 flex justify-center lg:justify-start">
           <a
             href="#trial"
-            className="inline-block bg-black px-8 py-3 font-sans text-xs font-semibold uppercase tracking-widest text-white transition hover:bg-black/80"
+            className="inline-flex items-center justify-center rounded-[4px] border border-black/12 bg-black px-7 py-4 font-sans text-xs font-semibold uppercase tracking-[0.24em] text-white transition hover:bg-[#db2777]"
           >
             Get Started
           </a>
@@ -314,254 +319,151 @@ function Classes() {
   );
 }
 
-// ─── Features ─────────────────────────────────────────────────────────────────
-const FEATURES = [
-  {
-    number: "01",
-    title: "Group Fitness",
-    body: "Our coach-led group fitness class is for everyone! We use a combination of cardio, bodyweight and weights to maximize your hour with us. The workouts are different every day with a huge emphasis on getting you started safely whatever your current age or ability.",
-  },
-  {
-    number: "02",
-    title: "Personal Training",
-    body: "Achieve your goals one-on-one with our coaches who provide personalized programming and in-person sessions tailored to your specific needs. Benefit from targeted training that is designed to help you reach your desired goals.",
-  },
-  {
-    number: "03",
-    title: "Nutrition",
-    body: "Our coaches are in your corner — bringing the accountability, knowledge, and motivation to help you dial in a nutrition approach that actually works for your body.",
-  },
-];
-
-function Features() {
+function Programs() {
   return (
-    <section id="coaches" className="border-t border-white/8 bg-black py-16 md:py-24">
+    <section id="offerings" className="border-t border-white/10 bg-[#0a0a0d] py-20 md:py-28">
       <div className="mx-auto max-w-7xl px-6 md:px-12">
-        <div className="reveal mb-8">
-          <p className="mb-4 font-sans text-xs font-semibold uppercase tracking-widest text-white/35">
-            What We Offer
-          </p>
-          <h2 className="font-display text-[clamp(2.5rem,6vw,5rem)] font-normal leading-[1] tracking-display text-white">
-            Every class.{" "}
-            <em className="italic">Built to push</em> you.
-          </h2>
+        <div className="reveal grid gap-8 lg:items-end">
+          <div>
+            <p className="mb-4 font-sans text-xs font-semibold uppercase tracking-[0.28em] text-white/38">
+              WHAT WE OFFER
+            </p>
+            <h2 className="font-display text-[clamp(2.75rem,6vw,5.5rem)] font-normal leading-[0.98] tracking-display text-white">
+              Coaching that fits your <em className="italic text-[#f472b6]">next step.</em>
+            </h2>
+          </div>
         </div>
 
-        <div className="grid gap-px bg-white/8 lg:grid-cols-3">
-          {FEATURES.map((f, i) => (
-            <div key={f.number} className={`reveal reveal-delay-${i + 1} overflow-hidden`}>
+        <div className="mt-12 grid gap-6 lg:grid-cols-3">
+          {PROGRAMS.map((program, index) => (
+            <article
+              key={program.number}
+              className={`reveal ${REVEAL_DELAYS[index + 1]} overflow-hidden rounded-none border border-white/10 bg-white/[0.03] shadow-[0_24px_80px_rgba(0,0,0,0.2)]`}
+            >
               <div className="relative aspect-[4/5] overflow-hidden">
-                <img
-                  src={`/offer${i + 1}.jpg`}
-                  alt=""
-                  className="absolute inset-0 h-full w-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-8">
-                  <p className="mb-3 font-sans text-xs font-semibold uppercase tracking-widest text-white/80">
-                    {f.number}
+                <img src={program.image} alt={program.title} className="absolute inset-0 h-full w-full object-cover" />
+                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.05)_0%,rgba(0,0,0,0.2)_30%,rgba(0,0,0,0.9)_100%)]" />
+                <div className="absolute inset-x-0 bottom-0 p-8">
+                  <p className="mb-3 font-sans text-[10px] font-semibold uppercase tracking-[0.24em] text-[#f472b6]">
+                    {program.number}
                   </p>
-                  <h3 className="mb-4 font-display text-4xl font-bold leading-tight text-white">
-                    {f.title}
-                  </h3>
-                  <p className="font-sans text-sm leading-relaxed text-white/90">{f.body}</p>
+                  <h3 className="font-display text-4xl leading-tight text-white">{program.title}</h3>
+                  <p className="mt-4 font-sans text-sm leading-7 text-white/72">{program.body}</p>
                 </div>
               </div>
-            </div>
+            </article>
           ))}
-        </div>
-
-        <div className="mt-8 reveal flex justify-center">
-          <a
-            href="#trial"
-            className="inline-block bg-white px-8 py-3 font-sans text-xs font-semibold uppercase tracking-widest text-black transition hover:bg-white/90"
-          >
-            Get Started
-          </a>
         </div>
       </div>
     </section>
   );
 }
-
-// ─── Testimonials ─────────────────────────────────────────────────────────────
-const TESTIMONIALS = [
-  {
-    quote:
-      "More Than Just a Gym – A Place to Grow. Joining this gym has been one of the best decisions I've ever made. From the start, it's been so much more than just a place to work out — it's a space where I've genuinely improved my skills, pushed past limits, & grown in ways I never expected. Whether it's refining technique, learning new movements, or pushing through a grueling workout, Lyfe has been nothing short of phenomenal...",
-    name: "Dave A.",
-    role: "Google Review",
-    initials: "DA",
-  },
-  {
-    quote:
-      "I recently moved to the area and had been searching for a home gym. I tried a few places, but none offered the sense of community and support I was looking for.... until I found LYFE Fitness. You don't often find gyms where the owners and coaches genuinely care about their members and emphasize proper form, warm-ups, and overall well-being. From day one, I've felt welcomed, challenged, and supported. This has been one of the best fitness experiences I've ever had, and I'd recommend LYFE to anyone looking not just for results, but for a positive, encouraging community. LYFE is hands down the best gym in Baldwin!",
-    name: "Clairiola E.",
-    role: "Google Review",
-    initials: "CE",
-  },
-  {
-    quote:
-      "A year ago I was looking for a gym and came across Lyfe fitness. On my tryout I was blown away by the hospitality and the feeling of a great community, everyone makes you feel like home/family. One of the best decisions I've ever made.",
-    name: "Nesha B.",
-    role: "Google Review",
-    initials: "NB",
-  },
-  {
-    quote:
-      "Me and my Wife started a year ago OUR life has changed tremendously. Mentally and physically we have gotten better and stronger. Thank you so Much Dan u changed our lives. Lyfe Fitness is so much fun the members are so supportive and friendly. It's definitely 1 of the best life decisions we have made — definitely looking forward to continuing our journey together in CrossFit. DAN u are truly an inspiration and amazing person THANKS a million to everyone that supported us at LYFE FITNESS.",
-    name: "Steve P.",
-    role: "Google Review",
-    initials: "SP",
-  },
-  {
-    quote:
-      "For many years I've been guilty of paying for gym memberships and failed to go consistently because honestly, it starts to get boring. I've also spent on home exercise equipment which ends up becoming a designated clothing rack — but I can proudly say, I've consistently been going to Lyfe Fitness since 12/2021. I used to lack motivation and confidence but with the guidance of the amazing coaches (especially Coach Dan) and the encouraging fellow members, I started to do things I thought I could never do. The highlight for me is seeing how much stronger and healthier my husband and son are now since we've joined. Going as a family has become a routine and our quality bonding time together. We've grown stronger as a family and it's been so fun. We are Lyfers for life!",
-    name: "Cathy P.",
-    role: "Google Review",
-    initials: "CP",
-  },
-];
 
 function Testimonials() {
   const [active, setActive] = useState(0);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
-  function startTimer() {
+  useEffect(() => {
     timerRef.current = setInterval(() => {
-      setActive((a) => (a + 1) % TESTIMONIALS.length);
+      setActive((current) => (current + 1) % TESTIMONIALS.length);
+    }, 5000);
+
+    return () => {
+      if (timerRef.current) {
+        clearInterval(timerRef.current);
+      }
+    };
+  }, []);
+
+  function go(index: number) {
+    if (timerRef.current) {
+      clearInterval(timerRef.current);
+    }
+
+    setActive(index);
+    timerRef.current = setInterval(() => {
+      setActive((current) => (current + 1) % TESTIMONIALS.length);
     }, 5000);
   }
 
-  useEffect(() => {
-    startTimer();
-    return () => { if (timerRef.current) clearInterval(timerRef.current); };
-  }, []);
+  function next() {
+    go((active + 1) % TESTIMONIALS.length);
+  }
 
-  function go(i: number) {
-    if (timerRef.current) clearInterval(timerRef.current);
-    setActive(i);
-    startTimer();
+  function prev() {
+    go((active - 1 + TESTIMONIALS.length) % TESTIMONIALS.length);
   }
 
   return (
-    <section id="results" className="border-t border-black/8 bg-white py-16 md:py-24">
-      <div className="mx-auto max-w-5xl px-6 text-center md:px-12">
-        <div className="reveal mb-8">
-          <p className="mb-4 font-sans text-xs font-semibold uppercase tracking-widest text-black/40">
-            Member Stories
+    <section id="results" className="border-t border-black/10 bg-[#f7f1e8] py-20 text-black md:py-28">
+      <div className="mx-auto grid max-w-7xl gap-12 px-6 md:px-12 lg:grid-cols-[340px_minmax(0,1fr)] lg:items-start">
+        <div className="reveal lg:sticky lg:top-28">
+          <p className="mb-4 font-sans text-xs font-semibold uppercase tracking-[0.28em] text-black/38">
+            Member stories
           </p>
-          <h2 className="font-display text-[clamp(2.5rem,6vw,5rem)] font-normal leading-[1] tracking-display text-black">
-            People who{" "}
-            <em className="italic">showed up.</em>
+          <h2 className="font-display text-[clamp(2.75rem,6vw,5rem)] font-normal leading-[0.98] tracking-display text-black">
+            Proof that the room <em className="italic text-[#db2777]">changes people.</em>
           </h2>
-          <p className="mt-6 font-sans text-xs uppercase tracking-widest text-black/30">
-            ★★★★★ &nbsp; 5.0 · Google Reviews · 61 Reviews
-          </p>
         </div>
 
-        {/* Active testimonial */}
-        <div className="reveal mx-auto max-w-2xl">
-          <div className="rounded-none border border-black/10 bg-black/[0.03] p-10 md:p-14">
-            <p className="font-display text-xl font-normal italic leading-relaxed text-black/75 md:text-2xl">
-              &ldquo;{TESTIMONIALS[active].quote}&rdquo;
+        <div className="reveal reveal-delay-2 rounded-[36px] border border-black/10 bg-white p-8 shadow-[0_30px_90px_rgba(0,0,0,0.12)] md:p-12">
+          <div className="flex items-start justify-between gap-6 border-b border-black/8 pb-8">
+            <div>
+              {TESTIMONIALS[active].image && (
+                <img
+                  src={TESTIMONIALS[active].image}
+                  alt={TESTIMONIALS[active].name}
+                  className="h-12 w-12 rounded-full object-cover"
+                />
+              )}
+              <p className="mt-3 font-display text-3xl text-black">{TESTIMONIALS[active].name}</p>
+              <p className="mt-1 font-sans text-sm text-black/45">{TESTIMONIALS[active].role}</p>
+            </div>
+            <div className="flex items-center gap-2">
+              <button
+                type="button"
+                onClick={prev}
+                className="flex h-10 w-10 items-center justify-center rounded-[4px] border border-black/15 text-black/70 transition hover:bg-black hover:text-white"
+                aria-label="Previous review"
+              >
+                &lt;
+              </button>
+              <button
+                type="button"
+                onClick={next}
+                className="flex h-10 w-10 items-center justify-center rounded-[4px] border border-black/15 text-black/70 transition hover:bg-black hover:text-white"
+                aria-label="Next review"
+              >
+                &gt;
+              </button>
+            </div>
+          </div>
+
+          <p className="mt-8 max-w-3xl font-display text-2xl italic leading-[1.6] text-black/78 md:text-[2rem]">
+            &ldquo;{TESTIMONIALS[active].quote}&rdquo;
+          </p>
+
+          <div className="mt-8 flex items-center gap-2">
+            {TESTIMONIALS.map((item, index) => (
+              <button
+                key={item.name}
+                type="button"
+                onClick={() => go(index)}
+                className={`h-1 rounded-full transition-all ${index === active ? "w-12 bg-black" : "w-8 bg-black/20 hover:bg-black/40"}`}
+                aria-label={`Go to review ${index + 1}`}
+              />
+            ))}
+          </div>
+
+          <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <p className="font-sans text-xs uppercase tracking-[0.24em] text-black/60">
+              5.0 Google rating across 61 reviews
             </p>
-            <div className="mt-8 flex items-center justify-center gap-4">
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-black/10 font-sans text-xs font-semibold text-black">
-                {TESTIMONIALS[active].initials}
-              </div>
-              <div className="text-left">
-                <p className="font-sans text-sm font-semibold text-black">{TESTIMONIALS[active].name}</p>
-                <p className="font-sans text-xs text-black/40">{TESTIMONIALS[active].role}</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Dot nav */}
-        <div className="mt-8 flex justify-center gap-2">
-          {TESTIMONIALS.map((_, i) => (
-            <button
-              key={i}
-              type="button"
-              onClick={() => go(i)}
-              className={`h-px transition-all duration-300 ${
-                i === active ? "w-8 bg-black" : "w-4 bg-black/25"
-              }`}
-              aria-label={`Testimonial ${i + 1}`}
-            />
-          ))}
-        </div>
-
-        <div className="mt-12 reveal">
-          <a
-            href="#trial"
-            className="inline-block border border-black/15 px-8 py-3 font-sans text-xs font-semibold uppercase tracking-widest text-black/60 transition hover:border-black/40 hover:text-black"
-          >
-            Start Your Free Week
-          </a>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-// ─── Location ─────────────────────────────────────────────────────────────────
-function Location() {
-  return (
-    <section id="location" className="border-t border-white/8 bg-black py-16 md:py-24">
-      <div className="mx-auto max-w-7xl px-6 md:px-12">
-        <div className="reveal mb-10">
-          <p className="mb-4 font-sans text-xs font-semibold uppercase tracking-widest text-white/35">
-            Find Us
-          </p>
-          <h2 className="font-display text-[clamp(2.5rem,6vw,5rem)] font-normal leading-[1] tracking-display text-white">
-            Come see us <em className="italic">in person.</em>
-          </h2>
-        </div>
-
-        <div className="reveal grid gap-12 lg:grid-cols-2 lg:items-center">
-          {/* Map embed */}
-          <div className="overflow-hidden" style={{ aspectRatio: "16/9" }}>
-            <iframe
-              src="https://maps.google.com/maps?q=851+Merrick+Rd+Baldwin+NY+11510&output=embed"
-              width="100%"
-              height="100%"
-              style={{ border: 0, filter: "invert(90%) hue-rotate(180deg)" }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title="Lyfe Fitness location"
-            />
-          </div>
-
-          {/* Details */}
-          <div className="space-y-6 font-sans text-white/60">
-            <div>
-              <p className="mb-1 text-xs font-semibold uppercase tracking-widest text-white/35">Address</p>
-              <p className="text-base text-white">851 Merrick Rd, Baldwin, NY 11510</p>
-            </div>
-            <div>
-              <p className="mb-1 text-xs font-semibold uppercase tracking-widest text-white/35">Hours</p>
-              <p>Mon – Sat: 5:30am – 8pm</p>
-              <p>Sun: 7am – 12pm</p>
-            </div>
-            <div>
-              <p className="mb-1 text-xs font-semibold uppercase tracking-widest text-white/35">Contact</p>
-              <a href="tel:5165880532" className="block transition hover:text-white">
-                (516) 588-0532
-              </a>
-              <a href="mailto:daniel@trainlyfe.com" className="block transition hover:text-white">
-                daniel@trainlyfe.com
-              </a>
-            </div>
             <a
-              href="https://maps.google.com/?q=851+Merrick+Rd+Baldwin+NY+11510"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block border border-white/20 px-6 py-3 font-sans text-xs font-semibold uppercase tracking-widest text-white/70 transition hover:border-white/50 hover:text-white"
+              href="#trial"
+              className="inline-flex items-center justify-center rounded-[4px] border border-black/12 px-6 py-3 font-sans text-xs font-semibold uppercase tracking-[0.24em] text-black transition hover:border-black hover:bg-black hover:text-white"
             >
-              Get Directions →
+              Learn More
             </a>
           </div>
         </div>
@@ -570,7 +472,74 @@ function Location() {
   );
 }
 
-// ─── Lead form ────────────────────────────────────────────────────────────────
+function Location() {
+  return (
+    <section id="location" className="border-t border-white/10 bg-[#09090c] py-20 md:py-28">
+      <div className="mx-auto max-w-7xl px-6 md:px-12">
+        <div className="reveal">
+          <div>
+            <p className="mb-4 font-sans text-xs font-semibold uppercase tracking-[0.28em] text-white/38">
+              Visit the gym
+            </p>
+            <h2 className="font-display text-[clamp(2.75rem,6vw,5.25rem)] font-normal leading-[0.98] tracking-display text-white">
+              Schedule your <em className="italic text-[#f472b6]">free</em> intro class. See what makes us so <em className="italic text-[#f472b6]">special</em>.
+            </h2>
+          </div>
+        </div>
+
+        <div className="mt-12 grid gap-6 lg:grid-cols-[minmax(0,1.1fr)_360px] lg:items-stretch">
+          <div className="reveal overflow-hidden rounded-[36px] border border-white/10 bg-white/[0.03] shadow-[0_24px_80px_rgba(0,0,0,0.22)]">
+            <div className="overflow-hidden rounded-[28px]" style={{ aspectRatio: "16 / 9" }}>
+              <iframe
+                src="https://maps.google.com/maps?q=851+Merrick+Rd+Baldwin+NY+11510&output=embed"
+                width="100%"
+                height="100%"
+                style={{ border: 0, filter: "invert(90%) hue-rotate(180deg) saturate(0.6)" }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Lyfe Fitness location"
+              />
+            </div>
+          </div>
+
+          <div className="reveal reveal-delay-2 flex flex-col justify-between rounded-[36px] border border-white/10 bg-white/[0.04] p-8 shadow-[0_24px_80px_rgba(0,0,0,0.22)]">
+            <div className="space-y-7 font-sans text-white/72">
+              <div>
+                <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.24em] text-white/38">Address</p>
+                <p className="text-lg text-white">851 Merrick Rd, Baldwin, NY 11510</p>
+              </div>
+              <div>
+                <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.24em] text-white/38">Hours</p>
+                <p>Mon - Sat: 5:30am - 8pm</p>
+                <p>Sun: 7am - 12pm</p>
+              </div>
+              <div>
+                <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.24em] text-white/38">Contact</p>
+                <a href="tel:5165880532" className="block transition hover:text-white">
+                  (516) 588-0532
+                </a>
+                <a href="mailto:daniel@trainlyfe.com" className="block transition hover:text-white">
+                  daniel@trainlyfe.com
+                </a>
+              </div>
+            </div>
+
+            <a
+              href="https://maps.google.com/?q=851+Merrick+Rd+Baldwin+NY+11510"
+              target="_blank"
+              rel="noreferrer"
+              className="mt-8 inline-flex items-center justify-center rounded-[4px] bg-white px-6 py-4 font-sans text-xs font-semibold uppercase tracking-[0.24em] text-black transition hover:bg-[#ec4899] hover:text-white"
+            >
+              Get Directions
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function LeadForm() {
   const [form, setForm] = useState({ name: "", email: "", phone: "" });
   const [submitting, setSubmitting] = useState(false);
@@ -578,20 +547,25 @@ function LeadForm() {
   const [error, setError] = useState<string | null>(null);
 
   function update(field: keyof typeof form, value: string) {
-    setForm((f) => ({ ...f, [field]: value }));
+    setForm((current) => ({ ...current, [field]: value }));
   }
 
-  async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
     setSubmitting(true);
     setError(null);
+
     try {
-      const res = await fetch("/api/lead", {
+      const response = await fetch("/api/lead", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
       });
-      if (!res.ok) throw new Error("Something went wrong.");
+
+      if (!response.ok) {
+        throw new Error("Something went wrong.");
+      }
+
       setDone(true);
     } catch {
       setError("Something went wrong. Please try again or email us directly.");
@@ -601,22 +575,22 @@ function LeadForm() {
   }
 
   return (
-    <section id="trial" className="border-t border-black/8 bg-white py-16 md:py-24">
-      <div className="mx-auto max-w-3xl px-6 text-center md:px-12">
+    <section id="trial" className="border-t border-black/10 bg-[#efe5d7] py-20 text-black md:py-28">
+      <div className="mx-auto grid max-w-7xl gap-10 px-6 md:px-12 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1fr)] lg:items-start">
         <div className="reveal">
-          <p className="mb-4 font-sans text-xs font-semibold uppercase tracking-widest text-black/40">
-            Get Started
+          <p className="mb-4 font-sans text-xs font-semibold uppercase tracking-[0.28em] text-black/38">
+            Start here
           </p>
-          <h2 className="font-display text-[clamp(2.5rem,6vw,5rem)] font-normal leading-[1] tracking-display text-black">
-            Your <em className="italic">first class</em> is on us.
+          <h2 className="font-display text-[clamp(2.75rem,6vw,5.25rem)] font-normal leading-[0.98] tracking-display text-black">
+            Your first week is <em className="italic text-[#db2777]">on us.</em>
           </h2>
-          <p className="mx-auto mt-6 max-w-md font-sans text-base font-light text-black/50">
-            Reserve your spot. No commitment, no credit card. We&rsquo;ll reach out to
-            confirm your free session.
+          <p className="mt-6 max-w-xl font-sans text-base leading-8 text-black/64 md:text-lg">
+            Leave your info and our team will reach out to get you started.
           </p>
+
         </div>
 
-        <div className="reveal reveal-delay-2 mt-14">
+        <div className="reveal reveal-delay-2 rounded-[36px] border border-black/10 bg-white p-6 shadow-[0_30px_90px_rgba(0,0,0,0.12)] md:p-8">
           {!done ? (
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid gap-4 sm:grid-cols-2">
@@ -624,45 +598,43 @@ function LeadForm() {
                   type="text"
                   placeholder="First name"
                   value={form.name}
-                  onChange={(e) => update("name", e.target.value)}
+                  onChange={(event) => update("name", event.target.value)}
                   required
-                  className="field-light w-full px-5 py-4 text-sm"
+                  className="field-light w-full rounded-2xl px-5 py-4 text-sm"
                 />
                 <input
                   type="tel"
                   placeholder="Phone number"
                   value={form.phone}
-                  onChange={(e) => update("phone", e.target.value)}
-                  className="field-light w-full px-5 py-4 text-sm"
+                  onChange={(event) => update("phone", event.target.value)}
+                  className="field-light w-full rounded-2xl px-5 py-4 text-sm"
                 />
               </div>
               <input
                 type="email"
                 placeholder="Email address"
                 value={form.email}
-                onChange={(e) => update("email", e.target.value)}
+                onChange={(event) => update("email", event.target.value)}
                 required
-                className="field-light w-full px-5 py-4 text-sm"
+                className="field-light w-full rounded-2xl px-5 py-4 text-sm"
               />
-              {error && <p className="font-sans text-sm text-red-400">{error}</p>}
+              {error ? <p className="font-sans text-sm text-red-500">{error}</p> : null}
               <button
                 type="submit"
                 disabled={submitting}
-                className="w-full bg-pink-500 py-5 font-sans text-xs font-bold uppercase tracking-widest text-white transition hover:bg-pink-400 active:scale-[0.99] disabled:opacity-60"
+                className="w-full rounded-[4px] bg-black py-5 font-sans text-xs font-semibold uppercase tracking-[0.24em] text-white transition hover:bg-[#db2777] disabled:opacity-60"
               >
-                {submitting ? "Sending..." : "Reserve My Free Class →"}
+                {submitting ? "Sending..." : "Reserve My Free Week"}
               </button>
-              <p className="font-sans text-xs text-black/30">
-                No credit card required. We&rsquo;ll never share your information.
+              <p className="font-sans text-xs leading-6 text-black/35">
+                No credit card required. We only use your information to coordinate your visit.
               </p>
             </form>
           ) : (
-            <div className="border border-black/10 bg-black/[0.03] p-12">
-              <p className="font-display text-3xl font-normal italic text-black">
-                You&rsquo;re in.
-              </p>
-              <p className="mt-4 font-sans text-sm text-black/50">
-                We&rsquo;ll reach out within 24 hours to confirm your free class. Check your inbox.
+            <div className="rounded-[30px] border border-black/10 bg-[#f7f1e8] p-10 text-center">
+              <p className="font-display text-4xl italic text-black">You&apos;re in.</p>
+              <p className="mt-4 font-sans text-sm leading-7 text-black/60">
+                The team will reach out within 24 hours to confirm your free week and help you pick the right first class.
               </p>
             </div>
           )}
@@ -672,125 +644,56 @@ function LeadForm() {
   );
 }
 
-// ─── Stats strip ─────────────────────────────────────────────────────────────
-const STATS = [
-  { value: "500+", label: "Active Members" },
-  { value: "4.9★", label: "Google Rating" },
-  { value: "3", label: "Locations" },
-  { value: "8+", label: "Class Types" },
-];
-
-function StatsStrip() {
-  return (
-    <section className="border-t border-white/8 bg-black py-20">
-      <div className="mx-auto max-w-7xl px-6 md:px-12">
-        <div className="grid grid-cols-2 gap-px bg-white/8 lg:grid-cols-4">
-          {STATS.map((s, i) => (
-            <div
-              key={s.label}
-              className={`reveal reveal-delay-${i + 1} bg-black px-8 py-10 text-center lg:text-left`}
-            >
-              <p className="font-display text-[clamp(2.5rem,5vw,4rem)] font-normal tracking-tighter text-white">
-                {s.value}
-              </p>
-              <p className="mt-2 font-sans text-xs uppercase tracking-widest text-white/35">{s.label}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-// ─── Footer ───────────────────────────────────────────────────────────────────
 function Footer() {
   return (
-    <footer className="border-t border-white/8 bg-black px-6 py-16 md:px-12">
+    <footer className="border-t border-white/10 bg-black px-6 py-16 md:px-12">
       <div className="mx-auto max-w-7xl">
         <div className="flex flex-col gap-12 lg:flex-row lg:items-start lg:justify-between">
-          {/* Brand */}
-          <div>
-            <p className="font-display text-2xl font-normal tracking-widest uppercase text-white">
-              Elev8
+          <div className="max-w-sm">
+            <img src="/lflogo1.png" alt="Lyfe Fitness logo" className="h-12 w-auto" />
+            <p className="mt-5 font-sans text-sm leading-7 text-white/42">
+              Coach-led group fitness for people who want structure, momentum, and a community that makes it fun.
             </p>
-            <p className="mt-3 max-w-xs font-sans text-sm leading-relaxed text-white/35">
-              Group fitness built for people who take results seriously.
-            </p>
-            <div className="mt-6 flex gap-5">
-              {/* Instagram */}
-              <a
-                href="https://www.instagram.com/lyfefitnessli/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Instagram"
-                className="text-white/30 transition hover:text-white"
-              >
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                </svg>
-              </a>
-              {/* Facebook */}
-              <a
-                href="https://www.facebook.com/lyfefitnessli"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Facebook"
-                className="text-white/30 transition hover:text-white"
-              >
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                </svg>
-              </a>
-            </div>
           </div>
 
-          {/* Links */}
           <div className="grid grid-cols-2 gap-x-16 gap-y-4 lg:grid-cols-3 lg:gap-x-20">
-            {[
-              { label: "Pricing", href: "#pricing" },
-              { label: "Membership", href: "#membership" },
-              { label: "Schedule", href: "#schedule" },
-              { label: "Location", href: "#location" },
-              { label: "Get Started", href: "#trial" },
-              { label: "Member Login", href: "https://app.daneff.com" },
-            ].map((link) => (
+            {NAV_ITEMS.map((item) => (
               <a
-                key={link.label}
-                href={link.href}
+                key={item.label}
+                href={item.href}
                 className="font-sans text-sm text-white/40 transition hover:text-white"
               >
-                {link.label}
+                {item.label}
               </a>
             ))}
+            <a href="#trial" className="font-sans text-sm text-white/40 transition hover:text-white">
+              Free Week
+            </a>
           </div>
 
-          {/* Contact */}
-          <div className="font-sans text-sm text-white/35 space-y-2">
+          <div className="space-y-2 font-sans text-sm text-white/35">
             <p>851 Merrick Rd, Baldwin, NY 11510</p>
             <p>
-              <a href="tel:5165880532" className="hover:text-white transition">
-                Text or Call: (516) 588-0532
+              <a href="tel:5165880532" className="transition hover:text-white">
+                Text or call: (516) 588-0532
               </a>
             </p>
             <p>
-              <a href="mailto:daniel@trainlyfe.com" className="hover:text-white transition">
+              <a href="mailto:daniel@trainlyfe.com" className="transition hover:text-white">
                 daniel@trainlyfe.com
               </a>
             </p>
-            <p>Mon – Sat: 5:30am – 8pm</p>
-            <p>Sun: 7am – 12pm</p>
+            <p>Mon - Sat: 5:30am - 8pm</p>
+            <p>Sun: 7am - 12pm</p>
           </div>
         </div>
 
-        <div className="mt-16 flex flex-col gap-2 border-t border-white/8 pt-8 lg:flex-row lg:items-center lg:justify-between">
-          <p className="font-sans text-xs text-white/20">
-            © {new Date().getFullYear()} Elev8. All rights reserved.
+        <div className="mt-14 flex flex-col gap-3 border-t border-white/10 pt-8 lg:flex-row lg:items-center lg:justify-between">
+          <p className="font-sans text-xs uppercase tracking-[0.22em] text-white/20">
+            © {new Date().getFullYear()} Lyfe Fitness
           </p>
-          <p className="font-sans text-xs text-white/20">
-            Members login at{" "}
-            <a href="https://app.daneff.com" className="hover:text-white/50 transition">
-              app.daneff.com
-            </a>
+          <p className="font-sans text-xs uppercase tracking-[0.22em] text-white/20">
+            Member login at <a href="https://app.daneff.com" className="transition hover:text-white/50">app.daneff.com</a>
           </p>
         </div>
       </div>
@@ -798,7 +701,6 @@ function Footer() {
   );
 }
 
-// ─── Page ─────────────────────────────────────────────────────────────────────
 export default function LandingPage() {
   useReveal();
 
@@ -806,8 +708,9 @@ export default function LandingPage() {
     <>
       <Nav />
       <Hero />
-      <Classes />
-      <Features />
+      <TrustBar />
+      <Difference />
+      <Programs />
       <Testimonials />
       <Location />
       <LeadForm />
