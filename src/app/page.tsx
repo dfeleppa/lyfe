@@ -482,7 +482,7 @@ function Location() {
               Visit the gym
             </p>
             <h2 className="font-display text-[clamp(2.75rem,6vw,5.25rem)] font-normal leading-[0.98] tracking-display text-white">
-              Schedule your <em className="italic text-[#f472b6]">free</em> intro class. See what makes us so <em className="italic text-[#f472b6]">special</em>.
+              Schedule your <em className="italic text-[#f472b6]">no-sweat</em> intro to meet the team.
             </h2>
           </div>
         </div>
