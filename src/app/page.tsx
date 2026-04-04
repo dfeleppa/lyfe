@@ -85,7 +85,7 @@ const TESTIMONIALS = [
     name: "Dave A.",
     role: "Google Review",
     initials: "DA",
-    image: "/ca.png",
+    image: "/CA.png",
   },
   {
     quote:
@@ -602,6 +602,9 @@ function LeadForm() {
               <div className="grid gap-4 sm:grid-cols-2">
                 <input
                   type="text"
+                  id="lead-name"
+                  name="name"
+                  autoComplete="name"
                   placeholder="Full name"
                   value={form.name}
                   onChange={(event) => update("name", event.target.value)}
@@ -610,6 +613,9 @@ function LeadForm() {
                 />
                 <input
                   type="tel"
+                  id="lead-phone"
+                  name="phone"
+                  autoComplete="tel"
                   placeholder="Phone number"
                   value={form.phone}
                   onChange={(event) => update("phone", event.target.value)}
@@ -618,6 +624,9 @@ function LeadForm() {
               </div>
               <input
                 type="email"
+                id="lead-email"
+                name="email"
+                autoComplete="email"
                 placeholder="Email address"
                 value={form.email}
                 onChange={(event) => update("email", event.target.value)}

@@ -1,9 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function GlobalPricingPopup() {
   const [open, setOpen] = useState(false);
+  const dialogRef = useRef<HTMLDivElement | null>(null);
+  const closeButtonRef = useRef<HTMLButtonElement | null>(null);
+  const previouslyFocusedRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
     const onClick = (event: MouseEvent) => {
@@ -17,18 +20,53 @@ export default function GlobalPricingPopup() {
       setOpen(true);
     };
 
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setOpen(false);
-    };
-
     document.addEventListener("click", onClick);
-    document.addEventListener("keydown", onKeyDown);
 
     return () => {
       document.removeEventListener("click", onClick);
-      document.removeEventListener("keydown", onKeyDown);
     };
   }, []);
+
+  useEffect(() => {
+    if (!open) return;
+
+    previouslyFocusedRef.current = document.activeElement as HTMLElement | null;
+    closeButtonRef.current?.focus();
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+        return;
+      }
+
+      if (event.key !== "Tab") return;
+      const root = dialogRef.current;
+      if (!root) return;
+
+      const focusables = root.querySelectorAll<HTMLElement>(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      );
+      if (focusables.length === 0) return;
+
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+      const active = document.activeElement as HTMLElement | null;
+
+      if (!event.shiftKey && active === last) {
+        event.preventDefault();
+        first.focus();
+      } else if (event.shiftKey && active === first) {
+        event.preventDefault();
+        last.focus();
+      }
+    };
+
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.removeEventListener("keydown", onKeyDown);
+      previouslyFocusedRef.current?.focus();
+    };
+  }, [open]);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -42,10 +80,15 @@ export default function GlobalPricingPopup() {
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm" onClick={() => setOpen(false)}>
       <div
-        className="relative w-full max-w-2xl overflow-hidden rounded-[14px] bg-white"
+        ref={dialogRef}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="pricing-popup-title"
+        className="relative w-full max-w-2xl max-h-[92vh] overflow-y-auto rounded-[14px] bg-white"
         onClick={(event) => event.stopPropagation()}
       >
         <button
+          ref={closeButtonRef}
           type="button"
           aria-label="Close form"
           onClick={() => setOpen(false)}
@@ -56,7 +99,7 @@ export default function GlobalPricingPopup() {
 
         <div className="border-b border-black/10 bg-white px-6 pb-6 pt-8 md:px-8">
           <img src="/lflogo.png" alt="Lyfe Fitness logo" className="h-11 w-auto" />
-          <p className="mt-5 font-display text-[clamp(1.8rem,3.5vw,2.5rem)] leading-[1] text-black">
+          <p id="pricing-popup-title" className="mt-5 font-display text-[clamp(1.8rem,3.5vw,2.5rem)] leading-[1] text-black">
             OUR PRICING IS SIMPLE
           </p>
           <p className="mt-4 font-sans text-sm leading-7 text-black/70 md:text-[15px]">
@@ -69,7 +112,7 @@ export default function GlobalPricingPopup() {
 
         <iframe
           src="https://link.gymntx.com/widget/form/oDAXnrNskuGDbGMfCwa9"
-          style={{ display: "block", width: "100%", height: "min(68vh, 700px)", minHeight: "403px", border: "none", borderRadius: "4px", background: "#ffffff" }}
+          style={{ display: "block", width: "100%", height: "min(62vh, 700px)", minHeight: "300px", border: "none", borderRadius: "4px", background: "#ffffff" }}
           id="inline-oDAXnrNskuGDbGMfCwa9"
           data-layout="{'id':'INLINE'}"
           data-trigger-type="alwaysShow"
