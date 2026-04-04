@@ -35,7 +35,8 @@ const REVEAL_DELAYS = ["", "reveal-delay-1", "reveal-delay-2", "reveal-delay-3",
 const NAV_ITEMS = [
   { label: "Membership & Pricing", href: "/pricing" },
   { label: "Schedule", href: "/schedule" },
-  { label: "Location / Contact", href: "#location" },
+  { label: "Location", href: "#location" },
+  { label: "Contact", href: "#trial" },
   { label: "Member Login", href: "https://app.daneff.com" },
 ];
 
