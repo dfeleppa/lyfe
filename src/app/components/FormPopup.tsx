@@ -1,8 +1,17 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 
-export default function GlobalPricingPopup() {
+type Props = {
+  triggerSelector: string;
+  formId: string;
+  formName: string;
+  title: string;
+  titleId: string;
+  description: ReactNode;
+};
+
+export default function FormPopup({ triggerSelector, formId, formName, title, titleId, description }: Props) {
   const [open, setOpen] = useState(false);
   const dialogRef = useRef<HTMLDivElement | null>(null);
   const closeButtonRef = useRef<HTMLButtonElement | null>(null);
@@ -13,7 +22,7 @@ export default function GlobalPricingPopup() {
       const target = event.target as HTMLElement | null;
       if (!target) return;
 
-      const trigger = target.closest("[data-open-pricing-popup='true']") as HTMLElement | null;
+      const trigger = target.closest(triggerSelector) as HTMLElement | null;
       if (!trigger) return;
 
       event.preventDefault();
@@ -25,7 +34,7 @@ export default function GlobalPricingPopup() {
     return () => {
       document.removeEventListener("click", onClick);
     };
-  }, []);
+  }, [triggerSelector]);
 
   useEffect(() => {
     if (!open) return;
@@ -83,7 +92,7 @@ export default function GlobalPricingPopup() {
         ref={dialogRef}
         role="dialog"
         aria-modal="true"
-        aria-labelledby="pricing-popup-title"
+        aria-labelledby={titleId}
         className="relative w-full max-w-2xl max-h-[92vh] overflow-y-auto rounded-[14px] bg-white"
         onClick={(event) => event.stopPropagation()}
       >
@@ -99,33 +108,21 @@ export default function GlobalPricingPopup() {
 
         <div className="border-b border-black/10 bg-white px-6 pb-6 pt-8 md:px-8">
           <img src="/lflogo.png" alt="Lyfe Fitness logo" className="h-11 w-auto" />
-          <p id="pricing-popup-title" className="mt-5 font-display text-[clamp(1.8rem,3.5vw,2.5rem)] leading-[1] text-black">
-            OUR PRICING IS SIMPLE
+          <p id={titleId} className="mt-5 font-display text-[clamp(1.8rem,3.5vw,2.5rem)] leading-[1] text-black">
+            {title}
           </p>
-          <p className="mt-4 font-sans text-sm leading-7 text-black/70 md:text-[15px]">
-            We Want To Offer You The PERFECT Membership For Your NEEDS.
-          </p>
-          <p className="mt-2 font-sans text-sm leading-7 text-black/70 md:text-[15px]">
-            Simply fill out the form below and one of our amazing coaches will send you our current membership information.
-          </p>
+          <div className="mt-4 space-y-2 font-sans text-sm leading-7 text-black/70 md:text-[15px]">
+            {description}
+          </div>
         </div>
 
         <iframe
-          src="https://link.gymntx.com/widget/form/oDAXnrNskuGDbGMfCwa9"
+          src={`https://link.gymntx.com/widget/form/${formId}`}
           style={{ display: "block", width: "100%", height: "min(62vh, 700px)", minHeight: "300px", border: "none", borderRadius: "4px", background: "#ffffff" }}
-          id="inline-oDAXnrNskuGDbGMfCwa9"
-          data-layout="{'id':'INLINE'}"
-          data-trigger-type="alwaysShow"
-          data-trigger-value=""
-          data-activation-type="alwaysActivated"
-          data-activation-value=""
-          data-deactivation-type="neverDeactivate"
-          data-deactivation-value=""
-          data-form-name="WEBSITE - Pricing Form*"
-          data-height="403"
-          data-layout-iframe-id="inline-oDAXnrNskuGDbGMfCwa9"
-          data-form-id="oDAXnrNskuGDbGMfCwa9"
-          title="WEBSITE - Pricing Form*"
+          id={`popup-${formId}`}
+          data-form-id={formId}
+          data-form-name={formName}
+          title={formName}
         />
       </div>
     </div>
