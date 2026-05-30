@@ -2,12 +2,80 @@
 
 import { useEffect, useState } from "react";
 
+// ──────────────────────────────────────────────────────────────────────────
+// TODO: paste your signup form URL here. Every "Start my trial week" button
+// (hero, options, final CTA) points at this. Leave as "#" until you have it.
+const SIGNUP_URL = "#";
+// ──────────────────────────────────────────────────────────────────────────
+
+function useReveal() {
+  useEffect(() => {
+    const elements = document.querySelectorAll(".reveal");
+
+    if (typeof IntersectionObserver === "undefined") {
+      elements.forEach((element) => element.classList.add("visible"));
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12 }
+    );
+
+    elements.forEach((element) => observer.observe(element));
+
+    return () => observer.disconnect();
+  }, []);
+}
+
+const REVEAL_DELAYS = ["", "reveal-delay-1", "reveal-delay-2", "reveal-delay-3", "reveal-delay-4"];
+
 const NAV_ITEMS = [
   { label: "Membership & Pricing", href: "/pricing" },
   { label: "Schedule", href: "/schedule" },
   { label: "Location", href: "/#location" },
-  { label: "Contact Us", href: "/#trial" },
+  { label: "Contact", href: "/#trial" },
   { label: "Member Login", href: "https://app.daneff.com" },
+];
+
+const STEPS = [
+  {
+    number: "01",
+    title: "Log daily",
+    body: "Track your food in our app or your app of choice and enter your macros/bodyweight in our app.",
+  },
+  {
+    number: "02",
+    title: "Participate in the community chat",
+    body: "Show up in the group chat via Chalk-It Pro. Ask questions, share wins, keep each other honest.",
+  },
+  {
+    number: "03",
+    title: "Weekly check-in",
+    body: "Once a week we touch base by text or in person — answer questions and confirm you're on track.",
+  },
+];
+
+const FREE_FEATURES = [
+  "App access — beta, feedback encouraged",
+  "Weekly check-ins by text or in person",
+  "Group chat via Chalk-It Pro",
+  "Daily tracking required — Lyfe app or your own, macros and body weight every day",
+  "For people ready to make a serious change",
+];
+
+const ACCOUNTABILITY_FEATURES = [
+  "Everything in the free group, plus:",
+  "More direct access to me",
+  "I work with you personally to hold you accountable",
+  "For when you know you need someone staying on you",
 ];
 
 function Nav() {
@@ -29,17 +97,11 @@ function Nav() {
     >
       <div
         className={`mx-auto flex w-full max-w-7xl items-center justify-between border border-white/10 bg-black/70 px-6 py-4 backdrop-blur-xl transition-all duration-300 md:px-8 ${
-          scrolled
-            ? "rounded-[28px] shadow-[0_24px_80px_rgba(0,0,0,0.35)]"
-            : "rounded-none border-x-0 border-t-0"
+          scrolled ? "rounded-[28px] shadow-[0_24px_80px_rgba(0,0,0,0.35)]" : "rounded-none border-x-0 border-t-0"
         }`}
       >
         <a href="/" className="flex items-center gap-4">
-          <img
-            src="/lflogo1.png"
-            alt="Lyfe Fitness logo"
-            className="h-10 w-auto"
-          />
+          <img src="/lflogo1.png" alt="Lyfe Fitness logo" className="h-10 w-auto" />
         </a>
 
         <nav className="hidden items-center gap-8 md:flex">
@@ -56,35 +118,22 @@ function Nav() {
 
         <div className="flex items-center gap-3">
           <a
-            href="/#trial"
-            data-open-crm-popup="true"
+            href={SIGNUP_URL}
             className="hidden rounded-[4px] bg-pink-500 px-6 py-2.5 font-sans text-xs font-semibold uppercase tracking-widest text-white transition hover:bg-pink-400 md:block"
           >
-            Get Started
+            Start Trial
           </a>
 
           <button
             type="button"
-            onClick={() => setOpen((v) => !v)}
+            onClick={() => setOpen((value) => !value)}
             className="flex h-11 w-11 flex-col items-center justify-center gap-1.5 rounded-[4px] md:hidden"
             aria-label="Menu"
             aria-expanded={open}
           >
-            <span
-              className={`block h-px w-5 bg-white transition-all ${
-                open ? "translate-y-[7px] rotate-45" : ""
-              }`}
-            />
-            <span
-              className={`block h-px w-5 bg-white transition-all ${
-                open ? "opacity-0" : ""
-              }`}
-            />
-            <span
-              className={`block h-px w-5 bg-white transition-all ${
-                open ? "-translate-y-[7px] -rotate-45" : ""
-              }`}
-            />
+            <span className={`block h-px w-5 bg-white transition-all ${open ? "translate-y-[7px] rotate-45" : ""}`} />
+            <span className={`block h-px w-5 bg-white transition-all ${open ? "opacity-0" : ""}`} />
+            <span className={`block h-px w-5 bg-white transition-all ${open ? "-translate-y-[7px] -rotate-45" : ""}`} />
           </button>
         </div>
       </div>
@@ -102,16 +151,260 @@ function Nav() {
             </a>
           ))}
           <a
-            href="/#trial"
-            data-open-crm-popup="true"
+            href={SIGNUP_URL}
             onClick={() => setOpen(false)}
             className="mx-6 my-4 rounded-[4px] bg-pink-500 px-6 py-3 text-center font-sans text-xs font-semibold uppercase tracking-widest text-white transition hover:bg-black"
           >
-            Get Started
+            Start Trial
           </a>
         </div>
       )}
     </header>
+  );
+}
+
+function Hero() {
+  return (
+    <section id="top" className="relative overflow-hidden border-b border-white/10 pb-16 pt-32 md:pb-24 md:pt-40">
+      <div className="hero-orb left-[-12rem] top-[8rem]" />
+      <div className="hero-orb hero-orb-alt right-[-8rem] top-[18rem]" />
+      <div className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.16),transparent_32%),linear-gradient(180deg,rgba(7,7,9,0.2)_0%,rgba(7,7,9,0.95)_72%,rgba(7,7,9,1)_100%)]" />
+      <img src="/bw_nutrition_hero.jpg" alt="Training at Lyfe Fitness" className="absolute inset-0 z-0 h-full w-full object-cover opacity-50" />
+
+      <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-12">
+        <div className="reveal max-w-4xl">
+          <p className="font-sans text-xs font-semibold uppercase tracking-[0.28em] text-[#f472b6]">
+            Lyfe Nutrition · Now in Beta
+          </p>
+          <h1 className="mt-6 max-w-5xl font-display text-[clamp(3.5rem,9vw,8rem)] font-normal leading-[0.92] tracking-tightest text-white">
+            Track it daily.
+            <br />
+            <em className="text-[#ec4899]">Change for real.</em>
+          </h1>
+
+          <p className="mt-8 max-w-2xl font-sans text-base leading-8 text-white/72 md:text-lg">
+            A group program for people serious about tracking their nutrition.
+            <br />
+            Completely free — your payment is feedback testing the app.
+          </p>
+
+          <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
+            <a
+              href="#how"
+              className="inline-flex items-center justify-center rounded-[4px] bg-[#ec4899] px-7 py-4 font-sans text-xs font-semibold uppercase tracking-[0.24em] text-white transition hover:bg-[#db2777]"
+            >
+              How it works
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function HowItWorks() {
+  return (
+    <section id="how" className="bg-[#f5f0e8] py-20 text-black md:py-28">
+      <div className="mx-auto max-w-7xl px-6 md:px-12">
+        <div className="reveal">
+          <p className="mb-4 font-sans text-xs font-semibold uppercase tracking-[0.28em] text-black/40">
+            How it works
+          </p>
+          <h2 className="font-display text-[clamp(2.75rem,6vw,5.5rem)] font-normal leading-[0.98] tracking-display text-black">
+            Here&apos;s the <em className="italic text-[#db2777]">deal.</em>
+          </h2>
+        </div>
+
+        <div className="mt-12 grid gap-6 lg:grid-cols-3">
+          {STEPS.map((step, index) => (
+            <article
+              key={step.number}
+              className={`reveal ${REVEAL_DELAYS[index + 1]} flex flex-col rounded-none border border-black/8 bg-black p-8 text-white shadow-[0_30px_80px_rgba(0,0,0,0.14)] md:p-10`}
+            >
+              <p className="font-sans text-[10px] font-semibold uppercase tracking-[0.24em] text-[#f472b6]">
+                {step.number}
+              </p>
+              <h3 className="mt-4 font-display text-4xl leading-tight text-white">{step.title}</h3>
+              <p className="mt-4 font-sans text-sm leading-7 text-white/72">{step.body}</p>
+            </article>
+          ))}
+        </div>
+
+        <div className="reveal reveal-delay-2 mt-6 flex flex-col items-start justify-between gap-6 rounded-none border border-[#ec4899]/30 bg-[#ec4899]/[0.06] p-8 md:flex-row md:items-center md:p-10">
+          <div>
+            <h3 className="font-display text-3xl leading-tight text-black md:text-4xl">
+              Want serious accountability?
+            </h3>
+            <p className="mt-2 font-sans text-sm leading-7 text-black/65">
+              Some people need someone staying on them. There&apos;s a spot for that.
+            </p>
+          </div>
+          <a
+            href="#options"
+            className="inline-flex shrink-0 items-center justify-center rounded-[4px] bg-[#ec4899] px-7 py-4 font-sans text-xs font-semibold uppercase tracking-[0.24em] text-white transition hover:bg-[#db2777]"
+          >
+            Claim a spot
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function BetaNote() {
+  return (
+    <section className="border-t border-white/10 bg-[#0a0a0d] py-20 md:py-28">
+      <div className="mx-auto max-w-4xl px-6 md:px-12">
+        <div className="reveal rounded-none border border-[#ec4899]/30 bg-[#ec4899]/[0.04] p-8 md:p-12">
+          <p className="font-sans text-xs font-semibold uppercase tracking-[0.28em] text-[#f472b6]">
+            Read this first — the app is in beta
+          </p>
+          <p className="mt-6 font-sans text-base leading-8 text-white/75 md:text-lg">
+            This is an early version. You&apos;ll hit bugs. Things will change week to week. Feedback isn&apos;t
+            just welcome — it&apos;s the whole reason the group is free. You&apos;re a tester helping me build
+            something, not a customer. If you&apos;d rather wait for a finished product, this round isn&apos;t for you.
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Check() {
+  return (
+    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#ec4899]/15 text-[#ec4899]">
+      <svg width="10" height="8" viewBox="0 0 10 8" fill="none" aria-hidden>
+        <path d="M1 4L3.5 6.5L9 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    </span>
+  );
+}
+
+function Options() {
+  return (
+    <section id="options" className="scroll-mt-24 bg-[#f7f1e8] py-20 text-black md:py-28">
+      <div className="mx-auto max-w-7xl px-6 md:px-12">
+        <div className="reveal">
+          <p className="mb-4 font-sans text-xs font-semibold uppercase tracking-[0.28em] text-black/40">
+            Two ways in
+          </p>
+          <h2 className="font-display text-[clamp(2.75rem,6vw,5.5rem)] font-normal leading-[0.98] tracking-display text-black">
+            Pick your <em className="italic text-[#db2777]">lane.</em>
+          </h2>
+        </div>
+
+        <div className="mt-12 grid gap-6 lg:grid-cols-2 lg:gap-8">
+          {/* Option 1 — The Group */}
+          <div className="reveal reveal-delay-1 flex flex-col rounded-none border border-black/10 bg-white p-10 shadow-[0_30px_80px_rgba(0,0,0,0.08)] md:p-12">
+            <p className="font-sans text-xs font-semibold uppercase tracking-[0.28em] text-black/45">
+              The Group
+            </p>
+            <p className="mt-3 font-display text-[clamp(2.5rem,5vw,4rem)] font-normal leading-none text-black">
+              Free
+            </p>
+            <p className="mt-3 font-sans text-sm text-black/55">Payment is your feedback.</p>
+
+            <ul className="mt-8 space-y-4">
+              {FREE_FEATURES.map((feature) => (
+                <li key={feature} className="flex gap-3 font-sans text-sm leading-7 text-black/72">
+                  <Check />
+                  {feature}
+                </li>
+              ))}
+            </ul>
+
+            <a
+              href={SIGNUP_URL}
+              className="mt-10 inline-flex items-center justify-center rounded-[4px] bg-black px-7 py-4 font-sans text-xs font-semibold uppercase tracking-[0.24em] text-white transition hover:bg-[#db2777]"
+            >
+              Start my trial week
+            </a>
+          </div>
+
+          {/* Option 2 — Accountability */}
+          <div className="reveal reveal-delay-2 relative flex flex-col rounded-none border border-[#ec4899]/45 bg-white p-10 shadow-[0_0_60px_rgba(236,72,153,0.12)] md:p-12">
+            <div className="absolute right-8 top-8 rounded-full border border-[#ec4899]/40 bg-[#ec4899]/10 px-3 py-1 font-sans text-[10px] font-semibold uppercase tracking-[0.2em] text-[#db2777]">
+              Very limited spots
+            </div>
+            <p className="font-sans text-xs font-semibold uppercase tracking-[0.28em] text-black/45">
+              Accountability
+            </p>
+            <p className="mt-3 font-display text-[clamp(2.5rem,5vw,4rem)] font-normal leading-none text-black">
+              $50<span className="ml-2 align-middle font-sans text-base text-black/55">/month</span>
+            </p>
+            <p className="mt-3 font-sans text-sm text-black/55">When you know you need someone on you.</p>
+
+            <ul className="mt-8 space-y-4">
+              {ACCOUNTABILITY_FEATURES.map((feature) => (
+                <li key={feature} className="flex gap-3 font-sans text-sm leading-7 text-black/72">
+                  <Check />
+                  {feature}
+                </li>
+              ))}
+            </ul>
+
+            <a
+              href={SIGNUP_URL}
+              className="mt-10 inline-flex items-center justify-center rounded-[4px] bg-[#ec4899] px-7 py-4 font-sans text-xs font-semibold uppercase tracking-[0.24em] text-white transition hover:bg-[#db2777]"
+            >
+              Claim a spot
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function TheRule() {
+  return (
+    <section className="border-t border-white/10 bg-[#09090c] py-20 md:py-28">
+      <div className="mx-auto max-w-4xl px-6 text-center md:px-12">
+        <div className="reveal">
+          <p className="mb-4 font-sans text-xs font-semibold uppercase tracking-[0.28em] text-[#f472b6]">
+            The one rule
+          </p>
+          <h2 className="font-display text-[clamp(2.5rem,6vw,5rem)] font-normal leading-[0.98] tracking-display text-white">
+            The group is free. Tracking is <em className="italic text-[#ec4899]">not optional.</em>
+          </h2>
+          <p className="mx-auto mt-8 max-w-2xl font-sans text-base leading-8 text-white/72 md:text-lg">
+            Log your daily macros and body weight every day, in the Lyfe app or your own app of choice. If I see
+            you&apos;re not tracking, you&apos;re removed from the group. This is for people actually doing the
+            work. Want someone staying on you about it? That&apos;s what the $50/mo spot is for.
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function FinalCTA() {
+  return (
+    <section className="bg-[#efe5d7] py-20 text-black md:py-28">
+      <div className="mx-auto max-w-3xl px-6 text-center md:px-12">
+        <div className="reveal">
+          <p className="mb-4 font-sans text-xs font-semibold uppercase tracking-[0.28em] text-black/40">
+            Start here
+          </p>
+          <h2 className="font-display text-[clamp(2.75rem,6vw,5.25rem)] font-normal leading-[0.98] tracking-display text-black">
+            One week. See if it <em className="italic text-[#ec4899]">sticks.</em>
+          </h2>
+
+          <div className="mt-10">
+            <a
+              href={SIGNUP_URL}
+              className="inline-flex items-center justify-center rounded-[4px] bg-black px-8 py-4 font-sans text-xs font-semibold uppercase tracking-[0.24em] text-white transition hover:bg-[#db2777]"
+            >
+              Start my trial week
+            </a>
+          </div>
+
+          <p className="mt-6 font-sans text-sm text-black/50">
+            Free group · daily tracking required to stay in · $50/mo for 1:1 accountability.
+          </p>
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -121,14 +414,9 @@ function Footer() {
       <div className="mx-auto max-w-7xl">
         <div className="flex flex-col gap-12 lg:flex-row lg:items-start lg:justify-between">
           <div className="max-w-sm">
-            <img
-              src="/lflogo1.png"
-              alt="Lyfe Fitness logo"
-              className="h-12 w-auto"
-            />
+            <img src="/lflogo1.png" alt="Lyfe Fitness logo" className="h-12 w-auto" />
             <p className="mt-5 font-sans text-sm leading-7 text-white/60">
-              Coach-led group fitness for people who want structure, momentum,
-              and a community that makes it fun.
+              Coach-led group fitness for people who want structure, momentum, and a community that makes it fun.
             </p>
           </div>
 
@@ -142,10 +430,7 @@ function Footer() {
                 {item.label}
               </a>
             ))}
-            <a
-              href="/#trial"
-              className="font-sans text-sm text-white/55 transition hover:text-white"
-            >
+            <a href="/#trial" className="font-sans text-sm text-white/55 transition hover:text-white">
               Free Week
             </a>
           </div>
@@ -158,47 +443,16 @@ function Footer() {
               </a>
             </p>
             <p>
-              <a
-                href="mailto:daniel@trainlyfe.com"
-                className="transition hover:text-white"
-              >
+              <a href="mailto:daniel@trainlyfe.com" className="transition hover:text-white">
                 daniel@trainlyfe.com
               </a>
             </p>
             <div className="flex items-center gap-4 pt-2">
-              <a
-                href="https://www.instagram.com/lyfe.fitness/"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="Instagram"
-                className="text-white/50 transition hover:text-white"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="18"
-                  height="18"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-                </svg>
+              <a href="https://www.instagram.com/lyfe.fitness/" target="_blank" rel="noreferrer" aria-label="Instagram" className="text-white/50 transition hover:text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
               </a>
-              <a
-                href="https://www.facebook.com/lyfefitness"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="Facebook"
-                className="text-white/50 transition hover:text-white"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="18"
-                  height="18"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-                </svg>
+              <a href="https://www.facebook.com/lyfefitness" target="_blank" rel="noreferrer" aria-label="Facebook" className="text-white/50 transition hover:text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
               </a>
             </div>
           </div>
@@ -209,13 +463,7 @@ function Footer() {
             © {new Date().getFullYear()} Lyfe Fitness
           </p>
           <p className="font-sans text-xs uppercase tracking-[0.22em] text-white/35">
-            Member login at{" "}
-            <a
-              href="https://app.daneff.com"
-              className="transition hover:text-white/50"
-            >
-              app.daneff.com
-            </a>
+            Member login at <a href="https://app.daneff.com" className="transition hover:text-white/50">app.daneff.com</a>
           </p>
         </div>
       </div>
@@ -223,115 +471,18 @@ function Footer() {
   );
 }
 
-const PILLARS = [
-  {
-    title: "Personalized Plan",
-    desc: "A nutrition strategy built around your goals, your preferences, and your schedule — not a one-size-fits-all template.",
-  },
-  {
-    title: "1-on-1 Coaching",
-    desc: "Ongoing support and accountability from a dedicated coach who keeps you on track every step of the way.",
-  },
-  {
-    title: "Habit Building",
-    desc: "Sustainable changes that fit your life. No crash diets, no guilt — just steady, lasting progress.",
-  },
-];
-
 export default function NutritionProgram() {
+  useReveal();
+
   return (
-    <main className="min-h-screen bg-black text-white">
+    <main className="min-h-screen bg-[#07070a] text-white">
       <Nav />
-
-      {/* Hero */}
-      <section className="relative overflow-hidden px-6 pt-40 pb-24 md:px-12 md:pt-48 md:pb-32">
-        <div className="hero-orb" aria-hidden />
-        <div className="relative mx-auto max-w-4xl text-center">
-          <p className="font-sans text-xs font-semibold uppercase tracking-[0.32em] text-pink-400">
-            Lyfe Nutrition
-          </p>
-          <h1 className="mt-6 font-display text-5xl leading-[1.05] tracking-tight md:text-7xl">
-            Fuel your body.
-            <br />
-            <span className="text-pink-500">Transform your life.</span>
-          </h1>
-          <p className="mx-auto mt-7 max-w-2xl font-sans text-lg leading-8 text-white/60">
-            A coaching-led nutrition program built to help you eat with
-            confidence, build habits that last, and finally reach the goals
-            you&apos;ve been chasing.
-          </p>
-          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <a
-              href="/#trial"
-              data-open-crm-popup="true"
-              className="rounded-[4px] bg-pink-500 px-8 py-3.5 font-sans text-sm font-semibold uppercase tracking-widest text-white transition hover:bg-pink-400"
-            >
-              Get Started
-            </a>
-            <a
-              href="#how-it-works"
-              className="rounded-[4px] border border-white/15 px-8 py-3.5 font-sans text-sm font-semibold uppercase tracking-widest text-white/70 transition hover:border-white/40 hover:text-white"
-            >
-              How It Works
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* What's Included */}
-      <section
-        id="how-it-works"
-        className="border-t border-white/10 px-6 py-24 md:px-12"
-      >
-        <div className="mx-auto max-w-7xl">
-          <div className="max-w-2xl">
-            <p className="font-sans text-xs font-semibold uppercase tracking-[0.32em] text-pink-400">
-              What&apos;s Included
-            </p>
-            <h2 className="mt-5 font-display text-4xl tracking-tight md:text-5xl">
-              A complete system to take the guesswork out of eating well.
-            </h2>
-          </div>
-
-          <div className="mt-14 grid gap-6 md:grid-cols-3">
-            {PILLARS.map((pillar) => (
-              <div
-                key={pillar.title}
-                className="glass-card rounded-2xl p-8"
-              >
-                <h3 className="font-display text-2xl tracking-tight">
-                  {pillar.title}
-                </h3>
-                <p className="mt-4 font-sans text-sm leading-7 text-white/60">
-                  {pillar.desc}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="border-t border-white/10 px-6 py-24 md:px-12">
-        <div className="mx-auto max-w-3xl text-center">
-          <h2 className="font-display text-4xl tracking-tight md:text-5xl">
-            Ready to <span className="text-pink-500">transform</span> your
-            nutrition?
-          </h2>
-          <p className="mx-auto mt-6 max-w-xl font-sans text-lg leading-8 text-white/60">
-            Take the first step today and let&apos;s build a plan that actually
-            works for you.
-          </p>
-          <a
-            href="/#trial"
-            data-open-crm-popup="true"
-            className="mt-10 inline-block rounded-[4px] bg-pink-500 px-8 py-3.5 font-sans text-sm font-semibold uppercase tracking-widest text-white transition hover:bg-pink-400"
-          >
-            Get Started
-          </a>
-        </div>
-      </section>
-
+      <Hero />
+      <HowItWorks />
+      <BetaNote />
+      <Options />
+      <TheRule />
+      <FinalCTA />
       <Footer />
     </main>
   );
