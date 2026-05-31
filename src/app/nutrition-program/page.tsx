@@ -73,9 +73,9 @@ const FREE_FEATURES = [
 
 const ACCOUNTABILITY_FEATURES = [
   "Everything in the free group, plus:",
-  "More direct access to me",
-  "I work with you personally to hold you accountable",
-  "For when you know you need someone staying on you",
+  "Direct access to me, one-on-one",
+  "I keep you accountable, personally",
+  "For those who struggle with being consistent",
 ];
 
 function Nav() {
