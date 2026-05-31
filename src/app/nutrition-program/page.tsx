@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 
 // ──────────────────────────────────────────────────────────────────────────
 // TODO: paste your signup form URL here. Every "Start my trial week" button
@@ -53,7 +53,7 @@ const STEPS = [
   },
   {
     number: "02",
-    title: "Participate in the community chat",
+    title: "Community",
     body: "Show up in the group chat via Chalk-It Pro. Ask questions, share wins, keep each other honest.",
   },
   {
@@ -230,40 +230,23 @@ function HowItWorks() {
           ))}
         </div>
 
-        <div className="reveal reveal-delay-2 mt-6 flex flex-col items-start justify-between gap-6 rounded-none border border-[#ec4899]/30 bg-[#ec4899]/[0.06] p-8 md:flex-row md:items-center md:p-10">
-          <div>
-            <h3 className="font-display text-3xl leading-tight text-black md:text-4xl">
-              Want serious accountability?
-            </h3>
-            <p className="mt-2 font-sans text-sm leading-7 text-black/65">
-              Some people need someone staying on them. There&apos;s a spot for that.
-            </p>
-          </div>
+        <div className="reveal reveal-delay-2 mt-12 flex justify-center">
           <a
             href="#options"
-            className="inline-flex shrink-0 items-center justify-center rounded-[4px] bg-[#ec4899] px-7 py-4 font-sans text-xs font-semibold uppercase tracking-[0.24em] text-white transition hover:bg-[#db2777]"
+            className="group inline-flex items-center gap-3 font-sans text-xs font-semibold uppercase tracking-[0.24em] text-black/70 transition hover:text-[#db2777]"
           >
-            Claim a spot
+            Pick your lane
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              fill="none"
+              aria-hidden
+              className="transition-transform group-hover:translate-y-0.5"
+            >
+              <path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
           </a>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function BetaNote() {
-  return (
-    <section className="border-t border-white/10 bg-[#0a0a0d] py-20 md:py-28">
-      <div className="mx-auto max-w-4xl px-6 md:px-12">
-        <div className="reveal rounded-none border border-[#ec4899]/30 bg-[#ec4899]/[0.04] p-8 md:p-12">
-          <p className="font-sans text-xs font-semibold uppercase tracking-[0.28em] text-[#f472b6]">
-            Read this first — the app is in beta
-          </p>
-          <p className="mt-6 font-sans text-base leading-8 text-white/75 md:text-lg">
-            This is an early version. You&apos;ll hit bugs. Things will change week to week. Feedback isn&apos;t
-            just welcome — it&apos;s the whole reason the group is free. You&apos;re a tester helping me build
-            something, not a customer. If you&apos;d rather wait for a finished product, this round isn&apos;t for you.
-          </p>
         </div>
       </div>
     </section>
@@ -282,31 +265,31 @@ function Check() {
 
 function Options() {
   return (
-    <section id="options" className="scroll-mt-24 bg-[#f7f1e8] py-20 text-black md:py-28">
+    <section id="options" className="scroll-mt-24 border-t border-white/10 bg-[#09090c] py-20 text-white md:py-28">
       <div className="mx-auto max-w-7xl px-6 md:px-12">
         <div className="reveal">
-          <p className="mb-4 font-sans text-xs font-semibold uppercase tracking-[0.28em] text-black/40">
+          <p className="mb-4 font-sans text-xs font-semibold uppercase tracking-[0.28em] text-white/40">
             Two ways in
           </p>
-          <h2 className="font-display text-[clamp(2.75rem,6vw,5.5rem)] font-normal leading-[0.98] tracking-display text-black">
-            Pick your <em className="italic text-[#db2777]">lane.</em>
+          <h2 className="font-display text-[clamp(2.75rem,6vw,5.5rem)] font-normal leading-[0.98] tracking-display text-white">
+            Pick your <em className="italic text-[#ec4899]">lane.</em>
           </h2>
         </div>
 
         <div className="mt-12 grid gap-6 lg:grid-cols-2 lg:gap-8">
           {/* Option 1 — The Group */}
-          <div className="reveal reveal-delay-1 flex flex-col rounded-none border border-black/10 bg-white p-10 shadow-[0_30px_80px_rgba(0,0,0,0.08)] md:p-12">
-            <p className="font-sans text-xs font-semibold uppercase tracking-[0.28em] text-black/45">
+          <div className="reveal reveal-delay-1 flex flex-col rounded-none border border-white/10 bg-[#101014] p-10 shadow-[0_30px_80px_rgba(0,0,0,0.35)] md:p-12">
+            <p className="font-sans text-xs font-semibold uppercase tracking-[0.28em] text-white/45">
               The Group
             </p>
-            <p className="mt-3 font-display text-[clamp(2.5rem,5vw,4rem)] font-normal leading-none text-black">
+            <p className="mt-3 font-display text-[clamp(2.5rem,5vw,4rem)] font-normal leading-none text-white">
               Free
             </p>
-            <p className="mt-3 font-sans text-sm text-black/55">Payment is your feedback.</p>
+            <p className="mt-3 font-sans text-sm text-white/55">Payment is your feedback.</p>
 
             <ul className="mt-8 space-y-4">
               {FREE_FEATURES.map((feature) => (
-                <li key={feature} className="flex gap-3 font-sans text-sm leading-7 text-black/72">
+                <li key={feature} className="flex gap-3 font-sans text-sm leading-7 text-white/72">
                   <Check />
                   {feature}
                 </li>
@@ -315,28 +298,28 @@ function Options() {
 
             <a
               href={SIGNUP_URL}
-              className="mt-10 inline-flex items-center justify-center rounded-[4px] bg-black px-7 py-4 font-sans text-xs font-semibold uppercase tracking-[0.24em] text-white transition hover:bg-[#db2777]"
+              className="mt-10 inline-flex items-center justify-center rounded-[4px] bg-white px-7 py-4 font-sans text-xs font-semibold uppercase tracking-[0.24em] text-black transition hover:bg-[#ec4899] hover:text-white"
             >
               Start my trial week
             </a>
           </div>
 
           {/* Option 2 — Accountability */}
-          <div className="reveal reveal-delay-2 relative flex flex-col rounded-none border border-[#ec4899]/45 bg-white p-10 shadow-[0_0_60px_rgba(236,72,153,0.12)] md:p-12">
-            <div className="absolute right-8 top-8 rounded-full border border-[#ec4899]/40 bg-[#ec4899]/10 px-3 py-1 font-sans text-[10px] font-semibold uppercase tracking-[0.2em] text-[#db2777]">
+          <div className="reveal reveal-delay-2 relative flex flex-col rounded-none border border-[#ec4899]/45 bg-[#101014] p-10 shadow-[0_0_60px_rgba(236,72,153,0.18)] md:p-12">
+            <div className="absolute right-8 top-8 rounded-full border border-[#ec4899]/40 bg-[#ec4899]/10 px-3 py-1 font-sans text-[10px] font-semibold uppercase tracking-[0.2em] text-[#f472b6]">
               Very limited spots
             </div>
-            <p className="font-sans text-xs font-semibold uppercase tracking-[0.28em] text-black/45">
+            <p className="font-sans text-xs font-semibold uppercase tracking-[0.28em] text-white/45">
               Accountability
             </p>
-            <p className="mt-3 font-display text-[clamp(2.5rem,5vw,4rem)] font-normal leading-none text-black">
-              $50<span className="ml-2 align-middle font-sans text-base text-black/55">/month</span>
+            <p className="mt-3 font-display text-[clamp(2.5rem,5vw,4rem)] font-normal leading-none text-white">
+              $50<span className="ml-2 align-middle font-sans text-base text-white/55">/month</span>
             </p>
-            <p className="mt-3 font-sans text-sm text-black/55">When you know you need someone on you.</p>
+            <p className="mt-3 font-sans text-sm text-white/55">When you know you need someone on you.</p>
 
             <ul className="mt-8 space-y-4">
               {ACCOUNTABILITY_FEATURES.map((feature) => (
-                <li key={feature} className="flex gap-3 font-sans text-sm leading-7 text-black/72">
+                <li key={feature} className="flex gap-3 font-sans text-sm leading-7 text-white/72">
                   <Check />
                   {feature}
                 </li>
@@ -351,26 +334,15 @@ function Options() {
             </a>
           </div>
         </div>
-      </div>
-    </section>
-  );
-}
 
-function TheRule() {
-  return (
-    <section className="border-t border-white/10 bg-[#09090c] py-20 md:py-28">
-      <div className="mx-auto max-w-4xl px-6 text-center md:px-12">
-        <div className="reveal">
-          <p className="mb-4 font-sans text-xs font-semibold uppercase tracking-[0.28em] text-[#f472b6]">
-            The one rule
+        <div className="reveal reveal-delay-2 mt-6 rounded-none border border-[#ec4899]/30 bg-[#ec4899]/[0.06] p-8 md:p-10">
+          <p className="font-sans text-xs font-semibold uppercase tracking-[0.28em] text-[#f472b6]">
+            Read this first — the app is in beta
           </p>
-          <h2 className="font-display text-[clamp(2.5rem,6vw,5rem)] font-normal leading-[0.98] tracking-display text-white">
-            The group is free. Tracking is <em className="italic text-[#ec4899]">not optional.</em>
-          </h2>
-          <p className="mx-auto mt-8 max-w-2xl font-sans text-base leading-8 text-white/72 md:text-lg">
-            Log your daily macros and body weight every day, in the Lyfe app or your own app of choice. If I see
-            you&apos;re not tracking, you&apos;re removed from the group. This is for people actually doing the
-            work. Want someone staying on you about it? That&apos;s what the $50/mo spot is for.
+          <p className="mt-5 font-sans text-base leading-8 text-white/70 md:text-lg">
+            This is an early version. You&apos;ll hit bugs. Things will change week to week. Feedback isn&apos;t
+            just welcome — it&apos;s the whole reason the group is free. You&apos;re a tester helping me build
+            something, not a customer. If you&apos;d rather wait for a finished product, this round isn&apos;t for you.
           </p>
         </div>
       </div>
@@ -378,31 +350,138 @@ function TheRule() {
   );
 }
 
-function FinalCTA() {
+function SignupForm() {
+  const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState("");
+  const [wantsAccountability, setWantsAccountability] = useState(false);
+
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    const fullName = (data.get("fullName") ?? "").toString().trim();
+    const acknowledged = data.get("acknowledged") === "on";
+
+    if (!fullName) {
+      setError("Please enter your full name.");
+      return;
+    }
+    if (!acknowledged) {
+      setError("You'll need to agree to daily tracking to join.");
+      return;
+    }
+
+    setError("");
+    // TODO: send the collected fields (fullName, trackingApp, acknowledged,
+    // accountabilityInterest) to your form endpoint / backend.
+    setSubmitted(true);
+  };
+
+  const inputClass =
+    "w-full rounded-[4px] border border-black/15 bg-white px-4 py-3.5 font-sans text-sm text-black placeholder-black/40 transition focus:border-[#ec4899] focus:outline-none focus:ring-2 focus:ring-[#ec4899]/20";
+  const labelClass = "font-sans text-[11px] font-semibold uppercase tracking-[0.2em] text-black/50";
+
   return (
-    <section className="bg-[#efe5d7] py-20 text-black md:py-28">
-      <div className="mx-auto max-w-3xl px-6 text-center md:px-12">
-        <div className="reveal">
+    <section id="start" className="scroll-mt-24 bg-[#efe5d7] py-20 text-black md:py-28">
+      <div className="mx-auto max-w-2xl px-6 md:px-12">
+        <div className="reveal text-center">
           <p className="mb-4 font-sans text-xs font-semibold uppercase tracking-[0.28em] text-black/40">
             Start here
           </p>
           <h2 className="font-display text-[clamp(2.75rem,6vw,5.25rem)] font-normal leading-[0.98] tracking-display text-black">
             One week. See if it <em className="italic text-[#ec4899]">sticks.</em>
           </h2>
-
-          <div className="mt-10">
-            <a
-              href={SIGNUP_URL}
-              className="inline-flex items-center justify-center rounded-[4px] bg-black px-8 py-4 font-sans text-xs font-semibold uppercase tracking-[0.24em] text-white transition hover:bg-[#db2777]"
-            >
-              Start my trial week
-            </a>
-          </div>
-
-          <p className="mt-6 font-sans text-sm text-black/50">
-            Free group · daily tracking required to stay in · $50/mo for 1:1 accountability.
-          </p>
         </div>
+
+        {submitted ? (
+          <div className="reveal mt-12 rounded-none border border-[#ec4899]/40 bg-[#ec4899]/[0.06] p-8 text-center md:p-12">
+            <h3 className="font-display text-3xl leading-tight text-black md:text-4xl">You&apos;re in.</h3>
+            <p className="mx-auto mt-4 max-w-md font-sans text-sm leading-7 text-black/65">
+              Thanks — I&apos;ll be in touch with next steps. Get ready to start tracking.
+            </p>
+          </div>
+        ) : (
+          <form onSubmit={handleSubmit} noValidate className="reveal mt-12 flex flex-col gap-7 text-left">
+            {/* 1 — Full name */}
+            <div className="flex flex-col gap-2">
+              <label htmlFor="fullName" className={labelClass}>
+                Full name
+              </label>
+              <input
+                id="fullName"
+                name="fullName"
+                type="text"
+                required
+                autoComplete="name"
+                placeholder="First Last"
+                className={inputClass}
+              />
+            </div>
+
+            {/* 2 — Tracking app */}
+            <div className="flex flex-col gap-2">
+              <label htmlFor="trackingApp" className={labelClass}>
+                Do you plan to track within our web app or your own app (MyFitnessPal, Carbon, etc)?
+              </label>
+              <select id="trackingApp" name="trackingApp" required defaultValue="lyfe" className={inputClass}>
+                <option value="lyfe">Lyfe Web App</option>
+                <option value="other">Other App</option>
+              </select>
+            </div>
+
+            {/* 3 — Required disclaimer */}
+            <label
+              htmlFor="acknowledged"
+              className="flex cursor-pointer gap-4 rounded-none border border-[#ec4899]/40 bg-[#ec4899]/[0.06] p-6 md:p-7"
+            >
+              <input
+                id="acknowledged"
+                name="acknowledged"
+                type="checkbox"
+                required
+                className="mt-1 h-5 w-5 shrink-0 accent-[#ec4899]"
+              />
+              <span>
+                <span className="block font-display text-2xl leading-tight text-black md:text-3xl">
+                  Tracking is not optional.
+                </span>
+                <span className="mt-2 block font-sans text-sm leading-7 text-black/65">
+                  Log your daily macros and body weight every day, in the Lyfe app or your own app of choice (and
+                  log those macros in our app). If I see you&apos;re not tracking, you&apos;ll be removed from the
+                  group. This is for people actually doing the work.
+                </span>
+              </span>
+            </label>
+
+            {/* 4 — Accountability interest (optional) */}
+            <label htmlFor="accountabilityInterest" className="flex cursor-pointer items-start gap-4">
+              <input
+                id="accountabilityInterest"
+                name="accountabilityInterest"
+                type="checkbox"
+                checked={wantsAccountability}
+                onChange={(event) => setWantsAccountability(event.target.checked)}
+                className="mt-0.5 h-5 w-5 shrink-0 accent-[#ec4899]"
+              />
+              <span className="font-sans text-sm leading-7 text-black/72">
+                Are you interested in the accountability program?{" "}
+                <span className="text-black/45">(Limited spots. No charge at this point.)</span>
+              </span>
+            </label>
+
+            {error && <p className="font-sans text-sm text-[#db2777]">{error}</p>}
+
+            <button
+              type="submit"
+              className="mt-2 inline-flex items-center justify-center rounded-[4px] bg-black px-8 py-4 font-sans text-xs font-semibold uppercase tracking-[0.24em] text-white transition hover:bg-[#db2777]"
+            >
+              {wantsAccountability ? "Start my trial week & claim my spot" : "Start my trial week"}
+            </button>
+
+            <p className="font-sans text-sm text-black/50">
+              Free group · daily tracking required to stay in · $50/mo for 1:1 accountability.
+            </p>
+          </form>
+        )}
       </div>
     </section>
   );
@@ -479,10 +558,8 @@ export default function NutritionProgram() {
       <Nav />
       <Hero />
       <HowItWorks />
-      <BetaNote />
       <Options />
-      <TheRule />
-      <FinalCTA />
+      <SignupForm />
       <Footer />
     </main>
   );
