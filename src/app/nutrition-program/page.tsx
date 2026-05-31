@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, type FormEvent } from "react";
+import { useEffect, useState } from "react";
 
 // ──────────────────────────────────────────────────────────────────────────
 // TODO: paste your signup form URL here. Every "Start my trial week" button
@@ -263,7 +263,7 @@ function Check() {
   );
 }
 
-function Options() {
+function Options({ onClaim }: { onClaim: () => void }) {
   return (
     <section id="options" className="scroll-mt-24 border-t border-white/10 bg-[#09090c] py-20 text-white md:py-28">
       <div className="mx-auto max-w-7xl px-6 md:px-12">
@@ -296,12 +296,13 @@ function Options() {
               ))}
             </ul>
 
-            <a
-              href={SIGNUP_URL}
+            <button
+              type="button"
+              onClick={onClaim}
               className="mt-10 inline-flex items-center justify-center rounded-[4px] bg-white px-7 py-4 font-sans text-xs font-semibold uppercase tracking-[0.24em] text-black transition hover:bg-[#ec4899] hover:text-white"
             >
-              Start my trial week
-            </a>
+              Claim my spot
+            </button>
           </div>
 
           {/* Option 2 — Accountability */}
@@ -326,12 +327,13 @@ function Options() {
               ))}
             </ul>
 
-            <a
-              href={SIGNUP_URL}
+            <button
+              type="button"
+              onClick={onClaim}
               className="mt-10 inline-flex items-center justify-center rounded-[4px] bg-[#ec4899] px-7 py-4 font-sans text-xs font-semibold uppercase tracking-[0.24em] text-white transition hover:bg-[#db2777]"
             >
               Claim a spot
-            </a>
+            </button>
           </div>
         </div>
 
@@ -350,140 +352,102 @@ function Options() {
   );
 }
 
-function SignupForm() {
-  const [submitted, setSubmitted] = useState(false);
-  const [error, setError] = useState("");
-  const [wantsAccountability, setWantsAccountability] = useState(false);
+function CommitmentModal({ open, onClose }: { open: boolean; onClose: () => void }) {
+  const [agreed, setAgreed] = useState(false);
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    const fullName = (data.get("fullName") ?? "").toString().trim();
-    const acknowledged = data.get("acknowledged") === "on";
+  // Reset the checkbox each time the modal is opened.
+  useEffect(() => {
+    if (open) setAgreed(false);
+  }, [open]);
 
-    if (!fullName) {
-      setError("Please enter your full name.");
-      return;
-    }
-    if (!acknowledged) {
-      setError("You'll need to agree to daily tracking to join.");
-      return;
-    }
+  // Close on Escape and lock background scroll while open.
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") onClose();
+    };
+    document.addEventListener("keydown", onKey);
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [open, onClose]);
 
-    setError("");
-    // TODO: send the collected fields (fullName, trackingApp, acknowledged,
-    // accountabilityInterest) to your form endpoint / backend.
-    setSubmitted(true);
-  };
-
-  const inputClass =
-    "w-full rounded-[4px] border border-black/15 bg-white px-4 py-3.5 font-sans text-sm text-black placeholder-black/40 transition focus:border-[#ec4899] focus:outline-none focus:ring-2 focus:ring-[#ec4899]/20";
-  const labelClass = "font-sans text-[11px] font-semibold uppercase tracking-[0.2em] text-black/50";
+  if (!open) return null;
 
   return (
-    <section id="start" className="scroll-mt-24 bg-[#efe5d7] py-20 text-black md:py-28">
-      <div className="mx-auto max-w-2xl px-6 md:px-12">
-        <div className="reveal text-center">
-          <p className="mb-4 font-sans text-xs font-semibold uppercase tracking-[0.28em] text-black/40">
-            Start here
-          </p>
-          <h2 className="font-display text-[clamp(2.75rem,6vw,5.25rem)] font-normal leading-[0.98] tracking-display text-black">
-            One week. See if it <em className="italic text-[#ec4899]">sticks.</em>
-          </h2>
+    <div
+      className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-6"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="commitment-title"
+    >
+      <div
+        className="absolute inset-0 bg-black/70 backdrop-blur-sm"
+        onClick={onClose}
+        aria-hidden
+      />
+
+      <div className="relative z-10 w-full max-w-lg rounded-2xl bg-[#efe5d7] p-6 text-black shadow-[0_40px_120px_rgba(0,0,0,0.55)] md:p-8">
+        <button
+          type="button"
+          onClick={onClose}
+          aria-label="Close"
+          className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full text-black/45 transition hover:bg-black/5 hover:text-black"
+        >
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden>
+            <path d="M3 3l10 10M13 3L3 13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+          </svg>
+        </button>
+
+        {/* Required commitment card */}
+        <div className="relative rounded-2xl border border-[#ec4899]/30 bg-[#ec4899]/[0.07] p-6 md:p-8">
+          <span className="absolute right-5 top-5 inline-flex items-center rounded-full border border-[#ec4899]/40 bg-[#ec4899]/10 px-2.5 py-1 font-sans text-[10px] font-semibold uppercase tracking-[0.2em] text-[#db2777] md:right-6 md:top-6">
+            Required
+          </span>
+          <label htmlFor="modalAcknowledged" className="flex cursor-pointer gap-4">
+            <input
+              id="modalAcknowledged"
+              type="checkbox"
+              checked={agreed}
+              onChange={(event) => setAgreed(event.target.checked)}
+              className="mt-1.5 h-5 w-5 shrink-0 rounded accent-[#ec4899]"
+            />
+            <span className="flex-1">
+              <span
+                id="commitment-title"
+                className="block pr-20 font-display text-2xl leading-tight text-black md:text-[1.75rem]"
+              >
+                Tracking is not optional.
+              </span>
+              <span className="mt-3 block font-sans text-sm leading-7 text-black/65">
+                Log your macros and body weight every day. Use the Lyfe app or your own tracker, but your
+                numbers must be logged. No tracking = removed from the group.
+              </span>
+            </span>
+          </label>
         </div>
 
-        {submitted ? (
-          <div className="reveal mt-12 rounded-none border border-[#ec4899]/40 bg-[#ec4899]/[0.06] p-8 text-center md:p-12">
-            <h3 className="font-display text-3xl leading-tight text-black md:text-4xl">You&apos;re in.</h3>
-            <p className="mx-auto mt-4 max-w-md font-sans text-sm leading-7 text-black/65">
-              Thanks — I&apos;ll be in touch with next steps. Get ready to start tracking.
-            </p>
-          </div>
-        ) : (
-          <form onSubmit={handleSubmit} noValidate className="reveal mt-12 flex flex-col gap-7 text-left">
-            {/* 1 — Full name */}
-            <div className="flex flex-col gap-2">
-              <label htmlFor="fullName" className={labelClass}>
-                Full name
-              </label>
-              <input
-                id="fullName"
-                name="fullName"
-                type="text"
-                required
-                autoComplete="name"
-                placeholder="First Last"
-                className={inputClass}
-              />
-            </div>
-
-            {/* 2 — Tracking app */}
-            <div className="flex flex-col gap-2">
-              <label htmlFor="trackingApp" className={labelClass}>
-                Do you plan to track within our web app or your own app (MyFitnessPal, Carbon, etc)?
-              </label>
-              <select id="trackingApp" name="trackingApp" required defaultValue="lyfe" className={inputClass}>
-                <option value="lyfe">Lyfe Web App</option>
-                <option value="other">Other App</option>
-              </select>
-            </div>
-
-            {/* 3 — Required disclaimer */}
-            <label
-              htmlFor="acknowledged"
-              className="flex cursor-pointer gap-4 rounded-none border border-[#ec4899]/40 bg-[#ec4899]/[0.06] p-6 md:p-7"
-            >
-              <input
-                id="acknowledged"
-                name="acknowledged"
-                type="checkbox"
-                required
-                className="mt-1 h-5 w-5 shrink-0 accent-[#ec4899]"
-              />
-              <span>
-                <span className="block font-display text-2xl leading-tight text-black md:text-3xl">
-                  Tracking is not optional.
-                </span>
-                <span className="mt-2 block font-sans text-sm leading-7 text-black/65">
-                  Log your daily macros and body weight every day, in the Lyfe app or your own app of choice (and
-                  log those macros in our app). If I see you&apos;re not tracking, you&apos;ll be removed from the
-                  group. This is for people actually doing the work.
-                </span>
-              </span>
-            </label>
-
-            {/* 4 — Accountability interest (optional) */}
-            <label htmlFor="accountabilityInterest" className="flex cursor-pointer items-start gap-4">
-              <input
-                id="accountabilityInterest"
-                name="accountabilityInterest"
-                type="checkbox"
-                checked={wantsAccountability}
-                onChange={(event) => setWantsAccountability(event.target.checked)}
-                className="mt-0.5 h-5 w-5 shrink-0 accent-[#ec4899]"
-              />
-              <span className="font-sans text-sm leading-7 text-black/72">
-                Are you interested in the accountability program?{" "}
-                <span className="text-black/45">(Limited spots. No charge at this point.)</span>
-              </span>
-            </label>
-
-            {error && <p className="font-sans text-sm text-[#db2777]">{error}</p>}
-
-            <button
-              type="submit"
-              className="mt-2 inline-flex items-center justify-center rounded-[4px] bg-black px-8 py-4 font-sans text-xs font-semibold uppercase tracking-[0.24em] text-white transition hover:bg-[#db2777]"
-            >
-              {wantsAccountability ? "Start my trial week & claim my spot" : "Start my trial week"}
-            </button>
-
-            <p className="font-sans text-sm text-black/50">
-              Free group · daily tracking required to stay in · $50/mo for 1:1 accountability.
-            </p>
-          </form>
-        )}
+        {/* Create account — disabled until the box is checked */}
+        <a
+          href="https://app.daneff.com/register"
+          aria-disabled={!agreed}
+          tabIndex={agreed ? undefined : -1}
+          onClick={(event) => {
+            if (!agreed) event.preventDefault();
+          }}
+          className={`mt-6 flex h-[58px] w-full items-center justify-center rounded-xl px-8 font-sans text-xs font-semibold uppercase tracking-[0.22em] transition-all duration-200 ${
+            agreed
+              ? "bg-black text-white hover:bg-[#db2777] hover:shadow-[0_12px_34px_rgba(219,39,119,0.35)] active:scale-[0.99]"
+              : "pointer-events-none cursor-not-allowed bg-black/15 text-black/40"
+          }`}
+        >
+          Create an account
+        </a>
       </div>
-    </section>
+    </div>
   );
 }
 
@@ -552,15 +516,16 @@ function Footer() {
 
 export default function NutritionProgram() {
   useReveal();
+  const [claimOpen, setClaimOpen] = useState(false);
 
   return (
     <main className="min-h-screen bg-[#07070a] text-white">
       <Nav />
       <Hero />
       <HowItWorks />
-      <Options />
-      <SignupForm />
+      <Options onClaim={() => setClaimOpen(true)} />
       <Footer />
+      <CommitmentModal open={claimOpen} onClose={() => setClaimOpen(false)} />
     </main>
   );
 }
