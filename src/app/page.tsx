@@ -206,8 +206,8 @@ function Hero() {
     <section id="top" className="relative overflow-hidden border-b border-white/10 pb-16 pt-32 md:pb-24 md:pt-40">
       <div className="hero-orb left-[-12rem] top-[8rem]" />
       <div className="hero-orb hero-orb-alt right-[-8rem] top-[18rem]" />
-      <div className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.16),transparent_32%),linear-gradient(180deg,rgba(7,7,9,0.2)_0%,rgba(7,7,9,0.95)_72%,rgba(7,7,9,1)_100%)]" />
       <img src="/hero.jpg" alt="Athletes training at Lyfe Fitness" className="absolute inset-0 z-0 h-full w-full object-cover opacity-60" />
+      <div className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.16),transparent_32%),linear-gradient(180deg,rgba(7,7,9,0.2)_0%,rgba(7,7,9,0.95)_72%,rgba(7,7,9,1)_100%)]" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-12">
         <div className="reveal max-w-4xl">
@@ -250,25 +250,25 @@ function TrustBar() {
     "Beginner-friendly coaching",
     "Nutrition support",
     "Baldwin, NY",
-    "5.0 Google rating",
-    "Coach-led group training",
-    "Strength and conditioning",
-    "Beginner-friendly coaching",
-    "Nutrition support",
-    "Baldwin, NY",
   ];
 
   return (
     <div className="overflow-hidden border-y border-white/10 bg-[#0d0d10] py-4">
       <div className="marquee-track flex animate-marquee gap-16 whitespace-nowrap">
-        {items.map((item, index) => (
-          <span key={`${item}-${index}`} className="flex items-center gap-4">
-            <span className="font-sans text-xs font-semibold uppercase tracking-[0.24em] text-white/45">
-              {item}
+        {[false, true].map((isDuplicate) =>
+          items.map((item, index) => (
+            <span
+              key={`${item}-${index}-${isDuplicate}`}
+              className="flex items-center gap-4"
+              aria-hidden={isDuplicate || undefined}
+            >
+              <span className="font-sans text-xs font-semibold uppercase tracking-[0.24em] text-white/45">
+                {item}
+              </span>
+              <span className="h-px w-8 bg-white/15" />
             </span>
-            <span className="h-px w-8 bg-white/15" />
-          </span>
-        ))}
+          ))
+        )}
       </div>
     </div>
   );
@@ -296,7 +296,7 @@ function Difference() {
               className={`reveal ${REVEAL_DELAYS[index + 1]} overflow-hidden rounded-none border border-black/8 bg-black text-white shadow-[0_30px_80px_rgba(0,0,0,0.14)]`}
             >
               <div className="relative aspect-[4/5] overflow-hidden">
-                <img src={pillar.image} alt={pillar.heading} className="absolute inset-0 h-full w-full object-cover" />
+                <img src={pillar.image} alt={pillar.heading} loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
                 <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.12)_0%,rgba(0,0,0,0.22)_30%,rgba(0,0,0,0.88)_100%)]" />
                 <div className="absolute inset-x-0 bottom-0 p-8">
                   <p className="mb-3 font-sans text-[10px] font-semibold uppercase tracking-[0.24em] text-[#f472b6]">
@@ -346,7 +346,7 @@ function Programs() {
               className={`reveal ${REVEAL_DELAYS[index + 1]} overflow-hidden rounded-none border border-white/10 bg-white/[0.03] shadow-[0_24px_80px_rgba(0,0,0,0.2)]`}
             >
               <div className="relative aspect-[4/5] overflow-hidden">
-                <img src={program.image} alt={program.title} className="absolute inset-0 h-full w-full object-cover" />
+                <img src={program.image} alt={program.title} loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
                 <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.05)_0%,rgba(0,0,0,0.2)_30%,rgba(0,0,0,0.9)_100%)]" />
                 <div className="absolute inset-x-0 bottom-0 p-8">
                   <p className="mb-3 font-sans text-[10px] font-semibold uppercase tracking-[0.24em] text-[#f472b6]">
@@ -399,6 +399,20 @@ function Testimonials() {
     go((active - 1 + TESTIMONIALS.length) % TESTIMONIALS.length);
   }
 
+  function pause() {
+    if (timerRef.current) {
+      clearInterval(timerRef.current);
+      timerRef.current = null;
+    }
+  }
+
+  function resume() {
+    if (timerRef.current) return;
+    timerRef.current = setInterval(() => {
+      setActive((current) => (current + 1) % TESTIMONIALS.length);
+    }, 5000);
+  }
+
   return (
     <section id="results" className="border-t border-black/10 bg-[#f7f1e8] py-20 text-black md:py-28">
       <div className="mx-auto grid max-w-7xl gap-12 px-6 md:px-12 lg:grid-cols-[340px_minmax(0,1fr)] lg:items-start">
@@ -411,15 +425,23 @@ function Testimonials() {
           </h2>
         </div>
 
-        <div className="reveal reveal-delay-2 rounded-[36px] border border-black/10 bg-white p-8 shadow-[0_30px_90px_rgba(0,0,0,0.12)] md:p-12">
+        <div
+          className="reveal reveal-delay-2 rounded-[36px] border border-black/10 bg-white p-8 shadow-[0_30px_90px_rgba(0,0,0,0.12)] md:p-12"
+          onMouseEnter={pause}
+          onMouseLeave={resume}
+        >
           <div className="flex items-start justify-between gap-6 border-b border-black/8 pb-8">
             <div>
-              {TESTIMONIALS[active].image && (
+              {TESTIMONIALS[active].image ? (
                 <img
                   src={TESTIMONIALS[active].image}
                   alt={TESTIMONIALS[active].name}
                   className="h-12 w-12 rounded-full object-cover"
                 />
+              ) : (
+                <span className="flex h-12 w-12 items-center justify-center rounded-full bg-black font-sans text-sm font-semibold tracking-wide text-white">
+                  {TESTIMONIALS[active].initials}
+                </span>
               )}
               <p className="mt-3 font-display text-3xl text-black">{TESTIMONIALS[active].name}</p>
               <p className="mt-1 font-sans text-sm text-black/45">{TESTIMONIALS[active].role}</p>
@@ -431,7 +453,7 @@ function Testimonials() {
                 className="flex h-10 w-10 items-center justify-center rounded-[4px] border border-black/15 text-black/70 transition hover:bg-black hover:text-white"
                 aria-label="Previous review"
               >
-                &lt;
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" /></svg>
               </button>
               <button
                 type="button"
@@ -439,7 +461,7 @@ function Testimonials() {
                 className="flex h-10 w-10 items-center justify-center rounded-[4px] border border-black/15 text-black/70 transition hover:bg-black hover:text-white"
                 aria-label="Next review"
               >
-                &gt;
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
               </button>
             </div>
           </div>
@@ -465,10 +487,10 @@ function Testimonials() {
               5.0 Google rating across 61 reviews
             </p>
             <a
-              href="#location"
+              href="#trial"
               className="inline-flex items-center justify-center rounded-[4px] border border-black/12 px-6 py-3 font-sans text-xs font-semibold uppercase tracking-[0.24em] text-black transition hover:border-black hover:bg-black hover:text-white"
             >
-              Learn More
+              Start Your Free Week
             </a>
           </div>
         </div>
@@ -655,7 +677,7 @@ function Footer() {
                 {item.label}
               </a>
             ))}
-            <a href="#location" className="font-sans text-sm text-white/55 transition hover:text-white">
+            <a href="#trial" className="font-sans text-sm text-white/55 transition hover:text-white">
               Free Week
             </a>
           </div>
