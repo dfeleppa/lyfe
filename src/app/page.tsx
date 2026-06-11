@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Script from "next/script";
 import { useEffect, useRef, useState } from "react";
 
@@ -206,7 +207,7 @@ function Hero() {
     <section id="top" className="relative overflow-hidden border-b border-white/10 pb-16 pt-32 md:pb-24 md:pt-40">
       <div className="hero-orb left-[-12rem] top-[8rem]" />
       <div className="hero-orb hero-orb-alt right-[-8rem] top-[18rem]" />
-      <img src="/hero.jpg" alt="Athletes training at Lyfe Fitness" className="absolute inset-0 z-0 h-full w-full object-cover opacity-60" />
+      <Image src="/hero.jpg" alt="Athletes training at Lyfe Fitness" fill priority sizes="100vw" className="z-0 object-cover opacity-60" />
       <div className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.16),transparent_32%),linear-gradient(180deg,rgba(7,7,9,0.2)_0%,rgba(7,7,9,0.95)_72%,rgba(7,7,9,1)_100%)]" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-12">
@@ -296,7 +297,7 @@ function Difference() {
               className={`reveal ${REVEAL_DELAYS[index + 1]} overflow-hidden rounded-none border border-black/8 bg-black text-white shadow-[0_30px_80px_rgba(0,0,0,0.14)]`}
             >
               <div className="relative aspect-[4/5] overflow-hidden">
-                <img src={pillar.image} alt={pillar.heading} loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
+                <Image src={pillar.image} alt={pillar.heading} fill sizes="(min-width: 1024px) 33vw, 100vw" className="object-cover" />
                 <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.12)_0%,rgba(0,0,0,0.22)_30%,rgba(0,0,0,0.88)_100%)]" />
                 <div className="absolute inset-x-0 bottom-0 p-8">
                   <p className="mb-3 font-sans text-[10px] font-semibold uppercase tracking-[0.24em] text-[#f472b6]">
@@ -346,7 +347,7 @@ function Programs() {
               className={`reveal ${REVEAL_DELAYS[index + 1]} overflow-hidden rounded-none border border-white/10 bg-white/[0.03] shadow-[0_24px_80px_rgba(0,0,0,0.2)]`}
             >
               <div className="relative aspect-[4/5] overflow-hidden">
-                <img src={program.image} alt={program.title} loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
+                <Image src={program.image} alt={program.title} fill sizes="(min-width: 1024px) 33vw, 100vw" className="object-cover" />
                 <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.05)_0%,rgba(0,0,0,0.2)_30%,rgba(0,0,0,0.9)_100%)]" />
                 <div className="absolute inset-x-0 bottom-0 p-8">
                   <p className="mb-3 font-sans text-[10px] font-semibold uppercase tracking-[0.24em] text-[#f472b6]">
@@ -433,9 +434,11 @@ function Testimonials() {
           <div className="flex items-start justify-between gap-6 border-b border-black/8 pb-8">
             <div>
               {TESTIMONIALS[active].image ? (
-                <img
-                  src={TESTIMONIALS[active].image}
+                <Image
+                  src={TESTIMONIALS[active].image!}
                   alt={TESTIMONIALS[active].name}
+                  width={48}
+                  height={48}
                   className="h-12 w-12 rounded-full object-cover"
                 />
               ) : (

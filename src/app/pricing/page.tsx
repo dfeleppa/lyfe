@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 const NAV_ITEMS = [
@@ -104,11 +105,15 @@ export default function PricingPage() {
 
       {/* Hero */}
       <section className="relative overflow-hidden border-b border-white/10 pb-16 pt-36 md:pb-24 md:pt-44">
-        <img
+        <Image
           src="/hero2.jpg"
           alt="Lyfe Fitness members training"
-          className="absolute inset-0 z-0 h-full w-full object-cover opacity-60"
+          fill
+          priority
+          sizes="100vw"
+          className="z-0 object-cover opacity-60"
         />
+        <div className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.16),transparent_32%),linear-gradient(180deg,rgba(7,7,9,0.2)_0%,rgba(7,7,9,0.95)_72%,rgba(7,7,9,1)_100%)]" />
         <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-12">
           <p className="mb-4 font-sans text-xs font-semibold uppercase tracking-[0.28em] text-[#f472b6]">
             Membership & Pricing

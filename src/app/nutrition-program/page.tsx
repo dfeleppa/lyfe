@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 // ──────────────────────────────────────────────────────────────────────────
@@ -168,7 +169,7 @@ function Hero() {
     <section id="top" className="relative overflow-hidden border-b border-white/10 pb-16 pt-32 md:pb-24 md:pt-40">
       <div className="hero-orb left-[-12rem] top-[8rem]" />
       <div className="hero-orb hero-orb-alt right-[-8rem] top-[18rem]" />
-      <img src="/bw_nutrition_hero.jpg" alt="Training at Lyfe Fitness" className="absolute inset-0 z-0 h-full w-full object-cover opacity-50" />
+      <Image src="/bw_nutrition_hero.jpg" alt="Training at Lyfe Fitness" fill priority sizes="100vw" className="z-0 object-cover opacity-50" />
       <div className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.16),transparent_32%),linear-gradient(180deg,rgba(7,7,9,0.2)_0%,rgba(7,7,9,0.95)_72%,rgba(7,7,9,1)_100%)]" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-12">
