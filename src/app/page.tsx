@@ -563,7 +563,7 @@ function LeadForm() {
           <div className="reveal reveal-delay-2 rounded-[24px] bg-white shadow-[0_18px_60px_rgba(0,0,0,0.15)]">
             <iframe
               src="https://link.gymntx.com/widget/form/qtz9BpzFGxwbX54pvvKx"
-              style={{ width: "100%", height: "566px", border: "none", borderRadius: "4px" }}
+              className="h-[680px] w-full rounded-[4px] border-0 sm:h-[566px]"
               id="inline-qtz9BpzFGxwbX54pvvKx"
               data-layout="{'id':'INLINE'}"
               data-trigger-type="alwaysShow"
