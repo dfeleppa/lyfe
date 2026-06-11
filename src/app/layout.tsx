@@ -32,11 +32,20 @@ export const metadata: Metadata = {
     siteName: "Lyfe Fitness",
     locale: "en_US",
     type: "website",
+    images: [
+      {
+        url: "/og.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Athletes training at Lyfe Fitness in Baldwin, NY",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Lyfe Fitness | Group Training in Baldwin, NY",
     description: "Coach-led group fitness in Baldwin, NY. Start your free week.",
+    images: ["/og.jpg"],
   },
   metadataBase: new URL("https://daneff.com"),
 };
