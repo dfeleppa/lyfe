@@ -64,13 +64,20 @@ const WEEK_COLUMNS: { day: string; slots: ScheduleSlot[] }[] = [
   },
 ];
 
-function DayColumn({ day, slots }: { day: string; slots: ScheduleSlot[] }) {
+function DayCard({ day, slots }: { day: string; slots: ScheduleSlot[] }) {
   return (
-    <div className="border-r border-white/10 px-4 py-6 last:border-r-0">
-      <p className="font-display text-2xl text-white">{day}</p>
-      <div className="mt-4 space-y-4">
+    <article className="flex h-full flex-col border border-white/10 bg-white/[0.03] p-5 md:p-6 xl:p-5">
+      <div className="flex items-end justify-between gap-3 border-b border-white/10 pb-4 xl:block">
+        <h3 className="font-display text-2xl leading-none text-white xl:text-xl 2xl:text-2xl">
+          {day}{day === "Sunday" ? "*" : ""}
+        </h3>
+        <p className="font-sans text-[10px] font-semibold uppercase tracking-[0.18em] text-white/35 xl:mt-2">
+          {slots.length} {slots.length === 1 ? "class" : "classes"}
+        </p>
+      </div>
+      <div className="mt-4 grid grid-cols-2 gap-x-5 gap-y-4 xl:grid-cols-1">
         {slots.map((slot) => (
-          <div key={`${day}-${slot.time}-${slot.name}`}>
+          <div key={`${day}-${slot.time}-${slot.name}`} className="min-w-0">
             <p className="font-sans text-xs font-semibold uppercase tracking-[0.18em] text-[#ec4899]">
               {slot.time}
             </p>
@@ -79,49 +86,9 @@ function DayColumn({ day, slots }: { day: string; slots: ScheduleSlot[] }) {
           </div>
         ))}
       </div>
-    </div>
+    </article>
   );
 }
-
-function WeekendStackColumn({ saturday, sunday }: { saturday: ScheduleSlot[]; sunday: ScheduleSlot[] }) {
-  return (
-    <div className="px-4 py-6">
-      <div>
-        <p className="font-display text-2xl text-white">Saturday</p>
-        <div className="mt-4 space-y-4">
-          {saturday.map((slot) => (
-            <div key={`Saturday-${slot.time}-${slot.name}`}>
-              <p className="font-sans text-xs font-semibold uppercase tracking-[0.18em] text-[#ec4899]">
-                {slot.time}
-              </p>
-              <p className="mt-1 font-sans text-sm text-white/75">{slot.name}</p>
-              <p className="mt-1 font-sans text-[11px] uppercase tracking-[0.16em] text-white/30">1 hour</p>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div className="mt-8">
-        <p className="font-display text-2xl text-white">Sunday*</p>
-        <div className="mt-4 space-y-4">
-          {sunday.map((slot) => (
-            <div key={`Sunday-${slot.time}-${slot.name}`}>
-              <p className="font-sans text-xs font-semibold uppercase tracking-[0.18em] text-[#ec4899]">
-                {slot.time}
-              </p>
-              <p className="mt-1 font-sans text-sm text-white/75">{slot.name}</p>
-              <p className="mt-1 font-sans text-[11px] uppercase tracking-[0.16em] text-white/30">1 hour</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
-
-const WEEKDAY_COLUMNS = WEEK_COLUMNS.slice(0, 5);
-const SATURDAY_COLUMN = WEEK_COLUMNS[5];
-const SUNDAY_COLUMN = WEEK_COLUMNS[6];
 
 export default function SchedulePage() {
   return (
@@ -164,17 +131,14 @@ export default function SchedulePage() {
 
       {/* Schedule */}
       <section className="py-20 md:py-28">
-        <div className="mx-auto max-w-5xl px-6 md:px-12">
-          <p className="mb-5 font-sans text-[10px] font-semibold uppercase tracking-[0.3em] text-white/30">
+        <div className="mx-auto max-w-7xl px-6 md:px-12">
+          <h2 className="mb-5 font-sans text-[10px] font-semibold uppercase tracking-[0.3em] text-white/45">
             Weekly Schedule
-          </p>
-          <div className="overflow-x-auto bg-[#FFFFFF08]">
-            <div className="grid min-w-[860px] grid-cols-6">
-              {WEEKDAY_COLUMNS.map((column) => (
-                <DayColumn key={column.day} day={column.day} slots={column.slots} />
-              ))}
-              <WeekendStackColumn saturday={SATURDAY_COLUMN.slots} sunday={SUNDAY_COLUMN.slots} />
-            </div>
+          </h2>
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-7">
+            {WEEK_COLUMNS.map((column) => (
+              <DayCard key={column.day} day={column.day} slots={column.slots} />
+            ))}
           </div>
 
           {/* Holiday note */}
