@@ -45,9 +45,9 @@ export default function PricingPage() {
               <h2 className="mt-3 font-display text-[clamp(2.2rem,5vw,3.5rem)] leading-[0.95] text-white">
                 Lyfe Membership
               </h2>
-              <p className="mt-4 font-sans text-base text-white/70">As low as</p>
+              <p className="mt-4 font-sans text-base text-white/70">Starting at</p>
               <p className="mt-1 font-display text-[clamp(3rem,6vw,4.5rem)] font-normal leading-none text-white">
-                $5<span className="ml-2 font-sans text-base text-white/70">/class</span>
+                $152.99<span className="ml-2 font-sans text-base text-white/70">/mo</span>
               </p>
 
               <ul className="mt-8 space-y-3">
