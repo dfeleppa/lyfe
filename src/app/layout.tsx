@@ -79,7 +79,7 @@ const localBusinessSchema = {
     { "@type": "OpeningHoursSpecification", dayOfWeek: "Saturday", opens: "09:00", closes: "11:30" },
     { "@type": "OpeningHoursSpecification", dayOfWeek: "Sunday", opens: "09:00", closes: "10:30" },
   ],
-  sameAs: ["https://www.instagram.com/lyfe.fitness/", "https://www.facebook.com/lyfefitness"],
+  sameAs: ["https://www.instagram.com/lyfefitnessli/", "https://www.facebook.com/lyfefitnessli"],
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
