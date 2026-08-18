@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { MEMBER_APP_URL } from "@/lib/site";
 import SiteFooter from "../components/SiteFooter";
 import SiteNav from "../components/SiteNav";
 import { useEffect, useState } from "react";
@@ -342,7 +343,7 @@ function CommitmentModal({ open, onClose }: { open: boolean; onClose: () => void
 
         {/* Create account — disabled until the box is checked */}
         <a
-          href="https://app.daneff.com/register"
+          href={`${MEMBER_APP_URL}/register`}
           aria-disabled={!agreed}
           tabIndex={agreed ? undefined : -1}
           onClick={(event) => {

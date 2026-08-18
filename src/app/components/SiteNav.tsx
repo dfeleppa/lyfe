@@ -1,14 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-
-export const NAV_ITEMS = [
-  { label: "Membership & Pricing", href: "/pricing" },
-  { label: "Schedule", href: "/schedule" },
-  { label: "Location", href: "/#location" },
-  { label: "Contact", href: "/#trial" },
-  { label: "Member Login", href: "https://app.daneff.com" },
-];
+import { NAV_ITEMS } from "@/lib/site";
 
 type SiteNavProps = {
   cta?: { label: string; href: string; openCrmPopup?: boolean };

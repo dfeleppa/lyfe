@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Fraunces, Inter } from "next/font/google";
 import GlobalCRMPopup from "./components/GlobalCRMPopup";
 import GlobalPricingPopup from "./components/GlobalPricingPopup";
+import { SITE_URL } from "@/lib/site";
 import "./globals.css";
 
 // Display font — stands in for Reckless Neue until font files are added.
@@ -21,14 +22,18 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: "Lyfe Fitness | Group Training in Baldwin, NY",
   description:
     "Coach-led group fitness in Baldwin, NY. Purposeful programming, real coaching, and a community that makes consistency easier. Start your free week.",
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     title: "Lyfe Fitness | Group Training in Baldwin, NY",
     description:
       "Coach-led group fitness in Baldwin, NY with purposeful programming, real coaching, and a strong community.",
-    url: "https://daneff.com",
+    url: "/",
     siteName: "Lyfe Fitness",
     locale: "en_US",
     type: "website",
@@ -47,16 +52,15 @@ export const metadata: Metadata = {
     description: "Coach-led group fitness in Baldwin, NY. Start your free week.",
     images: ["/og.jpg"],
   },
-  metadataBase: new URL("https://daneff.com"),
 };
 
 const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "ExerciseGym",
   name: "Lyfe Fitness",
-  url: "https://daneff.com",
-  image: "https://daneff.com/og.jpg",
-  logo: "https://daneff.com/lflogo.png",
+  url: SITE_URL,
+  image: `${SITE_URL}/og.jpg`,
+  logo: `${SITE_URL}/lflogo.png`,
   telephone: "+15165880532",
   email: "daniel@trainlyfe.com",
   priceRange: "$$",

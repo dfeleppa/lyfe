@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/nutrition-program" },
   title: "Nutrition Program | Lyfe Fitness",
   description:
     "Daily-tracking nutrition coaching with weekly check-ins and real accountability from Lyfe Fitness in Baldwin, NY. Start your trial week.",

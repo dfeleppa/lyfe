@@ -1,4 +1,4 @@
-import { NAV_ITEMS } from "./SiteNav";
+import { MEMBER_APP_URL, NAV_ITEMS } from "@/lib/site";
 
 export default function SiteFooter() {
   return (
@@ -55,7 +55,7 @@ export default function SiteFooter() {
             © {new Date().getFullYear()} Lyfe Fitness
           </p>
           <p className="font-sans text-xs uppercase tracking-[0.22em] text-white/35">
-            Member login at <a href="https://app.daneff.com" className="transition hover:text-white/50">app.daneff.com</a>
+            Member login at <a href={MEMBER_APP_URL} className="transition hover:text-white/50">app.trainlyfe.com</a>
           </p>
         </div>
       </div>

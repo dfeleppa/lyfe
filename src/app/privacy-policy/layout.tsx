@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/privacy-policy" },
   title: "Privacy Policy | Lyfe Fitness",
   description: "How Lyfe Fitness collects, uses, and protects your personal information.",
 };

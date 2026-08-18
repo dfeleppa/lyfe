@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { MEMBER_APP_URL } from "@/lib/site";
 import SiteFooter from "../components/SiteFooter";
 import SiteNav from "../components/SiteNav";
 
@@ -118,7 +119,7 @@ export default function SchedulePage() {
             New to Lyfe? Come in for a free intro and we&apos;ll get you started right.
           </p>
           <a
-            href="https://app.daneff.com"
+            href={MEMBER_APP_URL}
             data-open-crm-popup="true"
             target="_blank"
             rel="noreferrer"
@@ -144,8 +145,8 @@ export default function SchedulePage() {
           {/* Holiday note */}
           <p className="mt-6 text-center font-sans text-sm leading-7 text-white/35">
             Schedule may vary on holidays and special events. Check{" "}
-            <a href="https://app.daneff.com" target="_blank" rel="noreferrer" className="text-white/50 underline underline-offset-2 transition hover:text-white">
-              app.daneff.com
+            <a href={MEMBER_APP_URL} target="_blank" rel="noreferrer" className="text-white/50 underline underline-offset-2 transition hover:text-white">
+              app.trainlyfe.com
             </a>{" "}
             or follow us on Instagram for any changes.
           </p>
