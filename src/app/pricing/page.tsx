@@ -81,10 +81,10 @@ export default function PricingPage() {
 
               <div className="mt-6 border-t border-white/10 pt-6">
                 <p className="font-sans text-xs font-semibold uppercase tracking-[0.24em] text-white/60">
-                  No long-term lock-in
+                  Simple, flexible billing
                 </p>
                 <p className="mt-2 font-sans text-sm leading-7 text-white/70">
-                  Month-to-month options available. We&apos;d rather earn your membership every month. Discounts offered for prepayment.
+                  Memberships are billed month to month with no sign-up fee or long-term commitment. Prefer to pay ahead? Discounted prepaid options are also available.
                 </p>
               </div>
             </div>
