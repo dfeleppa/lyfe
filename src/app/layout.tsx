@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import { Fraunces, Inter } from "next/font/google";
+import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
+import AnalyticsEvents from "./components/AnalyticsEvents";
 import GlobalCRMPopup from "./components/GlobalCRMPopup";
 import GlobalPricingPopup from "./components/GlobalPricingPopup";
+import { ANALYTICS_ENABLED, GOOGLE_TAG_ID, GTM_ID } from "@/lib/analytics-config";
 import { SITE_URL } from "@/lib/site";
 import "./globals.css";
 
@@ -89,15 +92,18 @@ const localBusinessSchema = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${fraunces.variable} ${inter.variable}`}>
+      {ANALYTICS_ENABLED && GTM_ID ? <GoogleTagManager gtmId={GTM_ID} /> : null}
       <body className="bg-black text-white font-sans antialiased">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
         />
         {children}
+        <AnalyticsEvents />
         <GlobalCRMPopup />
         <GlobalPricingPopup />
       </body>
+      {ANALYTICS_ENABLED && !GTM_ID && GOOGLE_TAG_ID ? <GoogleAnalytics gaId={GOOGLE_TAG_ID} /> : null}
     </html>
   );
 }
