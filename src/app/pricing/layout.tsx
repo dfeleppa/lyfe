@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/pricing" },
   title: "Membership & Pricing | Lyfe Fitness",
   description:
-    "Flexible group fitness memberships in Baldwin, NY — as low as $5 per class with no contracts. Find the plan that fits how often you want to train.",
+    "Coach-led group fitness memberships in Baldwin, NY starting at $152.99 per month, with no sign-up fee or long-term commitment. Discounted prepaid options are available.",
 };
 
 export default function PricingLayout({ children }: { children: React.ReactNode }) {

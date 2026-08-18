@@ -29,7 +29,7 @@ export default function PricingPage() {
             <em className="text-[#ec4899]">No contracts.</em>
           </h1>
           <p className="mt-8 max-w-xl font-sans text-base leading-8 text-white/60 md:text-lg">
-            Pick the membership that fits how often you want to train. Pricing varies based on commitment length — reach out and we'll find the right fit.
+            Pick the membership that fits how often you want to train. Memberships start at $152.99 per month with flexible month-to-month billing.
           </p>
         </div>
       </section>
@@ -139,7 +139,7 @@ export default function PricingPage() {
           </div>
 
           <p className="mt-10 text-center font-sans text-sm text-white/35">
-            Pricing varies based on commitment length. Contact us to find the right option for you.
+            Memberships start at $152.99 per month. Month-to-month billing has no sign-up fee or long-term commitment; discounted prepaid options are also available.
           </p>
         </div>
       </section>
