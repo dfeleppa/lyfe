@@ -198,9 +198,9 @@ export default function PrivacyPolicyPage() {
               <address className="not-italic text-white/85">
                 <span className="font-semibold text-white">Lyfe Fitness</span>
                 <br />
-                851 Merrick Rd
+                445 Merrick Road
                 <br />
-                Baldwin, NY 11510
+                Oceanside, NY 11572
                 <br />
                 <a href="mailto:daniel@trainlyfe.com" className={linkClass}>
                   daniel@trainlyfe.com

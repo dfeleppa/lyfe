@@ -28,7 +28,7 @@ export default function SiteFooter() {
           </div>
 
           <div className="space-y-2 font-sans text-sm text-white/55">
-            <p>851 Merrick Rd, Baldwin, NY 11510</p>
+            <p>445 Merrick Road, Oceanside, NY 11572</p>
             <p>
               <a href="tel:5165880532" className="transition hover:text-white">
                 Text/Call: (516) 588-0532

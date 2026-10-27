@@ -26,16 +26,16 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: "Lyfe Fitness | Group Training in Baldwin, NY",
+  title: "Lyfe Fitness | Group Training in Oceanside, NY",
   description:
-    "Coach-led group fitness in Baldwin, NY. Purposeful programming, real coaching, and a community that makes consistency easier. Start your free week.",
+    "Coach-led group fitness in Oceanside, NY. Purposeful programming, real coaching, and a community that makes consistency easier. Start your free week.",
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "Lyfe Fitness | Group Training in Baldwin, NY",
+    title: "Lyfe Fitness | Group Training in Oceanside, NY",
     description:
-      "Coach-led group fitness in Baldwin, NY with purposeful programming, real coaching, and a strong community.",
+      "Coach-led group fitness in Oceanside, NY with purposeful programming, real coaching, and a strong community.",
     url: "/",
     siteName: "Lyfe Fitness",
     locale: "en_US",
@@ -45,14 +45,14 @@ export const metadata: Metadata = {
         url: "/og.jpg",
         width: 1200,
         height: 630,
-        alt: "Athletes training at Lyfe Fitness in Baldwin, NY",
+        alt: "Athletes training at Lyfe Fitness in Oceanside, NY",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Lyfe Fitness | Group Training in Baldwin, NY",
-    description: "Coach-led group fitness in Baldwin, NY. Start your free week.",
+    title: "Lyfe Fitness | Group Training in Oceanside, NY",
+    description: "Coach-led group fitness in Oceanside, NY. Start your free week.",
     images: ["/og.jpg"],
   },
 };
@@ -69,10 +69,10 @@ const localBusinessSchema = {
   priceRange: "$$",
   address: {
     "@type": "PostalAddress",
-    streetAddress: "851 Merrick Rd",
-    addressLocality: "Baldwin",
+    streetAddress: "445 Merrick Road",
+    addressLocality: "Oceanside",
     addressRegion: "NY",
-    postalCode: "11510",
+    postalCode: "11572",
     addressCountry: "US",
   },
   openingHoursSpecification: [

@@ -130,7 +130,7 @@ function Hero() {
           </h1>
 
           <p className="mt-8 max-w-2xl font-sans text-base leading-8 text-white/72 md:text-lg">
-            Lyfe Fitness gives Baldwin members a better way to train: coach-led classes,
+            Lyfe Fitness gives Oceanside members a better way to train: coach-led classes,
             thoughtful programming, and a room full of people who make consistency easier.
           </p>
 
@@ -156,7 +156,7 @@ function TrustBar() {
     "Strength and conditioning",
     "Beginner-friendly coaching",
     "Nutrition support",
-    "Baldwin, NY",
+    "Oceanside, NY",
   ];
 
   return (
@@ -439,7 +439,7 @@ function LocationContact() {
             Visit us &amp; get started
           </p>
           <h2 className="font-display text-[clamp(2.75rem,6vw,5.25rem)] font-normal leading-[0.98] tracking-display text-white">
-            Baldwin&rsquo;s home for <em className="italic text-[#f472b6]">coach-led training.</em>
+            Oceanside&rsquo;s home for <em className="italic text-[#f472b6]">coach-led training.</em>
           </h2>
         </div>
 
@@ -448,7 +448,7 @@ function LocationContact() {
           <div className="reveal overflow-hidden rounded-[36px] border border-white/10 bg-white/[0.03] shadow-[0_24px_80px_rgba(0,0,0,0.22)]">
             <div className="overflow-hidden rounded-[28px]" style={{ aspectRatio: "16 / 9" }}>
               <iframe
-                src="https://maps.google.com/maps?q=851+Merrick+Rd+Baldwin+NY+11510&output=embed"
+                src="https://maps.google.com/maps?q=445+Merrick+Road+Oceanside+NY+11572&output=embed"
                 width="100%"
                 height="100%"
                 style={{ border: 0, filter: "invert(90%) hue-rotate(180deg) saturate(0.6)" }}
@@ -465,7 +465,7 @@ function LocationContact() {
             <div className="flex flex-col gap-6 rounded-[36px] border border-white/10 bg-white/[0.04] p-8 font-sans text-white/72 shadow-[0_24px_80px_rgba(0,0,0,0.22)]">
               <div>
                 <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.24em] text-white/38">Address</p>
-                <p className="text-base text-white">851 Merrick Rd, Baldwin, NY 11510</p>
+                <p className="text-base text-white">445 Merrick Road, Oceanside, NY 11572</p>
               </div>
               <div>
                 <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.24em] text-white/38">Hours</p>
@@ -484,7 +484,7 @@ function LocationContact() {
                 </a>
               </div>
               <a
-                href="https://maps.google.com/?q=851+Merrick+Rd+Baldwin+NY+11510"
+                href="https://maps.google.com/?q=445+Merrick+Road+Oceanside+NY+11572"
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex items-center justify-center rounded-[4px] bg-white px-6 py-4 font-sans text-xs font-semibold uppercase tracking-[0.24em] text-black transition hover:bg-[#ec4899] hover:text-white"
