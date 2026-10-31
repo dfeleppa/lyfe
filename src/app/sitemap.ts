@@ -11,5 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/nutrition-program`, priority: 0.7 },
     { url: `${SITE_URL}${COMMUNITY_FITNESS_ARTICLE}`, priority: 0.6 },
     { url: `${SITE_URL}/privacy-policy`, priority: 0.2 },
+    { url: `${SITE_URL}/sms-terms`, priority: 0.2 },
+    { url: `${SITE_URL}/sms`, priority: 0.3 },
   ];
 }

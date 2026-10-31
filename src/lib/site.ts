@@ -1,4 +1,4 @@
-export const SITE_URL = "https://trainlyfe.com";
+export const SITE_URL = "https://www.daneff.com";
 export const MEMBER_APP_URL = "https://app.trainlyfe.com";
 
 export const NAV_ITEMS = [

@@ -25,6 +25,15 @@ export default function SiteFooter() {
             <a href="/#trial" className="font-sans text-sm text-white/55 transition hover:text-white">
               Free Week
             </a>
+            <a href="/privacy-policy" className="font-sans text-sm text-white/55 transition hover:text-white">
+              Privacy Policy
+            </a>
+            <a href="/sms-terms" className="font-sans text-sm text-white/55 transition hover:text-white">
+              SMS Terms
+            </a>
+            <a href="/sms" className="font-sans text-sm text-white/55 transition hover:text-white">
+              Text Updates
+            </a>
           </div>
 
           <div className="space-y-2 font-sans text-sm text-white/55">

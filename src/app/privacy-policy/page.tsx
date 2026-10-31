@@ -40,7 +40,7 @@ export default function PrivacyPolicyPage() {
             This policy explains what Lyfe Fitness collects, why we use it, and the choices available to you when you visit our website or contact us.
           </p>
           <p className="mt-5 font-sans text-xs font-semibold uppercase tracking-[0.2em] text-white/40">
-            Effective and last updated: August 18, 2026
+            Effective and last updated: October 31, 2026
           </p>
         </div>
       </section>
@@ -50,7 +50,7 @@ export default function PrivacyPolicyPage() {
           <aside className="mb-12 border border-white/10 bg-white/[0.04] p-6 font-sans text-sm leading-7 text-white/65 md:p-8">
             <p className="font-semibold text-white">Who this policy covers</p>
             <p className="mt-2">
-              This policy applies to the Lyfe Fitness marketing website at trainlyfe.com, the forms embedded on it, and communications that begin through the website. A member app, enrollment flow, or payment service may provide additional terms or notices when you use it.
+              Lyfe Fitness is operated by Elevate Fitness Inc. This policy applies to our website at daneff.com and www.daneff.com, its embedded forms, and the Lyfe Fitness text-messaging program. A member app, enrollment flow, or payment service may provide additional terms or notices when you use it.
             </p>
           </aside>
 
@@ -68,7 +68,7 @@ export default function PrivacyPolicyPage() {
                   <span className="font-semibold text-white">Website and device information:</span> internet protocol address, browser and device type, approximate location derived from your IP address, referring page, pages viewed, request timestamps, and diagnostic or security logs.
                 </li>
                 <li>
-                  <span className="font-semibold text-white">Communication records:</span> the content and history of emails, calls, texts, form submissions, appointments, and your communication preferences.
+                  <span className="font-semibold text-white">Communication records:</span> the content and history of emails, calls, texts, form submissions, appointments, and your communication preferences, including SMS opt-in and opt-out records, timestamps, and the disclosure associated with your consent.
                 </li>
               </ul>
             </PolicySection>
@@ -97,13 +97,13 @@ export default function PrivacyPolicyPage() {
 
             <PolicySection number="04" title="Calls, texts, and email">
               <p>
-                When you ask us to contact you, we may respond by phone, text, or email using the information you provide. If a form separately asks for consent to marketing calls or texts, that consent is governed by the disclosure shown with the form. This privacy policy does not itself create consent to receive marketing messages.
+                We use your mobile number, messages and consent records to deliver the texts you choose to receive. Our SMS program includes trial and appointment reminders, membership support, gym news and promotional offers. We send recurring marketing texts only with your affirmative consent. Visiting this site, submitting a general inquiry or reading this policy does not itself enroll you in the SMS program. See our <a href="/sms" className={linkClass}>text-message signup</a> and <a href="/sms-terms" className={linkClass}>SMS Terms</a>.
               </p>
               <p>
-                Where applicable, consent to marketing messages is not a condition of purchasing services. Message frequency may vary, and message and data rates may apply. You may opt out of marketing texts by replying <span className="font-semibold text-white">STOP</span> and request help by replying <span className="font-semibold text-white">HELP</span>. You may unsubscribe from marketing emails using the link in the message or by contacting us. We may still send non-promotional messages about an active membership, appointment, transaction, safety issue, or request you made.
+                Consent to texts is optional and is not a condition of purchase or membership. Message frequency varies. Message and data rates may apply. Reply <span className="font-semibold text-white">STOP</span> to unsubscribe from the SMS program or <span className="font-semibold text-white">HELP</span> for assistance. After STOP, you may receive one confirmation of your opt-out; program texts then stop. For assistance, email <a href="mailto:daniel@trainlyfe.com" className={linkClass}>daniel@trainlyfe.com</a> or call (516) 588-0532. You may unsubscribe from marketing emails using the link in the message or by contacting us.
               </p>
               <p>
-                Mobile information and text-message opt-in data will not be sold or shared with third parties for their own marketing. We may provide it to telecommunications carriers, messaging aggregators, and service providers only as needed to deliver and support the messaging program or as required by law.
+                We do not sell, rent or share mobile phone numbers, SMS opt-in data or messaging consent with third parties or affiliates for marketing or promotional purposes. Messaging providers may process this information solely to deliver and support our messaging service. The general disclosure categories below do not authorize sharing SMS consent or mobile information for another party's marketing.
               </p>
             </PolicySection>
 
@@ -117,6 +117,9 @@ export default function PrivacyPolicyPage() {
                   <a href="https://www.gohighlevel.com/privacy-policy" target="_blank" rel="noreferrer" className={linkClass}>
                     HighLevel Privacy Policy
                   </a>.
+                </li>
+                <li>
+                  <span className="font-semibold text-white">Lyfe CRM messaging providers,</span> including Twilio for SMS delivery and opt-out handling, and Convex for secure server-side storage of conversations and consent records. These providers process information to operate our service, not to market their services to you.
                 </li>
                 <li>
                   <span className="font-semibold text-white">Hosting and infrastructure providers,</span> including Vercel, which may process request, device, security, and diagnostic information to deliver the website. See the{" "}
@@ -196,7 +199,7 @@ export default function PrivacyPolicyPage() {
             <PolicySection number="12" title="Contact Lyfe Fitness">
               <p>Questions, requests, or concerns about this policy may be directed to:</p>
               <address className="not-italic text-white/85">
-                <span className="font-semibold text-white">Lyfe Fitness</span>
+                <span className="font-semibold text-white">Lyfe Fitness / Elevate Fitness Inc</span>
                 <br />
                 445 Merrick Road
                 <br />
