@@ -40,7 +40,7 @@ export default function PrivacyPolicyPage() {
             This policy explains what Lyfe Fitness collects, why we use it, and the choices available to you when you visit our website or contact us.
           </p>
           <p className="mt-5 font-sans text-xs font-semibold uppercase tracking-[0.2em] text-white/40">
-            Effective and last updated: October 31, 2026
+            Effective and last updated: November 1, 2026
           </p>
         </div>
       </section>
@@ -97,7 +97,7 @@ export default function PrivacyPolicyPage() {
 
             <PolicySection number="04" title="Calls, texts, and email">
               <p>
-                We use your mobile number, messages and consent records to deliver the texts you choose to receive. Our SMS program includes trial and appointment reminders, membership support, gym news and promotional offers. We send recurring marketing texts only with your affirmative consent. Visiting this site, submitting a general inquiry or reading this policy does not itself enroll you in the SMS program. See our <a href="/sms" className={linkClass}>text-message signup</a> and <a href="/sms-terms" className={linkClass}>SMS Terms</a>.
+                We use your mobile number, messages and consent records to deliver the texts you choose to receive. Informational texts (trial and appointment reminders and membership support) and marketing texts (offers, membership opportunities, events and gym news) have separate optional consent choices. Text START or UNSTOP for informational texts, and separately text YES for marketing texts, after reading the relevant disclosure. Choosing one does not enroll you in the other. We keep the keyword, sender, timestamp and consent evidence for each choice. We send recurring marketing texts only with your affirmative marketing consent. Visiting this site, submitting a general inquiry or reading this policy does not itself enroll you in the SMS program. See our <a href="/sms" className={linkClass}>text-message signup</a> and <a href="/sms-terms" className={linkClass}>SMS Terms</a>.
               </p>
               <p>
                 Consent to texts is optional and is not a condition of purchase or membership. Message frequency varies. Message and data rates may apply. Reply <span className="font-semibold text-white">STOP</span> to unsubscribe from the SMS program or <span className="font-semibold text-white">HELP</span> for assistance. After STOP, you may receive one confirmation of your opt-out; program texts then stop. For assistance, email <a href="mailto:daniel@trainlyfe.com" className={linkClass}>daniel@trainlyfe.com</a> or call (516) 588-0532. You may unsubscribe from marketing emails using the link in the message or by contacting us.

@@ -18,7 +18,7 @@ export default function SmsTermsPage() {
         <header>
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[#f472b6]">Lyfe Fitness · Elevate Fitness Inc</p>
           <h1 className="mt-5 font-display text-5xl leading-tight text-white md:text-6xl">SMS Terms</h1>
-          <p className="mt-5">Effective October 31, 2026</p>
+          <p className="mt-5">Effective November 1, 2026</p>
         </header>
         <section>
           <h2 className="font-display text-2xl text-white">The program</h2>
@@ -26,7 +26,8 @@ export default function SmsTermsPage() {
         </section>
         <section>
           <h2 className="font-display text-2xl text-white">Your choice to join</h2>
-          <p className="mt-3">Follow the disclosure on our <a href="/sms" className={linkClass}>text-message signup page</a> and text START to (516) 862-4888 to enroll. You must be authorized to use the mobile number. Consent is voluntary and is not a condition of purchasing services or becoming a member. General inquiries, free-week forms and pricing forms do not enroll you in this program.</p>
+          <p className="mt-3">Follow the separate disclosures on our <a href="/sms" className={linkClass}>text-message signup page</a>. Text START (or UNSTOP) to (516) 862-4888 for recurring automated informational texts about trials, appointments and membership support. Separately, text YES for recurring automated marketing texts about offers, membership opportunities, events and gym news. Send both keywords as separate messages only if you want both categories. Choosing one category does not enroll you in the other. A coach reviews the recorded keyword and consent before program messages begin.</p>
+          <p className="mt-3">You must be authorized to use the mobile number. Each consent is voluntary and is not a condition of purchasing services or becoming a member. You can choose either, both, or neither. General inquiries, free-week forms and pricing forms do not enroll you in this program.</p>
         </section>
         <section>
           <h2 className="font-display text-2xl text-white">Charges and delivery</h2>
@@ -34,7 +35,7 @@ export default function SmsTermsPage() {
         </section>
         <section>
           <h2 className="font-display text-2xl text-white">Stop messages or get help</h2>
-          <p className="mt-3">Reply STOP to unsubscribe. You may receive one final confirmation, after which program texts stop. Reply HELP for assistance, email <a href="mailto:daniel@trainlyfe.com" className={linkClass}>daniel@trainlyfe.com</a>, or call (516) 588-0532. To request enrollment again, revisit the signup disclosure and text START; staff may review renewed consent before resuming messages. Tell us if you change or give up your number.</p>
+          <p className="mt-3">Reply STOP to unsubscribe from both categories. You may receive one final confirmation, after which program texts stop. Reply HELP for assistance, email <a href="mailto:daniel@trainlyfe.com" className={linkClass}>daniel@trainlyfe.com</a>, or call (516) 588-0532. To request enrollment again, revisit the signup disclosure and send the keyword for each category you choose; staff review renewed consent before resuming messages. Tell us if you change or give up your number.</p>
         </section>
         <section>
           <h2 className="font-display text-2xl text-white">Privacy and contact</h2>
