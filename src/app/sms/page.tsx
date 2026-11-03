@@ -1,13 +1,13 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import SiteFooter from "../components/SiteFooter";
 import SiteNav from "../components/SiteNav";
 import SmsSignupForm from "./SmsSignupForm";
 
-export const metadata: Metadata = {
-  title: "Text Updates | Lyfe Fitness",
-  description: "Choose Lyfe Fitness appointment texts, marketing texts, both, or neither. Each has its own optional signup.",
-  alternates: { canonical: "/sms" },
-};
+export const metadata = pageMetadata(
+  "Text Updates | Lyfe Fitness",
+  "Choose Lyfe Fitness appointment texts, marketing texts, both, or neither. Each has its own optional signup.",
+  "/sms",
+);
 
 export default function SmsSignupPage() {
   return (

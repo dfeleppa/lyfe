@@ -1,14 +1,13 @@
-// Keep the current host until the migration is approved. Set this at build time
-// to https://trainlyfe.com for the cutover (metadata, sitemap and schema).
+// The public marketing site's canonical origin after the domain migration.
 export const SITE_URL = new URL(
-  process.env.NEXT_PUBLIC_SITE_URL || "https://www.daneff.com",
+  process.env.NEXT_PUBLIC_SITE_URL || "https://trainlyfe.com",
 ).origin;
 export const MEMBER_APP_URL = "https://app.chalkitpro.com";
 
 export const NAV_ITEMS = [
   { label: "Membership & Pricing", href: "/pricing" },
   { label: "Schedule", href: "/schedule" },
-  { label: "Location", href: "/#location" },
+  { label: "Location", href: "/location" },
   { label: "Contact", href: "/#trial" },
   { label: "Member Login", href: MEMBER_APP_URL },
 ];

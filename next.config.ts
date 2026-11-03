@@ -7,6 +7,16 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      // Consolidate only the website aliases; app and other subdomains are unaffected.
+      ...["daneff.com", "www.daneff.com", "www.trainlyfe.com"].map((host) => ({
+        source: "/:path*",
+        has: [{ type: "host" as const, value: host }],
+        destination: "https://trainlyfe.com/:path*",
+        permanent: true,
+      })),
+      { source: "/location/", destination: "/location", permanent: true },
+      { source: "/sms/", destination: "/sms", permanent: true },
+      { source: "/sms-terms/", destination: "/sms-terms", permanent: true },
       { source: "/get-started", destination: "/#trial", permanent: true },
       { source: "/get-started/", destination: "/#trial", permanent: true },
       { source: "/consult", destination: "/#trial", permanent: true },

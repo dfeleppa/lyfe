@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
-  alternates: { canonical: "/privacy-policy" },
-  title: "Privacy Policy | Lyfe Fitness",
-  description: "How Lyfe Fitness collects, uses, and protects your personal information.",
-};
+export const metadata = pageMetadata(
+  "Privacy Policy | Lyfe Fitness",
+  "How Lyfe Fitness collects, uses, and protects your personal information.",
+  "/privacy-policy",
+);
 
 export default function PrivacyPolicyLayout({ children }: { children: React.ReactNode }) {
   return children;

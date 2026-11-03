@@ -121,13 +121,12 @@ function Hero() {
           <p className="font-sans text-xs font-semibold uppercase tracking-[0.28em] text-[#f472b6]">
             Group Fitness - Reimagined
           </p>
-          <h1 className="mt-6 max-w-5xl font-display text-[clamp(3.5rem,9vw,8rem)] font-normal leading-[0.92] tracking-tightest text-white">
-            Coaching.
+          <h1 className="mt-6 max-w-5xl font-display text-[clamp(2.75rem,7vw,6rem)] font-normal leading-[1.05] tracking-tightest text-white">
+            Coach-led group fitness
             <br />
-            Results.
-            <br />
-            <em className="text-[#ec4899]">Community</em>
+            in <em className="text-[#ec4899]">Oceanside, NY.</em>
           </h1>
+          <p className="mt-5 font-sans text-sm tracking-wide text-white/75">Coaching. Results. Community.</p>
 
           <p className="mt-8 max-w-2xl font-sans text-base leading-8 text-white/72 md:text-lg">
             Lyfe Fitness gives Oceanside members a better way to train: coach-led classes,
@@ -444,6 +443,11 @@ function LocationContact() {
           <h2 className="font-display text-[clamp(2.75rem,6vw,5.25rem)] font-normal leading-[0.98] tracking-display text-white">
             Oceanside&rsquo;s home for <em className="italic text-[#f472b6]">coach-led training.</em>
           </h2>
+          <p className="mt-6 max-w-2xl text-base leading-8 text-white/75">
+            Previously in Baldwin, now at 445 Merrick Road in Oceanside, NY 11572.
+            Visit our new home for coach-led group fitness and a free intro class.
+          </p>
+          <a href="/location" className="mt-4 inline-block text-[#f472b6] underline underline-offset-4">Oceanside location, hours and directions</a>
         </div>
 
         <div className="mt-12 grid gap-6 lg:grid-cols-[minmax(0,1.1fr)_360px] lg:items-start">

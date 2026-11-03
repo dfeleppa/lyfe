@@ -1,12 +1,12 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import SiteFooter from "../components/SiteFooter";
 import SiteNav from "../components/SiteNav";
 
-export const metadata: Metadata = {
-  title: "SMS Terms | Lyfe Fitness",
-  description: "Terms for the Lyfe Fitness text-messaging program.",
-  alternates: { canonical: "/sms-terms" },
-};
+export const metadata = pageMetadata(
+  "SMS Terms | Lyfe Fitness",
+  "Terms for the Lyfe Fitness text-messaging program.",
+  "/sms-terms",
+);
 
 const linkClass = "text-[#f472b6] underline underline-offset-4 hover:text-white";
 

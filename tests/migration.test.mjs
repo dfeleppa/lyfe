@@ -9,11 +9,11 @@ async function loadSite() {
   return import(`data:text/javascript;base64,${Buffer.from(code).toString("base64")}#${Math.random()}`);
 }
 
-test("canonical origin stays on current host until configured for apex trainlyfe; member login uses Chalk It Pro", async () => {
+test("canonical origin defaults to trainlyfe; member login uses Chalk It Pro", async () => {
   const previous = process.env.NEXT_PUBLIC_SITE_URL;
   try {
     delete process.env.NEXT_PUBLIC_SITE_URL;
-    assert.equal((await loadSite()).SITE_URL, "https://www.daneff.com");
+    assert.equal((await loadSite()).SITE_URL, "https://trainlyfe.com");
     process.env.NEXT_PUBLIC_SITE_URL = "https://trainlyfe.com/";
     const site = await loadSite();
     assert.equal(site.SITE_URL, "https://trainlyfe.com");

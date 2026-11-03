@@ -62,10 +62,12 @@ export const metadata: Metadata = {
 const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "ExerciseGym",
+  "@id": `${SITE_URL}/#gym`,
   name: "Lyfe Fitness",
   url: SITE_URL,
   image: `${SITE_URL}/og.jpg`,
-  logo: `${SITE_URL}/lflogo.png`,
+  logo: `${SITE_URL}/lyfe-logo-uppercase-f.png`,
+  hasMap: "https://www.google.com/maps/search/?api=1&query=445+Merrick+Road+Oceanside+NY+11572",
   telephone: "+15165880532",
   email: "daniel@trainlyfe.com",
   priceRange: "$$",
