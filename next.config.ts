@@ -18,6 +18,8 @@ const nextConfig: NextConfig = {
       { source: "/sms/", destination: "/sms", permanent: true },
       { source: "/sms-terms/", destination: "/sms-terms", permanent: true },
       { source: "/get-started", destination: "/#trial", permanent: true },
+      { source: "/home/how-to-join", destination: "/#trial", permanent: true },
+      { source: "/home/how-to-join/", destination: "/#trial", permanent: true },
       { source: "/get-started/", destination: "/#trial", permanent: true },
       { source: "/consult", destination: "/#trial", permanent: true },
       { source: "/consult/", destination: "/#trial", permanent: true },
