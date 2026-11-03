@@ -20,3 +20,13 @@ Original next/font Latin assets before pinning:
 
 No Python/fontTools runtime or build dependency is required; the optimized
 assets are committed and served locally by next/font/local.
+
+November 2026 payload optimization:
+All fonts retain ASCII plus the non-ASCII characters used in src/**/*.ts(x).
+fontTools.subset retains all layout features and Fraunces optical sizing.
+Inter is the same Google Fonts Latin asset 83afe278b6a6bb3c-s.p.0q-301v4kxxnr.woff2,
+restricted to the site's 400-700 weight range before subsetting.
+Inter copyright 2020 The Inter Project Authors (https://github.com/rsms/inter).
+License: OFL-Inter.txt. All outlines used by the current site are preserved.
+Combined font payload: 72,720 bytes (previously 125,216 bytes).
+When adding non-English copy, expand these subsets from the upstream fonts.

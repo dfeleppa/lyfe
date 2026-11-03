@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import localFont from "next/font/local";
 import AnalyticsScripts from "./components/AnalyticsScripts";
 import AnalyticsEvents from "./components/AnalyticsEvents";
@@ -19,10 +18,13 @@ const fraunces = localFont({
   adjustFontFallback: "Times New Roman",
 });
 
-const inter = Inter({
-  subsets: ["latin"],
+const inter = localFont({
+  src: "../../public/fonts/inter-latin-400-700.woff2",
+  weight: "400 700",
+  style: "normal",
   variable: "--font-sans",
   display: "swap",
+  adjustFontFallback: "Arial",
 });
 
 export const metadata: Metadata = {
