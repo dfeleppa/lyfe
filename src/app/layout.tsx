@@ -25,6 +25,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  robots: process.env.VERCEL_ENV === "preview" ? { index: false, follow: false } : undefined,
   metadataBase: new URL(SITE_URL),
   title: "Lyfe Fitness | Group Training in Oceanside, NY",
   description:

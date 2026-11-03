@@ -114,7 +114,7 @@ export default function GlobalCRMPopup() {
           src="https://link.gymntx.com/widget/form/qtz9BpzFGxwbX54pvvKx"
           style={{ display: "block", width: "100%", height: "min(62vh, 700px)", minHeight: "320px", border: "none", borderRadius: "4px", background: "#ffffff" }}
           id="popup-qtz9BpzFGxwbX54pvvKx"
-          data-layout="{'id':'POPUP'}"
+          data-layout="{'id':'INLINE'}"
           data-trigger-type="alwaysShow"
           data-trigger-value=""
           data-activation-type="alwaysActivated"

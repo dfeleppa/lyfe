@@ -1,5 +1,9 @@
-export const SITE_URL = "https://www.daneff.com";
-export const MEMBER_APP_URL = "https://app.trainlyfe.com";
+// Keep the current host until the migration is approved. Set this at build time
+// to https://trainlyfe.com for the cutover (metadata, sitemap and schema).
+export const SITE_URL = new URL(
+  process.env.NEXT_PUBLIC_SITE_URL || "https://www.daneff.com",
+).origin;
+export const MEMBER_APP_URL = "https://app.chalkitpro.com";
 
 export const NAV_ITEMS = [
   { label: "Membership & Pricing", href: "/pricing" },

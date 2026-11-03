@@ -64,7 +64,7 @@ export default function SiteFooter() {
             © {new Date().getFullYear()} Lyfe Fitness
           </p>
           <p className="font-sans text-xs uppercase tracking-[0.22em] text-white/35">
-            Member login at <a href={MEMBER_APP_URL} className="transition hover:text-white/50">app.trainlyfe.com</a>
+            Member login at <a href={MEMBER_APP_URL} className="transition hover:text-white/50">Chalk It Pro</a>
           </p>
         </div>
       </div>

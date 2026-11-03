@@ -146,7 +146,7 @@ export default function SchedulePage() {
           <p className="mt-6 text-center font-sans text-sm leading-7 text-white/35">
             Schedule may vary on holidays and special events. Check{" "}
             <a href={MEMBER_APP_URL} target="_blank" rel="noreferrer" className="text-white/50 underline underline-offset-2 transition hover:text-white">
-              app.trainlyfe.com
+              Chalk It Pro
             </a>{" "}
             or follow us on Instagram for any changes.
           </p>

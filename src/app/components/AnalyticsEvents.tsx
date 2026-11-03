@@ -3,6 +3,7 @@
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 import { trackEvent } from "@/lib/analytics";
+import { MEMBER_APP_URL } from "@/lib/site";
 
 function linkDetails(element: Element) {
   const link = element.closest("a");
@@ -69,7 +70,7 @@ export default function AnalyticsEvents() {
 
       try {
         const destination = new URL(link.href);
-        if (destination.hostname !== "app.trainlyfe.com") return;
+        if (destination.origin !== new URL(MEMBER_APP_URL).origin) return;
 
         trackEvent(
           destination.pathname.startsWith("/register")
