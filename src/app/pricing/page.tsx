@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 import SiteFooter from "../components/SiteFooter";
 import SiteNav from "../components/SiteNav";
@@ -16,6 +14,7 @@ export default function PricingPage() {
           alt="Lyfe Fitness members training"
           fill
           priority
+          quality={60}
           sizes="100vw"
           className="z-0 object-cover opacity-60"
         />

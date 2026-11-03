@@ -19,6 +19,7 @@ function useReveal() {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
+            entry.target.classList.remove("reveal-pending");
             entry.target.classList.add("visible");
             observer.unobserve(entry.target);
           }
@@ -27,9 +28,17 @@ function useReveal() {
       { threshold: 0.12 }
     );
 
-    elements.forEach((element) => observer.observe(element));
+    elements.forEach((element) => {
+      if (element.getBoundingClientRect().top >= window.innerHeight) {
+        element.classList.add("reveal-pending");
+      }
+      observer.observe(element);
+    });
 
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+      elements.forEach((element) => element.classList.remove("reveal-pending"));
+    };
   }, []);
 }
 
@@ -113,7 +122,7 @@ function Hero() {
     <section id="top" className="relative overflow-hidden border-b border-white/10 pb-16 pt-32 md:pb-24 md:pt-40">
       <div className="hero-orb left-[-12rem] top-[8rem]" />
       <div className="hero-orb hero-orb-alt right-[-8rem] top-[18rem]" />
-      <Image src="/hero.jpg" alt="Athletes training at Lyfe Fitness" fill priority fetchPriority="high" sizes="100vw" className="z-0 object-cover opacity-60" />
+      <Image src="/hero.jpg" alt="Athletes training at Lyfe Fitness" fill priority fetchPriority="high" quality={60} sizes="100vw" className="z-0 object-cover opacity-60" />
       <div className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.16),transparent_32%),linear-gradient(180deg,rgba(7,7,9,0.2)_0%,rgba(7,7,9,0.95)_72%,rgba(7,7,9,1)_100%)]" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-12">
@@ -252,7 +261,7 @@ function Programs() {
               className={`reveal ${REVEAL_DELAYS[index + 1]} overflow-hidden rounded-none border border-white/10 bg-white/[0.03] shadow-[0_24px_80px_rgba(0,0,0,0.2)]`}
             >
               <div className="relative flex min-h-[28rem] items-end overflow-hidden sm:min-h-[32rem] lg:min-h-[30rem]">
-                <Image src={program.image} alt={program.title} fill sizes="(min-width: 1024px) 33vw, 100vw" className="object-cover" />
+                <Image src={program.image} alt={program.title} fill sizes="(min-width: 1280px) 400px, (min-width: 1024px) 30vw, (min-width: 768px) calc(100vw - 96px), calc(100vw - 48px)" className="object-cover" />
                 <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.05)_0%,rgba(0,0,0,0.2)_30%,rgba(0,0,0,0.9)_100%)]" />
                 <div className="relative z-10 w-full p-6 sm:p-8">
                   <p className="mb-3 font-sans text-[10px] font-semibold uppercase tracking-[0.24em] text-[#f472b6]">
@@ -593,6 +602,7 @@ export default function LandingPage() {
   return (
     <>
       <SiteNav />
+      <main>
       <Hero />
       <TrustBar />
       <Difference />
@@ -600,6 +610,7 @@ export default function LandingPage() {
       <Testimonials />
       <LocationContact />
       <LeadForm />
+      </main>
       <SiteFooter />
     </>
   );

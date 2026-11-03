@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 import { MEMBER_APP_URL } from "@/lib/site";
 import SiteFooter from "../components/SiteFooter";

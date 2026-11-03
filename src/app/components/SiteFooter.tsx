@@ -35,6 +35,9 @@ export default function SiteFooter() {
             <a href="/sms" className="font-sans text-sm text-white/55 transition hover:text-white">
               Text Updates
             </a>
+            <a href="/what-are-the-benefits-of-joining-a-community-based-fitness-gym" className="font-sans text-sm text-white/55 transition hover:text-white">
+              Why Group Fitness
+            </a>
           </div>
 
           <div className="space-y-2 font-sans text-sm text-white/55">

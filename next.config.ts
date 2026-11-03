@@ -4,9 +4,12 @@ const nextConfig: NextConfig = {
   skipTrailingSlashRedirect: true,
   images: {
     remotePatterns: [],
+    formats: ["image/avif", "image/webp"],
+    qualities: [60, 75],
   },
   async redirects() {
     return [
+      { source: "/sitemap_index.xml", destination: "/sitemap.xml", permanent: true },
       // Consolidate only the website aliases; app and other subdomains are unaffected.
       ...["daneff.com", "www.daneff.com", "www.trainlyfe.com"].map((host) => ({
         source: "/:path*",
