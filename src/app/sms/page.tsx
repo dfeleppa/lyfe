@@ -21,7 +21,7 @@ export default function SmsSignupPage() {
         <SmsSignupForm />
         <p className="mt-7 text-sm leading-7 text-white/65">We confirm receipt by text and keep your category choices separately. A coach reviews consent before program messages begin. STOP cancels both categories. After an opt-out, any renewed consent is reviewed before messages resume.</p>
         <p className="mt-7 text-sm leading-7 text-white/65">Our new text program is being activated. Routine messages will begin after carrier approval. You can still call (516) 588-0532 or email <a href="mailto:daniel@trainlyfe.com" className="text-[#f472b6] underline underline-offset-4">daniel@trainlyfe.com</a> for help today.</p>
-        <p className="mt-4 text-sm leading-7 text-white/65">Our free-week and pricing forms remain separate. Filling out those forms does not subscribe you to this text program.</p>
+        <p className="mt-4 text-sm leading-7 text-white/65">Our free intro class and pricing forms remain separate. Filling out those forms does not subscribe you to this text program.</p>
       </section>
       <SiteFooter />
     </main>

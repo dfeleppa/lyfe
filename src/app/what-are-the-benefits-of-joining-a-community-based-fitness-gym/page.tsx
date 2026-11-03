@@ -67,7 +67,7 @@ export default function CommunityFitnessArticlePage() {
               data-open-crm-popup="true"
               className="mt-7 inline-flex items-center rounded-[4px] bg-[#be185d] px-7 py-3.5 font-sans text-xs font-semibold uppercase tracking-[0.24em] text-white transition hover:bg-[#9d174d]"
             >
-              Start Your Free Week
+              Book Your Free Intro Class
             </a>
           </section>
         </div>

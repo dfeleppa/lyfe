@@ -110,7 +110,7 @@ export default function PricingPage() {
                   {
                     step: "02",
                     title: "Try It Out",
-                    body: "Start your free week with a free intro. Meet your coach, ask questions, and find the right starting point before joining a class.",
+                    body: "Start with a free intro class. Meet your coach, ask questions, and find the right starting point before joining a class.",
                   },
                   {
                     step: "03",

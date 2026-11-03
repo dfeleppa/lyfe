@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: "Lyfe Fitness | Group Training in Oceanside, NY",
   description:
-    "Coach-led group fitness in Oceanside, NY. Purposeful programming, real coaching, and a community that makes consistency easier. Start your free week.",
+    "Coach-led group fitness in Oceanside, NY. Purposeful programming, real coaching, and a community that makes consistency easier. Book your free intro class.",
   alternates: {
     canonical: "/",
   },
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Lyfe Fitness | Group Training in Oceanside, NY",
-    description: "Coach-led group fitness in Oceanside, NY. Start your free week.",
+    description: "Coach-led group fitness in Oceanside, NY. Book your free intro class.",
     images: ["/og.jpg"],
   },
 };

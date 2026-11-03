@@ -116,7 +116,7 @@ export default function SchedulePage() {
             <em className="text-[#ec4899]">Show up ready.</em>
           </h1>
           <p className="mt-8 max-w-xl font-sans text-base leading-8 text-white/60 md:text-lg">
-            New to Lyfe? Start your free week with a free intro.
+            New to Lyfe? Start with a free intro class.
           </p>
           <a
             href="/#trial"
@@ -161,7 +161,7 @@ export default function SchedulePage() {
             <div className="max-w-2xl text-center">
               <h3 className="font-display text-2xl text-black">Ready to start?</h3>
               <p className="mt-3 font-sans text-sm leading-7 text-black/60">
-                Start your free week with a free intro. Reach out at daniel@trainlyfe.com or call (516) 588-0532 to set it up.
+                Start with a free intro class. Reach out at daniel@trainlyfe.com or call (516) 588-0532 to set it up.
               </p>
             </div>
           </div>

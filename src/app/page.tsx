@@ -424,7 +424,7 @@ function Testimonials() {
               href="#trial"
               className="inline-flex items-center justify-center rounded-[4px] border border-black/12 px-6 py-3 font-sans text-xs font-semibold uppercase tracking-[0.24em] text-black transition hover:border-black hover:bg-black hover:text-white"
             >
-              Start Your Free Week
+              Book Your Free Intro Class
             </a>
           </div>
         </div>
@@ -451,7 +451,7 @@ function LocationContact() {
           <div className="reveal overflow-hidden rounded-[36px] border border-white/10 bg-white/[0.03] shadow-[0_24px_80px_rgba(0,0,0,0.22)]">
             <div className="overflow-hidden rounded-[28px]" style={{ aspectRatio: "16 / 9" }}>
               <iframe
-                src="https://maps.google.com/maps?q=445+Merrick+Road+Oceanside+NY+11572&output=embed"
+                src="https://www.google.com/maps/embed?origin=mfe&pb=!1m2!2m1!1s445+Merrick+Road+Oceanside+NY+11572"
                 width="100%"
                 height="100%"
                 style={{ border: 0, filter: "invert(90%) hue-rotate(180deg) saturate(0.6)" }}
@@ -460,6 +460,17 @@ function LocationContact() {
                 referrerPolicy="no-referrer-when-downgrade"
                 title="Lyfe Fitness location"
               />
+            </div>
+            <div className="border-t border-white/10 px-6 py-4 font-sans text-sm leading-6 text-white/75">
+              <p>445 Merrick Road, Oceanside, NY 11572</p>
+              <a
+                href="https://maps.google.com/?q=445+Merrick+Road+Oceanside+NY+11572"
+                target="_blank"
+                rel="noreferrer"
+                className="font-semibold text-white underline underline-offset-4 hover:text-[#f472b6]"
+              >
+                Open in Google Maps
+              </a>
             </div>
           </div>
 
@@ -514,10 +525,10 @@ function LeadForm() {
               Start here
             </p>
             <h2 className="font-display text-[clamp(2.75rem,6vw,5.25rem)] font-normal leading-[0.98] tracking-display text-black">
-              Your first week is <em className="italic text-[#be185d]">on us.</em>
+              Your intro class is <em className="italic text-[#be185d]">on us.</em>
             </h2>
             <p className="mt-6 max-w-md font-sans text-base leading-7 text-black/65">
-              Start your free week with a free intro. Fill out the form, then choose your intro time on the next page.
+              Start with a free intro class. Fill out the form, then choose your intro class time on the next page.
             </p>
             <p className="mt-8 font-sans text-base font-semibold uppercase tracking-[0.18em] text-black/60">
               Contact Us Directly

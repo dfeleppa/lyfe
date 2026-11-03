@@ -23,7 +23,7 @@ export default function SiteFooter() {
               </a>
             ))}
             <a href="/#trial" className="font-sans text-sm text-white/55 transition hover:text-white">
-              Free Week
+              Free Intro Class
             </a>
             <a href="/privacy-policy" className="font-sans text-sm text-white/55 transition hover:text-white">
               Privacy Policy

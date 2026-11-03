@@ -27,7 +27,7 @@ export default function SmsTermsPage() {
         <section>
           <h2 className="font-display text-2xl text-white">Your choice to join</h2>
           <p className="mt-3">Follow the separate disclosures on our <a href="/sms" className={linkClass}>text-message signup page</a>. Text START (or UNSTOP) to (516) 862-4888 for recurring automated informational texts about trials, appointments and membership support. Separately, text YES for recurring automated marketing texts about offers, membership opportunities, events and gym news. Send both keywords as separate messages only if you want both categories. Choosing one category does not enroll you in the other. A coach reviews the recorded keyword and consent before program messages begin.</p>
-          <p className="mt-3">You must be authorized to use the mobile number. Each consent is voluntary and is not a condition of purchasing services or becoming a member. You can choose either, both, or neither. General inquiries, free-week forms and pricing forms do not enroll you in this program.</p>
+          <p className="mt-3">You must be authorized to use the mobile number. Each consent is voluntary and is not a condition of purchasing services or becoming a member. You can choose either, both, or neither. General inquiries, free intro class forms and pricing forms do not enroll you in this program.</p>
         </section>
         <section>
           <h2 className="font-display text-2xl text-white">Charges and delivery</h2>

@@ -75,7 +75,7 @@ export default function PrivacyPolicyPage() {
 
             <PolicySection number="02" title="How we collect information">
               <p>
-                We collect information directly from you when you submit a free-week or pricing form, contact us, schedule an appointment, create a membership account, or purchase services. We also receive limited technical information automatically from our hosting provider and from embedded services when your browser loads or interacts with them.
+                We collect information directly from you when you submit a free intro class or pricing form, contact us, schedule an appointment, create a membership account, or purchase services. We also receive limited technical information automatically from our hosting provider and from embedded services when your browser loads or interacts with them.
               </p>
               <p>
                 If another person provides information about you, they are responsible for having permission to do so. Please do not submit sensitive medical or health information through the general website forms. Share health information with a coach only through the process Lyfe Fitness designates for that purpose.
