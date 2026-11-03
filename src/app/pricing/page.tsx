@@ -37,8 +37,8 @@ export default function PricingPage() {
       {/* Plans */}
       <section className="py-20 md:py-28">
         <div className="mx-auto max-w-7xl px-6 md:px-12">
-          <div className="grid gap-6 lg:grid-cols-2 lg:gap-8">
-            <div className="relative flex flex-col rounded-none border border-[#ec4899]/40 bg-[#FFFFFF0D] p-10 shadow-[0_0_60px_rgba(236,72,153,0.08)] md:p-12">
+          <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-8">
+            <div className="relative flex min-w-0 flex-col rounded-none border border-[#ec4899]/40 bg-[#FFFFFF0D] p-6 shadow-[0_0_60px_rgba(236,72,153,0.08)] sm:p-10 md:p-12">
               <p className="font-sans text-xs font-semibold uppercase tracking-[0.28em] text-white/65">
                 Membership
               </p>
@@ -89,7 +89,7 @@ export default function PricingPage() {
               </div>
             </div>
 
-            <div className="relative flex flex-col rounded-[28px] border border-white/10 bg-[#FFFFFF0D] p-10 md:p-12">
+            <div className="relative flex min-w-0 flex-col rounded-[28px] border border-white/10 bg-[#FFFFFF0D] p-6 sm:p-10 md:p-12">
               <p className="font-sans text-xs font-semibold uppercase tracking-[0.28em] text-white/65">
                 Start Here
               </p>
@@ -120,7 +120,7 @@ export default function PricingPage() {
                 ].map((item) => (
                   <div key={item.step} className="flex gap-4 border-t border-white/10 pt-6 first:border-t-0 first:pt-0">
                     <span className="font-sans text-xs font-semibold tracking-[0.24em] text-[#f472b6]">{item.step}</span>
-                    <div>
+                    <div className="min-w-0">
                       <p className="font-display text-2xl text-white">{item.title}</p>
                       <p className="mt-2 font-sans text-sm leading-7 text-white/65">{item.body}</p>
                     </div>

@@ -17,7 +17,9 @@ export default function InquiryDialog({ kind, title, description }: Props) {
         : null;
       if (!trigger) return;
       event.preventDefault();
-      openerRef.current = trigger;
+      // Mobile menu links unmount when selected; return focus to their persistent toggle.
+      const returnFocusId = trigger.dataset.dialogReturnFocus;
+      openerRef.current = (returnFocusId ? document.getElementById(returnFocusId) : null) ?? trigger;
       setOpen(true);
     };
     document.addEventListener("click", onClick);

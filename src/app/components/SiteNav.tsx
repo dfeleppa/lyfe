@@ -98,6 +98,7 @@ export default function SiteNav({ cta = DEFAULT_CTA }: SiteNavProps) {
 
           <button
             ref={menuButtonRef}
+            id="mobile-menu-toggle"
             type="button"
             onClick={() => setOpen((value) => !value)}
             className="flex h-11 w-11 flex-col items-center justify-center gap-1.5 rounded-[4px] outline-none focus-visible:ring-2 focus-visible:ring-pink-400 xl:hidden"
@@ -127,6 +128,7 @@ export default function SiteNav({ cta = DEFAULT_CTA }: SiteNavProps) {
           <a
             href={cta.href}
             data-open-crm-popup={cta.openCrmPopup ? "true" : undefined}
+            data-dialog-return-focus="mobile-menu-toggle"
             onClick={() => setOpen(false)}
             className="mx-6 my-4 rounded-[4px] bg-pink-700 px-6 py-3 text-center font-sans text-xs font-semibold uppercase tracking-widest text-white transition hover:bg-pink-800"
           >
