@@ -203,7 +203,7 @@ function Difference() {
               className={`reveal ${REVEAL_DELAYS[index + 1]} overflow-hidden rounded-none border border-black/8 bg-black text-white shadow-[0_30px_80px_rgba(0,0,0,0.14)]`}
             >
               <div className="relative flex min-h-[28rem] items-end overflow-hidden sm:min-h-[32rem] lg:min-h-[30rem]">
-                <Image src={pillar.image} alt={pillar.heading} fill sizes="(min-width: 1024px) 33vw, 100vw" loading={index === 0 ? "eager" : undefined} className="object-cover" />
+                <Image src={pillar.image} alt={pillar.heading} fill sizes="(min-width: 1280px) 400px, (min-width: 1024px) 30vw, (min-width: 768px) calc(100vw - 96px), calc(100vw - 48px)" className="object-cover" />
                 <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.12)_0%,rgba(0,0,0,0.22)_30%,rgba(0,0,0,0.88)_100%)]" />
                 <div className="relative z-10 w-full p-6 sm:p-8">
                   <p className="mb-3 font-sans text-[10px] font-semibold uppercase tracking-[0.24em] text-[#f472b6]">

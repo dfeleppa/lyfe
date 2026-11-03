@@ -1,21 +1,22 @@
 import type { Metadata } from "next";
-import { Fraunces, Inter } from "next/font/google";
-import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
+import { Inter } from "next/font/google";
+import localFont from "next/font/local";
+import AnalyticsScripts from "./components/AnalyticsScripts";
 import AnalyticsEvents from "./components/AnalyticsEvents";
 import GlobalCRMPopup from "./components/GlobalCRMPopup";
 import GlobalPricingPopup from "./components/GlobalPricingPopup";
-import { ANALYTICS_ENABLED, GOOGLE_TAG_ID, GTM_ID } from "@/lib/analytics-config";
 import { SITE_URL } from "@/lib/site";
 import "./globals.css";
 
-// Display font — stands in for Reckless Neue until font files are added.
-// See globals.css for the @font-face block to uncomment once you have the files.
-const fraunces = Fraunces({
-  subsets: ["latin"],
-  style: ["normal", "italic"],
+// Same Fraunces design and optical sizing, with unused weight variations removed.
+const fraunces = localFont({
+  src: [
+    { path: "../../public/fonts/fraunces-latin-400-regular.woff2", weight: "400", style: "normal" },
+    { path: "../../public/fonts/fraunces-latin-400-italic.woff2", weight: "400", style: "italic" },
+  ],
   variable: "--font-display",
   display: "swap",
-  axes: ["SOFT", "WONK", "opsz"],
+  adjustFontFallback: "Times New Roman",
 });
 
 const inter = Inter({
@@ -93,8 +94,8 @@ const localBusinessSchema = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${fraunces.variable} ${inter.variable}`}>
-      {ANALYTICS_ENABLED && GTM_ID ? <GoogleTagManager gtmId={GTM_ID} /> : null}
       <body className="bg-black text-white font-sans antialiased">
+        <AnalyticsScripts />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
@@ -104,7 +105,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <GlobalCRMPopup />
         <GlobalPricingPopup />
       </body>
-      {ANALYTICS_ENABLED && !GTM_ID && GOOGLE_TAG_ID ? <GoogleAnalytics gaId={GOOGLE_TAG_ID} /> : null}
     </html>
   );
 }

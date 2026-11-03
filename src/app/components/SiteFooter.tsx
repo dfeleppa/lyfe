@@ -1,4 +1,5 @@
 import { MEMBER_APP_URL, NAV_ITEMS } from "@/lib/site";
+import Image from "next/image";
 
 export default function SiteFooter() {
   return (
@@ -6,7 +7,7 @@ export default function SiteFooter() {
       <div className="mx-auto max-w-7xl">
         <div className="flex flex-col gap-12 lg:flex-row lg:items-start lg:justify-between">
           <div className="max-w-sm">
-            <img src="/lflogo1.png" alt="Lyfe Fitness logo" className="h-12 w-auto" />
+            <Image src="/lflogo1.png" alt="Lyfe Fitness logo" width={1080} height={165} sizes="315px" className="h-12 w-auto" />
             <p className="mt-5 font-sans text-sm leading-7 text-white/60">
               Coach-led group fitness for people who want structure, momentum, and a community that makes it fun.
             </p>
