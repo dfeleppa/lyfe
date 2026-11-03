@@ -56,9 +56,9 @@ export default function PricingPage() {
                   "Coach-led group sessions",
                   "Access to all class types",
                   "Beginner-friendly onboarding",
-                  "Nutrition Consulting (addon)",
-                  "Personal Programming (addon)",
-                  "1:1 Private Sessions (addon)",
+                  "Nutrition Consulting (add-on)",
+                  "Personal Programming (add-on)",
+                  "1:1 Private Sessions (add-on)",
                 ].map((feature) => (
                   <li key={feature} className="flex items-center gap-3 font-sans text-sm text-white/78">
                     <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#ec4899]/15 text-[#ec4899]">
@@ -105,7 +105,7 @@ export default function PricingPage() {
                   {
                     step: "01",
                     title: "Let's Talk",
-                    body: "We'll set up a quick call or come in to meet the team - no pressure, just a real conversation to make sure we're the right fit for you.",
+                    body: "We'll set up a quick call, or you can come in to meet the team - no pressure, just a real conversation to make sure we're the right fit for you.",
                   },
                   {
                     step: "02",
