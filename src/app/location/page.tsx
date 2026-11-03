@@ -19,7 +19,7 @@ export default function LocationPage() {
         <h1 className="mt-5 font-display text-4xl leading-tight md:text-6xl">Your gym in Oceanside, NY.</h1>
         <p className="mt-6 max-w-3xl text-lg leading-8 text-white/75">
           Previously in Baldwin, Lyfe Fitness is now at 445 Merrick Road in Oceanside.
-          Join us for coach-led group fitness, strength and conditioning, and a welcoming place to start.
+          Join us for <a href="/group-fitness" className="text-[#f472b6] underline">coach-led group fitness</a>, strength and conditioning, and a welcoming place to start.
         </p>
         <div className="mt-10 grid gap-8 md:grid-cols-2">
           <section className="rounded-3xl border border-white/10 p-7">

@@ -29,12 +29,14 @@ const PROGRAMS = [
   {
     number: "01",
     title: "Group Fitness",
+    href: "/group-fitness",
     body: "High-energy sessions that blend strength, cardio, and athletic conditioning into a coached class that keeps everyone working with intent.",
     image: "/offer1.jpg",
   },
   {
     number: "02",
     title: "Personal Training",
+    href: "/personal-training",
     body: "One-on-one sessions for members who want more individualized progressions, closer accountability, or extra support around a specific goal.",
     image: "/offer2.jpg",
   },
@@ -196,7 +198,7 @@ function Programs() {
                   <p className="mb-3 font-sans text-[10px] font-semibold uppercase tracking-[0.24em] text-[#f472b6]">
                     {program.number}
                   </p>
-                  <h3 className="font-display text-4xl leading-tight text-white">{program.title}</h3>
+                  <h3 className="font-display text-4xl leading-tight text-white">{program.href ? <a href={program.href} className="rounded focus-visible:outline focus-visible:outline-2 focus-visible:outline-pink-400">{program.title}</a> : program.title}</h3>
                   <p className="mt-4 font-sans text-sm leading-7 text-white/72">{program.body}</p>
                 </div>
               </div>
