@@ -39,7 +39,7 @@ export default function PrivacyPolicyPage() {
           <p className="mt-6 max-w-2xl font-sans text-base leading-8 text-white/65">
             This policy explains what Lyfe Fitness collects, why we use it, and the choices available to you when you visit our website or contact us.
           </p>
-          <p className="mt-5 font-sans text-xs font-semibold uppercase tracking-[0.2em] text-white/40">
+          <p className="mt-5 font-sans text-xs font-semibold uppercase tracking-[0.2em] text-white/65">
             Effective: November 1, 2026 · Last updated: November 2, 2026
           </p>
         </div>

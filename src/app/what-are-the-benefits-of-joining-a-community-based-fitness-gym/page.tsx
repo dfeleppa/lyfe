@@ -65,7 +65,7 @@ export default function CommunityFitnessArticlePage() {
             <a
               href="/#trial"
               data-open-crm-popup="true"
-              className="mt-7 inline-flex items-center rounded-[4px] bg-[#ec4899] px-7 py-3.5 font-sans text-xs font-semibold uppercase tracking-[0.24em] text-white transition hover:bg-[#db2777]"
+              className="mt-7 inline-flex items-center rounded-[4px] bg-[#be185d] px-7 py-3.5 font-sans text-xs font-semibold uppercase tracking-[0.24em] text-white transition hover:bg-[#9d174d]"
             >
               Start Your Free Week
             </a>

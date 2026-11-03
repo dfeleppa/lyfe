@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+.inquiry-dialog {
+  width: min(42rem, calc(100% - 1.5rem));
+  max-height: calc(100dvh - max(1.5rem, env(safe-area-inset-top)) - env(safe-area-inset-bottom));
+  overflow: hidden;
+}
+
 /*
   ─── RECKLESS NEUE ──────────────────────────────────────────────────────────
   Purchase Reckless Neue from Displaay Type Foundry (displaay.net).

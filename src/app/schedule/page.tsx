@@ -72,7 +72,7 @@ function DayCard({ day, slots }: { day: string; slots: ScheduleSlot[] }) {
         <h3 className="font-display text-2xl leading-none text-white xl:text-xl 2xl:text-2xl">
           {day}{day === "Sunday" ? "*" : ""}
         </h3>
-        <p className="font-sans text-[10px] font-semibold uppercase tracking-[0.18em] text-white/35 xl:mt-2">
+        <p className="font-sans text-xs font-semibold uppercase tracking-[0.18em] text-white/65 xl:mt-2">
           {slots.length} {slots.length === 1 ? "class" : "classes"}
         </p>
       </div>
@@ -83,7 +83,7 @@ function DayCard({ day, slots }: { day: string; slots: ScheduleSlot[] }) {
               {slot.time}
             </p>
             <p className="mt-1 font-sans text-sm text-white/75">{slot.name}</p>
-            <p className="mt-1 font-sans text-[11px] uppercase tracking-[0.16em] text-white/30">1 hour</p>
+            <p className="mt-1 font-sans text-xs uppercase tracking-[0.16em] text-white/65">1 hour</p>
           </div>
         ))}
       </div>
@@ -116,14 +116,12 @@ export default function SchedulePage() {
             <em className="text-[#ec4899]">Show up ready.</em>
           </h1>
           <p className="mt-8 max-w-xl font-sans text-base leading-8 text-white/60 md:text-lg">
-            New to Lyfe? Come in for a free intro and we&apos;ll get you started right.
+            New to Lyfe? Start your free week with a free intro.
           </p>
           <a
-            href={MEMBER_APP_URL}
+            href="/#trial"
             data-open-crm-popup="true"
-            target="_blank"
-            rel="noreferrer"
-            className="mt-8 inline-flex items-center rounded-[4px] bg-[#ec4899] px-7 py-3.5 font-sans text-xs font-semibold uppercase tracking-[0.24em] text-white transition hover:bg-[#db2777]"
+            className="mt-8 inline-flex items-center rounded-[4px] bg-[#be185d] px-7 py-3.5 font-sans text-xs font-semibold uppercase tracking-[0.24em] text-white transition hover:bg-[#9d174d]"
           >
             Get Started
           </a>
@@ -133,7 +131,7 @@ export default function SchedulePage() {
       {/* Schedule */}
       <section className="py-20 md:py-28">
         <div className="mx-auto max-w-7xl px-6 md:px-12">
-          <h2 className="mb-5 font-sans text-[10px] font-semibold uppercase tracking-[0.3em] text-white/45">
+          <h2 className="mb-5 font-sans text-xs font-semibold uppercase tracking-[0.3em] text-white/65">
             Weekly Schedule
           </h2>
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-7">
@@ -143,14 +141,14 @@ export default function SchedulePage() {
           </div>
 
           {/* Holiday note */}
-          <p className="mt-6 text-center font-sans text-sm leading-7 text-white/35">
+          <p className="mt-6 text-center font-sans text-sm leading-7 text-white/65">
             Schedule may vary on holidays and special events. Check{" "}
             <a href={MEMBER_APP_URL} target="_blank" rel="noreferrer" className="text-white/50 underline underline-offset-2 transition hover:text-white">
               Chalk It Pro
             </a>{" "}
             or follow us on Instagram for any changes.
           </p>
-          <p className="mt-2 text-center font-sans text-xs uppercase tracking-[0.16em] text-white/30">
+          <p className="mt-2 text-center font-sans text-xs uppercase tracking-[0.16em] text-white/65">
             *Sunday availability varies
           </p>
         </div>
@@ -163,7 +161,7 @@ export default function SchedulePage() {
             <div className="max-w-2xl text-center">
               <h3 className="font-display text-2xl text-black">Ready to start?</h3>
               <p className="mt-3 font-sans text-sm leading-7 text-black/60">
-                First class is free. Reach out at daniel@trainlyfe.com or call (516) 588-0532 to set it up.
+                Start your free week with a free intro. Reach out at daniel@trainlyfe.com or call (516) 588-0532 to set it up.
               </p>
             </div>
           </div>

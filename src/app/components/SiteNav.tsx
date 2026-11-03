@@ -40,7 +40,7 @@ export default function SiteNav({ cta = DEFAULT_CTA }: SiteNavProps) {
       }
     };
 
-    const desktop = window.matchMedia("(min-width: 768px)");
+    const desktop = window.matchMedia("(min-width: 1280px)");
     const onDesktop = () => {
       if (desktop.matches) setOpen(false);
     };
@@ -70,27 +70,27 @@ export default function SiteNav({ cta = DEFAULT_CTA }: SiteNavProps) {
           scrolled ? "rounded-[28px] shadow-[0_24px_80px_rgba(0,0,0,0.35)]" : "rounded-none border-x-0 border-t-0"
         }`}
       >
-        <a href="/" className="flex items-center gap-4">
-          <img src="/lflogo1.png" alt="Lyfe Fitness logo" className="h-10 w-auto" />
+        <a href="/" className="flex min-w-0 shrink-0 items-center">
+          <img src="/lflogo1.png" alt="Lyfe Fitness logo" className="h-auto w-48 max-w-full sm:w-64" />
         </a>
 
-        <nav className="hidden items-center gap-8 md:flex">
+        <nav className="hidden items-center gap-6 xl:flex">
           {NAV_ITEMS.map((item) => (
             <a
               key={item.label}
               href={item.href}
-              className="font-sans text-[11px] font-semibold uppercase tracking-[0.24em] text-white/55 transition hover:text-white"
+              className="whitespace-nowrap font-sans text-[11px] font-semibold uppercase tracking-[0.24em] text-white/55 transition hover:text-white"
             >
               {item.label}
             </a>
           ))}
         </nav>
 
-        <div className="flex items-center gap-3">
+        <div className="flex shrink-0 items-center gap-3">
           <a
             href={cta.href}
             data-open-crm-popup={cta.openCrmPopup ? "true" : undefined}
-            className="hidden rounded-[4px] bg-pink-500 px-6 py-2.5 font-sans text-xs font-semibold uppercase tracking-widest text-white transition hover:bg-pink-400 md:block"
+            className="hidden whitespace-nowrap rounded-[4px] bg-pink-700 px-6 py-2.5 font-sans text-xs font-semibold uppercase tracking-widest text-white transition hover:bg-pink-800 xl:block"
           >
             {cta.label}
           </a>
@@ -99,9 +99,10 @@ export default function SiteNav({ cta = DEFAULT_CTA }: SiteNavProps) {
             ref={menuButtonRef}
             type="button"
             onClick={() => setOpen((value) => !value)}
-            className="flex h-11 w-11 flex-col items-center justify-center gap-1.5 rounded-[4px] outline-none focus-visible:ring-2 focus-visible:ring-pink-400 md:hidden"
+            className="flex h-11 w-11 flex-col items-center justify-center gap-1.5 rounded-[4px] outline-none focus-visible:ring-2 focus-visible:ring-pink-400 xl:hidden"
             aria-label="Menu"
             aria-expanded={open}
+            aria-controls="mobile-navigation"
           >
             <span className={`block h-px w-5 bg-white transition-all ${open ? "translate-y-[7px] rotate-45" : ""}`} />
             <span className={`block h-px w-5 bg-white transition-all ${open ? "opacity-0" : ""}`} />
@@ -111,7 +112,7 @@ export default function SiteNav({ cta = DEFAULT_CTA }: SiteNavProps) {
       </div>
 
       {open && (
-        <div className="absolute inset-x-0 top-full flex flex-col gap-0 border-t border-white/10 bg-black/95 backdrop-blur-xl md:hidden">
+        <div id="mobile-navigation" className="absolute inset-x-0 top-full flex max-h-[calc(100dvh-6rem)] flex-col overflow-y-auto overscroll-contain gap-0 border-t border-white/10 bg-black/95 backdrop-blur-xl xl:hidden">
           {NAV_ITEMS.map((item) => (
             <a
               key={item.label}
@@ -126,7 +127,7 @@ export default function SiteNav({ cta = DEFAULT_CTA }: SiteNavProps) {
             href={cta.href}
             data-open-crm-popup={cta.openCrmPopup ? "true" : undefined}
             onClick={() => setOpen(false)}
-            className="mx-6 my-4 rounded-[4px] bg-pink-500 px-6 py-3 text-center font-sans text-xs font-semibold uppercase tracking-widest text-white transition hover:bg-pink-400"
+            className="mx-6 my-4 rounded-[4px] bg-pink-700 px-6 py-3 text-center font-sans text-xs font-semibold uppercase tracking-widest text-white transition hover:bg-pink-800"
           >
             {cta.label}
           </a>

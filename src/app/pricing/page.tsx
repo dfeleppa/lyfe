@@ -39,7 +39,7 @@ export default function PricingPage() {
         <div className="mx-auto max-w-7xl px-6 md:px-12">
           <div className="grid gap-6 lg:grid-cols-2 lg:gap-8">
             <div className="relative flex flex-col rounded-none border border-[#ec4899]/40 bg-[#FFFFFF0D] p-10 shadow-[0_0_60px_rgba(236,72,153,0.08)] md:p-12">
-              <p className="font-sans text-xs font-semibold uppercase tracking-[0.28em] text-white/45">
+              <p className="font-sans text-xs font-semibold uppercase tracking-[0.28em] text-white/65">
                 Membership
               </p>
               <h2 className="mt-3 font-display text-[clamp(2.2rem,5vw,3.5rem)] leading-[0.95] text-white">
@@ -74,7 +74,7 @@ export default function PricingPage() {
               <a
                 href="/#trial"
                 data-open-pricing-popup="true"
-                className="mt-10 inline-flex items-center justify-center rounded-[4px] bg-[#ec4899] px-7 py-4 font-sans text-xs font-semibold uppercase tracking-[0.24em] text-white transition hover:bg-[#db2777]"
+                className="mt-10 inline-flex items-center justify-center rounded-[4px] bg-[#be185d] px-7 py-4 font-sans text-xs font-semibold uppercase tracking-[0.24em] text-white transition hover:bg-[#9d174d]"
               >
                 Get Pricing
               </a>
@@ -90,7 +90,7 @@ export default function PricingPage() {
             </div>
 
             <div className="relative flex flex-col rounded-[28px] border border-white/10 bg-[#FFFFFF0D] p-10 md:p-12">
-              <p className="font-sans text-xs font-semibold uppercase tracking-[0.28em] text-white/45">
+              <p className="font-sans text-xs font-semibold uppercase tracking-[0.28em] text-white/65">
                 Start Here
               </p>
               <h2 className="mt-3 font-display text-[clamp(2.2rem,5vw,3.5rem)] leading-[0.95] text-white">
@@ -110,7 +110,7 @@ export default function PricingPage() {
                   {
                     step: "02",
                     title: "Try It Out",
-                    body: "Experience Lyfe Fitness before you commit. We'll set you up with a free intro session or a personalized 1-on-1 to get you moving, answer your questions, and make sure you feel confident from day one.",
+                    body: "Start your free week with a free intro. Meet your coach, ask questions, and find the right starting point before joining a class.",
                   },
                   {
                     step: "03",
@@ -131,14 +131,14 @@ export default function PricingPage() {
               <a
                 href="/#trial"
                 data-open-crm-popup="true"
-                className="mt-10 inline-flex items-center justify-center rounded-[4px] bg-[#ec4899] px-7 py-4 font-sans text-xs font-semibold uppercase tracking-[0.24em] text-white transition hover:bg-[#db2777]"
+                className="mt-10 inline-flex items-center justify-center rounded-[4px] bg-[#be185d] px-7 py-4 font-sans text-xs font-semibold uppercase tracking-[0.24em] text-white transition hover:bg-[#9d174d]"
               >
                 Get Started
               </a>
             </div>
           </div>
 
-          <p className="mt-10 text-center font-sans text-sm text-white/35">
+          <p className="mt-10 text-center font-sans text-sm text-white/65">
             Memberships start at $120 per month. Month-to-month billing has no sign-up fee or long-term commitment; discounted prepaid options are also available.
           </p>
         </div>

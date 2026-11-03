@@ -102,7 +102,7 @@ function Hero() {
           <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
             <a
               href="#how"
-              className="inline-flex items-center justify-center rounded-[4px] bg-[#ec4899] px-7 py-4 font-sans text-xs font-semibold uppercase tracking-[0.24em] text-white transition hover:bg-[#db2777]"
+              className="inline-flex items-center justify-center rounded-[4px] bg-[#be185d] px-7 py-4 font-sans text-xs font-semibold uppercase tracking-[0.24em] text-white transition hover:bg-[#9d174d]"
             >
               How it works
             </a>
@@ -118,7 +118,7 @@ function HowItWorks() {
     <section id="how" className="bg-[#f5f0e8] py-20 text-black md:py-28">
       <div className="mx-auto max-w-7xl px-6 md:px-12">
         <div className="reveal">
-          <p className="mb-4 font-sans text-xs font-semibold uppercase tracking-[0.28em] text-black/40">
+          <p className="mb-4 font-sans text-xs font-semibold uppercase tracking-[0.28em] text-black/65">
             How it works
           </p>
           <h2 className="font-display text-[clamp(2.75rem,6vw,5.5rem)] font-normal leading-[0.98] tracking-display text-black">
@@ -179,7 +179,7 @@ function Options({ onClaim }: { onClaim: () => void }) {
     <section id="options" className="scroll-mt-24 border-t border-white/10 bg-[#09090c] py-20 text-white md:py-28">
       <div className="mx-auto max-w-7xl px-6 md:px-12">
         <div className="reveal">
-          <p className="mb-4 font-sans text-xs font-semibold uppercase tracking-[0.28em] text-white/40">
+          <p className="mb-4 font-sans text-xs font-semibold uppercase tracking-[0.28em] text-white/65">
             Two ways in
           </p>
           <h2 className="font-display text-[clamp(2.75rem,6vw,5.5rem)] font-normal leading-[0.98] tracking-display text-white">
@@ -190,7 +190,7 @@ function Options({ onClaim }: { onClaim: () => void }) {
         <div className="mt-12 grid gap-6 lg:grid-cols-2 lg:gap-8">
           {/* Option 1 — The Group */}
           <div className="reveal reveal-delay-1 flex flex-col rounded-none border border-white/10 bg-[#101014] p-10 shadow-[0_30px_80px_rgba(0,0,0,0.35)] md:p-12">
-            <p className="font-sans text-xs font-semibold uppercase tracking-[0.28em] text-white/45">
+            <p className="font-sans text-xs font-semibold uppercase tracking-[0.28em] text-white/65">
               The Group
             </p>
             <p className="mt-3 font-display text-[clamp(2.5rem,5vw,4rem)] font-normal leading-none text-white">
@@ -210,7 +210,7 @@ function Options({ onClaim }: { onClaim: () => void }) {
             <button
               type="button"
               onClick={onClaim}
-              className="mt-10 inline-flex items-center justify-center rounded-[4px] bg-white px-7 py-4 font-sans text-xs font-semibold uppercase tracking-[0.24em] text-black transition hover:bg-[#ec4899] hover:text-white"
+              className="mt-10 inline-flex items-center justify-center rounded-[4px] bg-white px-7 py-4 font-sans text-xs font-semibold uppercase tracking-[0.24em] text-black transition hover:bg-[#be185d] hover:text-white"
             >
               Claim my spot
             </button>
@@ -221,7 +221,7 @@ function Options({ onClaim }: { onClaim: () => void }) {
             <div className="absolute right-8 top-8 rounded-full border border-[#ec4899]/40 bg-[#ec4899]/10 px-3 py-1 font-sans text-[10px] font-semibold uppercase tracking-[0.2em] text-[#f472b6]">
               Very limited spots
             </div>
-            <p className="font-sans text-xs font-semibold uppercase tracking-[0.28em] text-white/45">
+            <p className="font-sans text-xs font-semibold uppercase tracking-[0.28em] text-white/65">
               Accountability
             </p>
             <p className="mt-3 font-display text-[clamp(2.5rem,5vw,4rem)] font-normal leading-none text-white">
@@ -241,7 +241,7 @@ function Options({ onClaim }: { onClaim: () => void }) {
             <button
               type="button"
               onClick={onClaim}
-              className="mt-10 inline-flex items-center justify-center rounded-[4px] bg-[#ec4899] px-7 py-4 font-sans text-xs font-semibold uppercase tracking-[0.24em] text-white transition hover:bg-[#db2777]"
+              className="mt-10 inline-flex items-center justify-center rounded-[4px] bg-[#be185d] px-7 py-4 font-sans text-xs font-semibold uppercase tracking-[0.24em] text-white transition hover:bg-[#9d174d]"
             >
               Claim a spot
             </button>
@@ -306,7 +306,7 @@ function CommitmentModal({ open, onClose }: { open: boolean; onClose: () => void
           type="button"
           onClick={onClose}
           aria-label="Close"
-          className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full text-black/45 transition hover:bg-black/5 hover:text-black"
+          className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full text-black/65 transition hover:bg-black/5 hover:text-black"
         >
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden>
             <path d="M3 3l10 10M13 3L3 13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
@@ -351,8 +351,8 @@ function CommitmentModal({ open, onClose }: { open: boolean; onClose: () => void
           }}
           className={`mt-6 flex h-[58px] w-full items-center justify-center rounded-xl px-8 font-sans text-xs font-semibold uppercase tracking-[0.22em] transition-all duration-200 ${
             agreed
-              ? "bg-black text-white hover:bg-[#db2777] hover:shadow-[0_12px_34px_rgba(219,39,119,0.35)] active:scale-[0.99]"
-              : "pointer-events-none cursor-not-allowed bg-black/15 text-black/40"
+              ? "bg-black text-white hover:bg-[#9d174d] hover:shadow-[0_12px_34px_rgba(219,39,119,0.35)] active:scale-[0.99]"
+              : "pointer-events-none cursor-not-allowed bg-black/15 text-black/65"
           }`}
         >
           Create an account

@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import Script from "next/script";
+import GymneticsForm from "./components/GymneticsForm";
 import { useEffect, useRef, useState } from "react";
 import SiteFooter from "./components/SiteFooter";
 import SiteNav from "./components/SiteNav";
@@ -113,11 +113,11 @@ function Hero() {
     <section id="top" className="relative overflow-hidden border-b border-white/10 pb-16 pt-32 md:pb-24 md:pt-40">
       <div className="hero-orb left-[-12rem] top-[8rem]" />
       <div className="hero-orb hero-orb-alt right-[-8rem] top-[18rem]" />
-      <Image src="/hero.jpg" alt="Athletes training at Lyfe Fitness" fill priority sizes="100vw" className="z-0 object-cover opacity-60" />
+      <Image src="/hero.jpg" alt="Athletes training at Lyfe Fitness" fill priority fetchPriority="high" sizes="100vw" className="z-0 object-cover opacity-60" />
       <div className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.16),transparent_32%),linear-gradient(180deg,rgba(7,7,9,0.2)_0%,rgba(7,7,9,0.95)_72%,rgba(7,7,9,1)_100%)]" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-12">
-        <div className="reveal max-w-4xl">
+        <div className="max-w-4xl">
           <p className="font-sans text-xs font-semibold uppercase tracking-[0.28em] text-[#f472b6]">
             Group Fitness - Reimagined
           </p>
@@ -136,9 +136,9 @@ function Hero() {
 
           <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
             <a
-              href="#location"
+              href="#trial"
               data-open-crm-popup="true"
-              className="inline-flex items-center justify-center rounded-[4px] bg-white px-7 py-4 font-sans text-xs font-semibold uppercase tracking-[0.24em] text-black transition hover:bg-[#ec4899] hover:text-white"
+              className="inline-flex items-center justify-center rounded-[4px] bg-white px-7 py-4 font-sans text-xs font-semibold uppercase tracking-[0.24em] text-black transition hover:bg-[#be185d] hover:text-white"
             >
               Get Started
             </a>
@@ -169,7 +169,7 @@ function TrustBar() {
               className="flex items-center gap-4"
               aria-hidden={isDuplicate || undefined}
             >
-              <span className="font-sans text-xs font-semibold uppercase tracking-[0.24em] text-white/45">
+              <span className="font-sans text-xs font-semibold uppercase tracking-[0.24em] text-white/65">
                 {item}
               </span>
               <span className="h-px w-8 bg-white/15" />
@@ -187,7 +187,7 @@ function Difference() {
       <div className="mx-auto max-w-7xl px-6 md:px-12">
         <div className="reveal">
           <div>
-            <p className="mb-4 font-sans text-xs font-semibold uppercase tracking-[0.28em] text-black/40">
+            <p className="mb-4 font-sans text-xs font-semibold uppercase tracking-[0.28em] text-black/65">
               Why Lyfe Fitness
             </p>
             <h2 className="font-display text-[clamp(2.75rem,6vw,5.5rem)] font-normal leading-[0.98] tracking-display text-black">
@@ -202,10 +202,10 @@ function Difference() {
               key={pillar.heading}
               className={`reveal ${REVEAL_DELAYS[index + 1]} overflow-hidden rounded-none border border-black/8 bg-black text-white shadow-[0_30px_80px_rgba(0,0,0,0.14)]`}
             >
-              <div className="relative aspect-[4/5] overflow-hidden">
+              <div className="relative flex min-h-[28rem] items-end overflow-hidden sm:min-h-[32rem] lg:min-h-[30rem]">
                 <Image src={pillar.image} alt={pillar.heading} fill sizes="(min-width: 1024px) 33vw, 100vw" loading={index === 0 ? "eager" : undefined} className="object-cover" />
                 <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.12)_0%,rgba(0,0,0,0.22)_30%,rgba(0,0,0,0.88)_100%)]" />
-                <div className="absolute inset-x-0 bottom-0 p-8">
+                <div className="relative z-10 w-full p-6 sm:p-8">
                   <p className="mb-3 font-sans text-[10px] font-semibold uppercase tracking-[0.24em] text-[#f472b6]">
                     0{index + 1}
                   </p>
@@ -219,9 +219,9 @@ function Difference() {
 
         <div className="reveal mt-10 flex justify-center lg:justify-start">
           <a
-            href="#location"
+            href="#trial"
             data-open-crm-popup="true"
-            className="inline-flex items-center justify-center rounded-[4px] border border-black/12 bg-black px-7 py-4 font-sans text-xs font-semibold uppercase tracking-[0.24em] text-white transition hover:bg-[#db2777]"
+            className="inline-flex items-center justify-center rounded-[4px] border border-black/12 bg-black px-7 py-4 font-sans text-xs font-semibold uppercase tracking-[0.24em] text-white transition hover:bg-[#9d174d]"
           >
             Get Started
           </a>
@@ -237,7 +237,7 @@ function Programs() {
       <div className="mx-auto max-w-7xl px-6 md:px-12">
         <div className="reveal grid gap-8 lg:items-end">
           <div>
-            <p className="mb-4 font-sans text-xs font-semibold uppercase tracking-[0.28em] text-white/38">
+            <p className="mb-4 font-sans text-xs font-semibold uppercase tracking-[0.28em] text-white/65">
               WHAT WE OFFER
             </p>
             <h2 className="font-display text-[clamp(2.75rem,6vw,5.5rem)] font-normal leading-[0.98] tracking-display text-white">
@@ -252,10 +252,10 @@ function Programs() {
               key={program.number}
               className={`reveal ${REVEAL_DELAYS[index + 1]} overflow-hidden rounded-none border border-white/10 bg-white/[0.03] shadow-[0_24px_80px_rgba(0,0,0,0.2)]`}
             >
-              <div className="relative aspect-[4/5] overflow-hidden">
+              <div className="relative flex min-h-[28rem] items-end overflow-hidden sm:min-h-[32rem] lg:min-h-[30rem]">
                 <Image src={program.image} alt={program.title} fill sizes="(min-width: 1024px) 33vw, 100vw" className="object-cover" />
                 <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.05)_0%,rgba(0,0,0,0.2)_30%,rgba(0,0,0,0.9)_100%)]" />
-                <div className="absolute inset-x-0 bottom-0 p-8">
+                <div className="relative z-10 w-full p-6 sm:p-8">
                   <p className="mb-3 font-sans text-[10px] font-semibold uppercase tracking-[0.24em] text-[#f472b6]">
                     {program.number}
                   </p>
@@ -344,7 +344,7 @@ function Testimonials() {
     <section ref={sectionRef} id="results" className="border-t border-black/10 bg-[#f7f1e8] py-20 text-black md:py-28">
       <div className="mx-auto grid max-w-7xl gap-12 px-6 md:px-12 lg:grid-cols-[340px_minmax(0,1fr)] lg:items-start">
         <div className="reveal lg:sticky lg:top-28">
-          <p className="mb-4 font-sans text-xs font-semibold uppercase tracking-[0.28em] text-black/38">
+          <p className="mb-4 font-sans text-xs font-semibold uppercase tracking-[0.28em] text-black/65">
             Member stories
           </p>
           <h2 className="font-display text-[clamp(2.75rem,6vw,5rem)] font-normal leading-[0.98] tracking-display text-black">
@@ -375,13 +375,13 @@ function Testimonials() {
                 </span>
               )}
               <p className="mt-3 font-display text-3xl text-black">{TESTIMONIALS[active].name}</p>
-              <p className="mt-1 font-sans text-sm text-black/45">{TESTIMONIALS[active].role}</p>
+              <p className="mt-1 font-sans text-sm text-black/65">{TESTIMONIALS[active].role}</p>
             </div>
             <div className="flex items-center gap-2">
               <button
                 type="button"
                 onClick={prev}
-                className="flex h-10 w-10 items-center justify-center rounded-[4px] border border-black/15 text-black/70 outline-none transition focus-visible:ring-2 focus-visible:ring-[#db2777] hover:bg-black hover:text-white"
+                className="flex h-11 w-11 items-center justify-center rounded-[4px] border border-black/15 text-black/70 outline-none transition focus-visible:ring-2 focus-visible:ring-[#db2777] hover:bg-black hover:text-white"
                 aria-label="Previous review"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" /></svg>
@@ -389,7 +389,7 @@ function Testimonials() {
               <button
                 type="button"
                 onClick={next}
-                className="flex h-10 w-10 items-center justify-center rounded-[4px] border border-black/15 text-black/70 outline-none transition focus-visible:ring-2 focus-visible:ring-[#db2777] hover:bg-black hover:text-white"
+                className="flex h-11 w-11 items-center justify-center rounded-[4px] border border-black/15 text-black/70 outline-none transition focus-visible:ring-2 focus-visible:ring-[#db2777] hover:bg-black hover:text-white"
                 aria-label="Next review"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
@@ -407,9 +407,12 @@ function Testimonials() {
                 key={item.name}
                 type="button"
                 onClick={() => go(index)}
-                className={`h-1 rounded-full outline-none transition-all focus-visible:ring-2 focus-visible:ring-[#db2777] focus-visible:ring-offset-2 ${index === active ? "w-12 bg-black" : "w-8 bg-black/20 hover:bg-black/40"}`}
+                className="flex h-11 w-11 items-center justify-center rounded outline-none focus-visible:ring-2 focus-visible:ring-[#db2777] focus-visible:ring-offset-2"
+                aria-pressed={index === active}
                 aria-label={`Go to review ${index + 1}`}
-              />
+              >
+                <span aria-hidden="true" className={`h-1 rounded-full transition-all ${index === active ? "w-10 bg-black" : "w-7 bg-black/30"}`} />
+              </button>
             ))}
           </div>
 
@@ -435,7 +438,7 @@ function LocationContact() {
     <section id="location" className="border-t border-white/10 bg-[#09090c] py-20 md:py-28">
       <div className="mx-auto max-w-7xl px-6 md:px-12">
         <div className="reveal">
-          <p className="mb-4 font-sans text-xs font-semibold uppercase tracking-[0.28em] text-white/38">
+          <p className="mb-4 font-sans text-xs font-semibold uppercase tracking-[0.28em] text-white/65">
             Visit us &amp; get started
           </p>
           <h2 className="font-display text-[clamp(2.75rem,6vw,5.25rem)] font-normal leading-[0.98] tracking-display text-white">
@@ -464,18 +467,18 @@ function LocationContact() {
           <div className="reveal reveal-delay-2 flex flex-col gap-6">
             <div className="flex flex-col gap-6 rounded-[36px] border border-white/10 bg-white/[0.04] p-8 font-sans text-white/72 shadow-[0_24px_80px_rgba(0,0,0,0.22)]">
               <div>
-                <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.24em] text-white/38">Address</p>
+                <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.24em] text-white/65">Address</p>
                 <p className="text-base text-white">445 Merrick Road, Oceanside, NY 11572</p>
               </div>
               <div>
-                <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.24em] text-white/38">Hours</p>
+                <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.24em] text-white/65">Hours</p>
                 <p>Mon – Thu: 7:45am – 8:10pm</p>
                 <p>Fri: 7:45am – 6:30pm</p>
                 <p>Sat: 9:00am – 11:30am</p>
                 <p>Sun: 9:00am – 10:30am</p>
               </div>
               <div>
-                <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.24em] text-white/38">Contact</p>
+                <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.24em] text-white/65">Contact</p>
                 <a href="tel:5165880532" className="block transition hover:text-white">
                   (516) 588-0532
                 </a>
@@ -487,7 +490,7 @@ function LocationContact() {
                 href="https://maps.google.com/?q=445+Merrick+Road+Oceanside+NY+11572"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center justify-center rounded-[4px] bg-white px-6 py-4 font-sans text-xs font-semibold uppercase tracking-[0.24em] text-black transition hover:bg-[#ec4899] hover:text-white"
+                className="inline-flex items-center justify-center rounded-[4px] bg-white px-6 py-4 font-sans text-xs font-semibold uppercase tracking-[0.24em] text-black transition hover:bg-[#be185d] hover:text-white"
               >
                 Get Directions
               </a>
@@ -507,14 +510,14 @@ function LeadForm() {
       <div className="mx-auto max-w-7xl px-6 md:px-12">
         <div className="grid gap-8 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:items-start">
           <div className="reveal lg:pt-4">
-            <p className="mb-4 font-sans text-xs font-semibold uppercase tracking-[0.28em] text-black/40">
+            <p className="mb-4 font-sans text-xs font-semibold uppercase tracking-[0.28em] text-black/65">
               Start here
             </p>
             <h2 className="font-display text-[clamp(2.75rem,6vw,5.25rem)] font-normal leading-[0.98] tracking-display text-black">
-              Your first week is <em className="italic text-[#ec4899]">on us.</em>
+              Your first week is <em className="italic text-[#be185d]">on us.</em>
             </h2>
             <p className="mt-6 max-w-md font-sans text-base leading-7 text-black/65">
-              Fill out the form and our team will reach out to get you started.
+              Start your free week with a free intro. Fill out the form, then choose your intro time on the next page.
             </p>
             <p className="mt-8 font-sans text-base font-semibold uppercase tracking-[0.18em] text-black/60">
               Contact Us Directly
@@ -525,18 +528,18 @@ function LeadForm() {
             <div className="mt-4 flex flex-wrap gap-3">
               <a
                 href="tel:5165880532"
-                className="inline-flex items-center justify-center rounded-[4px] bg-black px-5 py-3 font-sans text-xs font-semibold uppercase tracking-[0.2em] text-white transition hover:bg-[#ec4899]"
+                className="inline-flex items-center justify-center rounded-[4px] bg-black px-5 py-3 font-sans text-xs font-semibold uppercase tracking-[0.2em] text-white transition hover:bg-[#be185d]"
               >
                 Call
               </a>
               <a
                 href="sms:+15165880532"
-                className="inline-flex items-center justify-center rounded-[4px] bg-black px-5 py-3 font-sans text-xs font-semibold uppercase tracking-[0.2em] text-white transition hover:bg-[#ec4899]"
+                className="inline-flex items-center justify-center rounded-[4px] bg-black px-5 py-3 font-sans text-xs font-semibold uppercase tracking-[0.2em] text-white transition hover:bg-[#be185d]"
               >
                 Text
               </a>
             </div>
-            <p className="mt-7 font-sans text-xs font-semibold uppercase tracking-[0.22em] text-black/45">
+            <p className="mt-7 font-sans text-xs font-semibold uppercase tracking-[0.22em] text-black/65">
               Follow Us
             </p>
             <div className="mt-3 flex items-center gap-4">
@@ -545,7 +548,7 @@ function LeadForm() {
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Instagram"
-                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-black/20 text-black/70 transition hover:border-black hover:text-black"
+                className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-black/20 text-black/70 transition hover:border-black hover:text-black"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
               </a>
@@ -554,31 +557,14 @@ function LeadForm() {
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Facebook"
-                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-black/20 text-black/70 transition hover:border-black hover:text-black"
+                className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-black/20 text-black/70 transition hover:border-black hover:text-black"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
               </a>
             </div>
           </div>
           <div className="reveal reveal-delay-2 rounded-[24px] bg-white shadow-[0_18px_60px_rgba(0,0,0,0.15)]">
-            <iframe
-              src="https://link.gymntx.com/widget/form/qtz9BpzFGxwbX54pvvKx"
-              className="h-[680px] w-full rounded-[4px] border-0 sm:h-[566px]"
-              id="inline-qtz9BpzFGxwbX54pvvKx"
-              data-layout="{'id':'INLINE'}"
-              data-trigger-type="alwaysShow"
-              data-trigger-value=""
-              data-activation-type="alwaysActivated"
-              data-activation-value=""
-              data-deactivation-type="neverDeactivate"
-              data-deactivation-value=""
-              data-form-name="WEBSITE - Getting Started Optin*"
-              data-height="566"
-              data-layout-iframe-id="inline-qtz9BpzFGxwbX54pvvKx"
-              data-form-id="qtz9BpzFGxwbX54pvvKx"
-              title="WEBSITE - Getting Started Optin*"
-            />
-            <Script src="https://link.gymntx.com/js/form_embed.js" strategy="afterInteractive" />
+            <GymneticsForm kind="crm" placement="inline" />
           </div>
         </div>
       </div>
