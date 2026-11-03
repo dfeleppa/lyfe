@@ -22,6 +22,7 @@ const inter = localFont({
   src: "../../public/fonts/inter-latin-400-700.woff2",
   weight: "400 700",
   style: "normal",
+  preload: false,
   variable: "--font-sans",
   display: "swap",
   adjustFontFallback: "Arial",
