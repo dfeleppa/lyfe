@@ -17,7 +17,7 @@ export default function SmsSignupPage() {
         <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[#f472b6]">Lyfe Fitness · Elevate Fitness Inc</p>
         <h1 className="mt-5 font-display text-5xl leading-tight md:text-6xl">Choose your texts.</h1>
         <p className="mt-6 text-lg leading-8 text-white/75">Choose reminders and support, marketing offers, both, or neither. Each choice is separate and optional. You can book a trial, get pricing and become a member without subscribing to any texts.</p>
-        <p className="mt-4 text-sm leading-7 text-white/65">This is the official Lyfe Fitness SMS signup, operated by Elevate Fitness Inc at 445 Merrick Road, Oceanside, NY 11572. Our SMS program is hosted at daneff.com during our website transition.</p>
+        <p className="mt-4 text-sm leading-7 text-white/65">This is the official Lyfe Fitness SMS signup at trainlyfe.com, operated by Elevate Fitness Inc at 445 Merrick Road, Oceanside, NY 11572.</p>
         <SmsSignupForm />
         <p className="mt-7 text-sm leading-7 text-white/65">We confirm receipt by text and keep your category choices separately. A coach reviews consent before program messages begin. STOP cancels both categories. After an opt-out, any renewed consent is reviewed before messages resume.</p>
         <p className="mt-7 text-sm leading-7 text-white/65">Our new text program is being activated. Routine messages will begin after carrier approval. You can still call (516) 588-0532 or email <a href="mailto:daniel@trainlyfe.com" className="text-[#f472b6] underline underline-offset-4">daniel@trainlyfe.com</a> for help today.</p>

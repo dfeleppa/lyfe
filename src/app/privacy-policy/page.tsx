@@ -40,7 +40,7 @@ export default function PrivacyPolicyPage() {
             This policy explains what Lyfe Fitness collects, why we use it, and the choices available to you when you visit our website or contact us.
           </p>
           <p className="mt-5 font-sans text-xs font-semibold uppercase tracking-[0.2em] text-white/40">
-            Effective and last updated: November 1, 2026
+            Effective: November 1, 2026 · Last updated: November 2, 2026
           </p>
         </div>
       </section>
@@ -50,7 +50,7 @@ export default function PrivacyPolicyPage() {
           <aside className="mb-12 border border-white/10 bg-white/[0.04] p-6 font-sans text-sm leading-7 text-white/65 md:p-8">
             <p className="font-semibold text-white">Who this policy covers</p>
             <p className="mt-2">
-              Lyfe Fitness is operated by Elevate Fitness Inc. This policy applies to our website at daneff.com and www.daneff.com, its embedded forms, and the Lyfe Fitness text-messaging program. A member app, enrollment flow, or payment service may provide additional terms or notices when you use it.
+              Lyfe Fitness is operated by Elevate Fitness Inc. This policy applies to our website at trainlyfe.com and www.trainlyfe.com, its embedded forms, and the Lyfe Fitness text-messaging program. A member app, enrollment flow, or payment service may provide additional terms or notices when you use it.
             </p>
           </aside>
 
