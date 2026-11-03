@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Image from "next/image";
+import BrandLogo from "./BrandLogo";
 import { NAV_ITEMS } from "@/lib/site";
 
 type SiteNavProps = {
@@ -72,7 +72,7 @@ export default function SiteNav({ cta = DEFAULT_CTA }: SiteNavProps) {
         }`}
       >
         <a href="/" className="flex min-w-0 shrink-0 items-center">
-          <Image src="/lflogo1.png" alt="Lyfe Fitness logo" width={1080} height={165} sizes="(min-width: 640px) 256px, 192px" className="h-auto w-48 max-w-full sm:w-64" />
+          <BrandLogo sizes="(min-width: 640px) 292px, 219px" className="w-48 max-w-full sm:w-64" />
         </a>
 
         <nav className="hidden items-center gap-6 xl:flex">

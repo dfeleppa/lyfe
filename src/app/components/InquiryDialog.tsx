@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import GymneticsForm from "./GymneticsForm";
+import BrandLogo from "./BrandLogo";
 
 type Props = { kind: "crm" | "pricing"; title: string; description: string };
 
@@ -53,7 +54,9 @@ export default function InquiryDialog({ kind, title, description }: Props) {
       {open && (
         <div className="flex max-h-[inherit] min-h-0 flex-col">
           <div className="flex shrink-0 items-center justify-between gap-4 border-b border-black/10 px-4 py-2 sm:px-6">
-            <img src="/lflogo.png" alt="Lyfe Fitness logo" className="h-9 w-auto" />
+            <div className="rounded bg-black p-2">
+              <BrandLogo sizes="219px" className="w-48" />
+            </div>
             <button autoFocus type="button" aria-label="Close form" onClick={() => setOpen(false)} className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-black/20 text-2xl text-black/80 hover:bg-black/5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-700">×</button>
           </div>
           <div className="min-h-0 overflow-y-auto overscroll-contain" data-dialog-scroll>
