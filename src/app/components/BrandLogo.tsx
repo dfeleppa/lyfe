@@ -1,18 +1,16 @@
 import Image from "next/image";
 import { useId } from "react";
 
-type BrandLogoProps = { className?: string; sizes: string; tone?: "light" | "dark" };
+type BrandLogoProps = { className?: string; sizes: string };
 
-export default function BrandLogo({ className = "", sizes, tone = "light" }: BrandLogoProps) {
+export default function BrandLogo({ className = "", sizes }: BrandLogoProps) {
   const filterId = `logo-${useId().replace(/:/g, "")}`;
   return (
     <span className={`relative block aspect-[1556/251] shrink-0 overflow-hidden ${className}`}>
       <svg width="0" height="0" aria-hidden="true" className="absolute">
         <defs>
           <filter id={filterId} colorInterpolationFilters="sRGB">
-            <feColorMatrix type="matrix" values={tone === "dark"
-              ? "1 -1 0 0 0  0 0 0 0 0  0 -1 1 0 0  1.1 1.1 1.1 0 -0.1"
-              : "1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  1.1 1.1 1.1 0 -0.1"} />
+            <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  1.1 1.1 1.1 0 -0.1" />
           </filter>
         </defs>
       </svg>
