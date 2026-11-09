@@ -1,26 +1,23 @@
 import Image from "next/image";
 import GymneticsForm from "./components/GymneticsForm";
-import ScrollReveal from "./components/ScrollReveal";
 import Testimonials from "./components/Testimonials";
 import SiteFooter from "./components/SiteFooter";
 import SiteNav from "./components/SiteNav";
 
-const REVEAL_DELAYS = ["", "reveal-delay-1", "reveal-delay-2", "reveal-delay-3", "reveal-delay-4"];
-
 const DIFFERENCE_PILLARS = [
   {
-    heading: "A room that pulls you forward",
-    body: "You are not left wandering through equipment or guessing the workout. Every class has structure, coaching, and a pace that keeps you moving with purpose.",
+    heading: "People who help you show up",
+    body: "A planned workout, a coach to guide you, and a group that makes consistency easier.",
     image: "/diff1.jpg",
   },
   {
-    heading: "Coaching that meets you where you are",
-    body: "Whether you are starting fresh or returning after time away, movements are scaled intelligently so you can improve without feeling lost or out of place.",
+    heading: "Coaching for your starting point",
+    body: "Starting fresh or coming back? Your coach helps you find movements and a pace that fit.",
     image: "/offer3.jpg",
   },
   {
-    heading: "Programming with a point of view",
-    body: "Strength, conditioning, recovery, and progression are planned to build momentum over time instead of piling up random hard days.",
+    heading: "A plan to get stronger",
+    body: "Build strength and conditioning with purposeful programming that helps you progress over time.",
     image: "/diff3.jpg",
   },
 ];
@@ -50,37 +47,36 @@ const PROGRAMS = [
 
 function Hero() {
   return (
-    <section id="top" className="relative overflow-hidden border-b border-white/10 pb-16 pt-32 md:pb-24 md:pt-40">
-      <div className="hero-orb left-[-12rem] top-[8rem]" />
-      <div className="hero-orb hero-orb-alt right-[-8rem] top-[18rem]" />
-      <Image src="/hero.jpg" alt="Athletes training at Lyfe Fitness" fill priority fetchPriority="high" decoding="sync" quality={60} sizes="100vw" className="z-0 object-cover opacity-60" />
-      <div className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.16),transparent_32%),linear-gradient(180deg,rgba(7,7,9,0.2)_0%,rgba(7,7,9,0.95)_72%,rgba(7,7,9,1)_100%)]" />
-
+    <section id="top" className="relative overflow-hidden border-b border-white/10 pb-14 pt-32 md:pb-20 md:pt-40">
+      <Image src="/hero.jpg" alt="Members together at Lyfe Fitness" fill priority fetchPriority="high" decoding="sync" quality={60} sizes="100vw" className="z-0 object-cover object-[65%_center] opacity-65" />
+      <div className="pointer-events-none absolute inset-0 z-0 bg-[linear-gradient(90deg,rgba(7,7,9,0.9)_0%,rgba(7,7,9,0.65)_55%,rgba(7,7,9,0.25)_100%),linear-gradient(0deg,rgba(7,7,9,1),transparent_70%)]" />
       <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-12">
-        <div className="max-w-4xl">
-          <p className="font-sans text-xs font-semibold uppercase tracking-[0.28em] text-[#f472b6]">
-            Group Fitness - Reimagined
+        <div className="max-w-3xl">
+          <p className="font-sans text-xs font-semibold uppercase tracking-[0.2em] text-white/80">
+            Coach-led group fitness · Oceanside, NY
           </p>
-          <h1 className="mt-6 max-w-5xl font-display text-[clamp(2.75rem,7vw,6rem)] font-normal leading-[1.05] tracking-tightest text-white">
-            Coach-led group fitness
-            <br />
-            in <em className="text-[#ec4899]">Oceanside, NY.</em>
+          <h1 className="mt-6 font-display text-[clamp(2.75rem,6.4vw,5.5rem)] font-normal leading-[1.08] tracking-tightest text-white">
+            Get stronger.<br />Feel supported.<br /><em>Keep showing up.</em>
           </h1>
-          <p className="mt-5 font-sans text-sm tracking-wide text-white/75">Coaching. Results. Community.</p>
-
-          <p className="mt-8 max-w-2xl font-sans text-base leading-8 text-white/72 md:text-lg">
-            Lyfe Fitness gives Oceanside members a better way to train: coach-led classes,
-            thoughtful programming, and a room full of people who make consistency easier.
+          <p className="mt-6 max-w-xl font-sans text-base leading-7 text-white/80 md:text-lg md:leading-8">
+            Workouts adapted to your starting point. Coaches who guide you.
+            A community that makes it easier to stay consistent.
           </p>
-
-          <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
-            <a
-              href="#trial"
-              data-open-crm-popup="true"
-              className="inline-flex items-center justify-center rounded-[4px] bg-white px-7 py-4 font-sans text-xs font-semibold uppercase tracking-[0.24em] text-black transition hover:bg-[#be185d] hover:text-white"
-            >
-              Get Started
+          <div className="mt-8 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:gap-6">
+            <a href="#trial" data-open-crm-popup="true" className="intro-cta">
+              Book Your Free Intro Class
             </a>
+            <a href="#first-visit" className="text-sm font-medium text-white underline underline-offset-4 hover:text-white/80">
+              What to expect
+            </a>
+          </div>
+          <p className="mt-4 text-sm leading-6 text-white/75">One free class. Beginners and returning exercisers welcome.</p>
+          <div className="mt-8 max-w-xl border-t border-white/20 pt-5">
+            <p className="text-sm font-semibold text-white">5.0 Google rating <span className="font-normal text-white/70">· 61 reviews</span></p>
+            <figure className="mt-3">
+              <blockquote className="text-sm leading-6 text-white/80">“From day one, I felt welcomed, challenged, and supported.”</blockquote>
+              <figcaption className="mt-1 text-xs text-white/60">Clairiola E. · Google Review</figcaption>
+            </figure>
           </div>
         </div>
       </div>
@@ -89,34 +85,46 @@ function Hero() {
 }
 
 function TrustBar() {
-  const items = [
-    "5.0 Google rating",
-    "Coach-led group training",
-    "Strength and conditioning",
-    "Beginner-friendly coaching",
-    "Nutrition support",
-    "Oceanside, NY",
-  ];
-
   return (
-    <div className="overflow-hidden border-y border-white/10 bg-[#0d0d10] py-4">
-      <div className="marquee-track flex animate-marquee gap-16 whitespace-nowrap">
-        {[false, true].map((isDuplicate) =>
-          items.map((item, index) => (
-            <span
-              key={`${item}-${index}-${isDuplicate}`}
-              className="flex items-center gap-4"
-              aria-hidden={isDuplicate || undefined}
-            >
-              <span className="font-sans text-xs font-semibold uppercase tracking-[0.24em] text-white/65">
-                {item}
-              </span>
-              <span className="h-px w-8 bg-white/15" />
-            </span>
-          ))
-        )}
-      </div>
+    <div className="border-y border-white/10 bg-[#0d0d10]">
+      <ul className="mx-auto grid max-w-7xl grid-cols-1 gap-3 px-6 py-5 text-center text-xs font-medium uppercase tracking-[0.14em] text-white/75 sm:grid-cols-3 md:px-12">
+        <li>Coach-led from start to finish</li>
+        <li>Strength &amp; conditioning</li>
+        <li>Adapted to your experience</li>
+      </ul>
     </div>
+  );
+}
+
+function FirstVisit() {
+  const steps = [
+    { title: "Choose your class", body: "Fill out the short signup form, then choose your intro class time on the next page." },
+    { title: "Meet your coach", body: "Let your coach know you’re new. Share your experience and ask questions before you get started." },
+    { title: "Try one class, on us", body: "Follow a coached workout with movements adapted to your experience. Bring water and clothes you can move in." },
+  ];
+  return (
+    <section id="first-visit" className="border-b border-black/10 bg-[#f5f0e8] py-16 text-black md:py-20">
+      <div className="mx-auto max-w-7xl px-6 md:px-12">
+        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-black/60">Your first visit</p>
+        <div className="mt-4 grid gap-6 lg:grid-cols-[1fr_1fr] lg:items-end">
+          <h2 className="max-w-xl font-display text-4xl leading-tight md:text-5xl">You don’t have to figure it out alone.</h2>
+          <p className="max-w-xl text-base leading-7 text-black/70">You don’t need to know every movement or already be in shape. We’ll help you find your starting point.</p>
+        </div>
+        <ol className="mt-10 grid gap-8 md:grid-cols-3">
+          {steps.map((step, index) => (
+            <li key={step.title} className="border-t border-black/20 pt-5">
+              <span className="text-xs font-semibold text-black/50">0{index + 1}</span>
+              <h3 className="mt-3 text-lg font-semibold">{step.title}</h3>
+              <p className="mt-3 text-sm leading-7 text-black/70">{step.body}</p>
+            </li>
+          ))}
+        </ol>
+        <div className="mt-9 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:gap-6">
+          <a href="#trial" data-open-crm-popup="true" className="intro-cta">Book Your Free Intro Class</a>
+          <a href="/schedule" className="text-sm font-medium underline underline-offset-4">View the class schedule</a>
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -124,13 +132,13 @@ function Difference() {
   return (
     <section id="difference" className="bg-[#f5f0e8] py-20 text-black md:py-28">
       <div className="mx-auto max-w-7xl px-6 md:px-12">
-        <div className="reveal">
+        <div >
           <div>
             <p className="mb-4 font-sans text-xs font-semibold uppercase tracking-[0.28em] text-black/65">
               Why Lyfe Fitness
             </p>
             <h2 className="font-display text-[clamp(2.75rem,6vw,5.5rem)] font-normal leading-[0.98] tracking-display text-black">
-              This isn’t just a <em className="italic text-[#db2777]">gym.</em>
+              This isn’t just a <em className="italic">gym.</em>
             </h2>
           </div>
         </div>
@@ -139,30 +147,27 @@ function Difference() {
           {DIFFERENCE_PILLARS.map((pillar, index) => (
             <article
               key={pillar.heading}
-              className={`reveal ${REVEAL_DELAYS[index + 1]} overflow-hidden rounded-none border border-black/8 bg-black text-white shadow-[0_30px_80px_rgba(0,0,0,0.14)]`}
+              className={`overflow-hidden rounded-none border border-black/10 bg-white text-black`}
             >
-              <div className="relative flex min-h-[28rem] items-end overflow-hidden sm:min-h-[32rem] lg:min-h-[30rem]">
-                <Image src={pillar.image} alt={pillar.heading} fill fetchPriority="low" sizes="(min-width: 1280px) 400px, (min-width: 1024px) 30vw, (min-width: 768px) calc(100vw - 96px), calc(100vw - 48px)" className="object-cover" />
-                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.12)_0%,rgba(0,0,0,0.22)_30%,rgba(0,0,0,0.88)_100%)]" />
-                <div className="relative z-10 w-full p-6 sm:p-8">
-                  <p className="mb-3 font-sans text-[10px] font-semibold uppercase tracking-[0.24em] text-[#f472b6]">
-                    0{index + 1}
-                  </p>
-                  <h3 className="font-display text-4xl leading-tight text-white">{pillar.heading}</h3>
-                  <p className="mt-4 font-sans text-sm leading-7 text-white/76">{pillar.body}</p>
-                </div>
+              <div className="relative aspect-[4/3] overflow-hidden">
+                <Image src={pillar.image} alt={pillar.heading} fill fetchPriority="low" sizes="(min-width: 1024px) 33vw, 100vw" className="object-cover" />
+              </div>
+              <div className="p-6 sm:p-8">
+                <p className="mb-3 text-xs font-semibold text-black/50">0{index + 1}</p>
+                <h3 className="font-display text-3xl leading-tight text-black">{pillar.heading}</h3>
+                <p className="mt-4 text-sm leading-7 text-black/70">{pillar.body}</p>
               </div>
             </article>
           ))}
         </div>
 
-        <div className="reveal mt-10 flex justify-center lg:justify-start">
+        <div className="mt-10 flex justify-center lg:justify-start">
           <a
             href="#trial"
             data-open-crm-popup="true"
-            className="inline-flex items-center justify-center rounded-[4px] border border-black/12 bg-black px-7 py-4 font-sans text-xs font-semibold uppercase tracking-[0.24em] text-white transition hover:bg-[#9d174d]"
+            className="intro-cta"
           >
-            Get Started
+            Book Your Free Intro Class
           </a>
         </div>
       </div>
@@ -174,33 +179,30 @@ function Programs() {
   return (
     <section id="offerings" className="border-t border-white/10 bg-[#0a0a0d] py-20 md:py-28">
       <div className="mx-auto max-w-7xl px-6 md:px-12">
-        <div className="reveal grid gap-8 lg:items-end">
+        <div className="grid gap-8 lg:items-end">
           <div>
             <p className="mb-4 font-sans text-xs font-semibold uppercase tracking-[0.28em] text-white/65">
               WHAT WE OFFER
             </p>
             <h2 className="font-display text-[clamp(2.75rem,6vw,5.5rem)] font-normal leading-[0.98] tracking-display text-white">
-              Coaching that fits your <em className="italic text-[#f472b6]">next step.</em>
+              Coaching that fits your <em className="italic">next step.</em>
             </h2>
           </div>
         </div>
 
         <div className="mt-12 grid gap-6 lg:grid-cols-3">
-          {PROGRAMS.map((program, index) => (
+          {PROGRAMS.map((program) => (
             <article
               key={program.number}
-              className={`reveal ${REVEAL_DELAYS[index + 1]} overflow-hidden rounded-none border border-white/10 bg-white/[0.03] shadow-[0_24px_80px_rgba(0,0,0,0.2)]`}
+              className={`overflow-hidden rounded-none border border-white/10 bg-white/[0.03] shadow-[0_24px_80px_rgba(0,0,0,0.2)]`}
             >
-              <div className="relative flex min-h-[28rem] items-end overflow-hidden sm:min-h-[32rem] lg:min-h-[30rem]">
-                <Image src={program.image} alt={program.title} fill fetchPriority="low" sizes="(min-width: 1280px) 400px, (min-width: 1024px) 30vw, (min-width: 768px) calc(100vw - 96px), calc(100vw - 48px)" className="object-cover" />
-                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.05)_0%,rgba(0,0,0,0.2)_30%,rgba(0,0,0,0.9)_100%)]" />
-                <div className="relative z-10 w-full p-6 sm:p-8">
-                  <p className="mb-3 font-sans text-[10px] font-semibold uppercase tracking-[0.24em] text-[#f472b6]">
-                    {program.number}
-                  </p>
-                  <h3 className="font-display text-4xl leading-tight text-white">{program.href ? <a href={program.href} className="rounded focus-visible:outline focus-visible:outline-2 focus-visible:outline-pink-400">{program.title}</a> : program.title}</h3>
-                  <p className="mt-4 font-sans text-sm leading-7 text-white/72">{program.body}</p>
-                </div>
+              <div className="relative aspect-[4/3] overflow-hidden">
+                <Image src={program.image} alt={program.title} fill fetchPriority="low" sizes="(min-width: 1024px) 33vw, 100vw" className="object-cover" />
+              </div>
+              <div className="p-6 sm:p-8">
+                <p className="mb-3 text-xs font-semibold text-white/60">{program.number}</p>
+                <h3 className="font-display text-3xl leading-tight text-white">{program.href ? <a href={program.href} className="underline decoration-white/30 underline-offset-4 hover:decoration-white">{program.title}</a> : program.title}</h3>
+                <p className="mt-4 text-sm leading-7 text-white/75">{program.body}</p>
               </div>
             </article>
           ))}
@@ -214,23 +216,23 @@ function LocationContact() {
   return (
     <section id="location" className="border-t border-white/10 bg-[#09090c] py-20 md:py-28">
       <div className="mx-auto max-w-7xl px-6 md:px-12">
-        <div className="reveal">
+        <div >
           <p className="mb-4 font-sans text-xs font-semibold uppercase tracking-[0.28em] text-white/65">
             Visit us &amp; get started
           </p>
           <h2 className="font-display text-[clamp(2.75rem,6vw,5.25rem)] font-normal leading-[0.98] tracking-display text-white">
-            Oceanside&rsquo;s home for <em className="italic text-[#f472b6]">coach-led training.</em>
+            Oceanside&rsquo;s home for <em className="italic">coach-led training.</em>
           </h2>
           <p className="mt-6 max-w-2xl text-base leading-8 text-white/75">
             Previously in Baldwin, now at 445 Merrick Road in Oceanside, NY 11572.
             Visit our new home for coach-led group fitness and a free intro class.
           </p>
-          <a href="/location" className="mt-4 inline-block text-[#f472b6] underline underline-offset-4">Oceanside location, hours and directions</a>
+          <a href="/location" className="mt-4 inline-block text-white/70 underline underline-offset-4">Oceanside location, hours and directions</a>
         </div>
 
         <div className="mt-12 grid gap-6 lg:grid-cols-[minmax(0,1.1fr)_360px] lg:items-start">
           {/* Map */}
-          <div className="reveal overflow-hidden rounded-[36px] border border-white/10 bg-white/[0.03] shadow-[0_24px_80px_rgba(0,0,0,0.22)]">
+          <div className="overflow-hidden rounded-[36px] border border-white/10 bg-white/[0.03] shadow-[0_24px_80px_rgba(0,0,0,0.22)]">
             <div className="overflow-hidden rounded-[28px]" style={{ aspectRatio: "16 / 9" }}>
               <iframe
                 src="https://www.google.com/maps/embed?origin=mfe&pb=!1m2!2m1!1s445+Merrick+Road+Oceanside+NY+11572"
@@ -249,7 +251,7 @@ function LocationContact() {
                 href="https://maps.google.com/?q=445+Merrick+Road+Oceanside+NY+11572"
                 target="_blank"
                 rel="noreferrer"
-                className="font-semibold text-white underline underline-offset-4 hover:text-[#f472b6]"
+                className="font-semibold text-white underline underline-offset-4 hover:text-white/70"
               >
                 Open in Google Maps
               </a>
@@ -257,7 +259,7 @@ function LocationContact() {
           </div>
 
           {/* Right column: info card + form card */}
-          <div className="reveal reveal-delay-2 flex flex-col gap-6">
+          <div className="flex flex-col gap-6">
             <div className="flex flex-col gap-6 rounded-[36px] border border-white/10 bg-white/[0.04] p-8 font-sans text-white/72 shadow-[0_24px_80px_rgba(0,0,0,0.22)]">
               <div>
                 <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.24em] text-white/65">Address</p>
@@ -302,12 +304,12 @@ function LeadForm() {
     <section id="trial" className="bg-[#efe5d7] py-20 md:py-28">
       <div className="mx-auto max-w-7xl px-6 md:px-12">
         <div className="grid gap-8 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:items-start">
-          <div className="reveal lg:pt-4">
+          <div className="lg:pt-4">
             <p className="mb-4 font-sans text-xs font-semibold uppercase tracking-[0.28em] text-black/65">
               Start here
             </p>
             <h2 className="font-display text-[clamp(2.75rem,6vw,5.25rem)] font-normal leading-[0.98] tracking-display text-black">
-              Your intro class is <em className="italic text-[#be185d]">on us.</em>
+              Your intro class is <em className="italic">on us.</em>
             </h2>
             <p className="mt-6 max-w-md font-sans text-base leading-7 text-black/65">
               Start with a free intro class. Fill out the form, then choose your intro class time on the next page.
@@ -356,7 +358,7 @@ function LeadForm() {
               </a>
             </div>
           </div>
-          <div className="reveal reveal-delay-2 rounded-[24px] bg-white shadow-[0_18px_60px_rgba(0,0,0,0.15)]">
+          <div className="rounded-[24px] bg-white shadow-[0_18px_60px_rgba(0,0,0,0.15)]">
             <GymneticsForm kind="crm" placement="inline" />
           </div>
         </div>
@@ -369,10 +371,10 @@ export default function LandingPage() {
   return (
     <>
       <SiteNav />
-      <ScrollReveal />
       <main>
       <Hero />
       <TrustBar />
+      <FirstVisit />
       <Difference />
       <Programs />
       <Testimonials />

@@ -251,3 +251,34 @@
 .class-img {
   transition: filter 0.35s ease;
 }
+
+/* Primary intro actions use one consistent, accessible brand color. */
+.intro-cta {
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  border-radius: 4px;
+  padding: 14px 22px;
+  background: #be185d;
+  color: #fff;
+  font-family: var(--font-sans), sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.5;
+  text-align: center;
+  transition: background-color 150ms ease;
+}
+.intro-cta:hover { background: #9d174d; }
+:where(a, button, summary):focus-visible {
+  outline: 3px solid #ec4899;
+  outline-offset: 4px;
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@layer components { .intro-cta { display: inline-flex; } }

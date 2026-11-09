@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 
 const TESTIMONIALS = [
   {
@@ -39,91 +39,24 @@ const TESTIMONIALS = [
 
 export default function Testimonials() {
   const [active, setActive] = useState(0);
-  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
-  const sectionRef = useRef<HTMLElement | null>(null);
-  const onScreenRef = useRef(false);
-
-  useEffect(() => {
-    if (typeof IntersectionObserver === "undefined") {
-      onScreenRef.current = true;
-      resume();
-      return pause;
-    }
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        onScreenRef.current = entry.isIntersecting;
-        if (entry.isIntersecting) {
-          resume();
-        } else {
-          pause();
-        }
-      },
-      { threshold: 0.2 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => {
-      observer.disconnect();
-      pause();
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  function go(index: number) {
-    if (timerRef.current) {
-      clearInterval(timerRef.current);
-    }
-
-    setActive(index);
-    timerRef.current = setInterval(() => {
-      setActive((current) => (current + 1) % TESTIMONIALS.length);
-    }, 5000);
-  }
-
-  function next() {
-    go((active + 1) % TESTIMONIALS.length);
-  }
-
-  function prev() {
-    go((active - 1 + TESTIMONIALS.length) % TESTIMONIALS.length);
-  }
-
-  function pause() {
-    if (timerRef.current) {
-      clearInterval(timerRef.current);
-      timerRef.current = null;
-    }
-  }
-
-  function resume() {
-    if (timerRef.current || !onScreenRef.current) return;
-    timerRef.current = setInterval(() => {
-      setActive((current) => (current + 1) % TESTIMONIALS.length);
-    }, 5000);
-  }
+  function go(index: number) { setActive(index); }
+  function next() { go((active + 1) % TESTIMONIALS.length); }
+  function prev() { go((active - 1 + TESTIMONIALS.length) % TESTIMONIALS.length); }
 
   return (
-    <section ref={sectionRef} id="results" className="border-t border-black/10 bg-[#f7f1e8] py-20 text-black md:py-28">
+    <section id="results" className="border-t border-black/10 bg-[#f7f1e8] py-20 text-black md:py-28">
       <div className="mx-auto grid max-w-7xl gap-12 px-6 md:px-12 lg:grid-cols-[340px_minmax(0,1fr)] lg:items-start">
-        <div className="reveal lg:sticky lg:top-28">
+        <div className="lg:sticky lg:top-28">
           <p className="mb-4 font-sans text-xs font-semibold uppercase tracking-[0.28em] text-black/65">
             Member stories
           </p>
           <h2 className="font-display text-[clamp(2.75rem,6vw,5rem)] font-normal leading-[0.98] tracking-display text-black">
-            Proof that the room <em className="italic text-[#db2777]">changes people.</em>
+            Proof that the room <em className="italic">changes people.</em>
           </h2>
         </div>
 
         <div
-          className="reveal reveal-delay-2 rounded-[36px] border border-black/10 bg-white p-8 shadow-[0_30px_90px_rgba(0,0,0,0.12)] md:p-12"
-          onMouseEnter={pause}
-          onMouseLeave={resume}
-          onFocus={pause}
-          onBlur={resume}
+          className="rounded-[36px] border border-black/10 bg-white p-8 shadow-[0_30px_90px_rgba(0,0,0,0.12)] md:p-12"
         >
           <div className="flex items-start justify-between gap-6 border-b border-black/8 pb-8">
             <div>
@@ -188,7 +121,8 @@ export default function Testimonials() {
             </p>
             <a
               href="#trial"
-              className="inline-flex items-center justify-center rounded-[4px] border border-black/12 px-6 py-3 font-sans text-xs font-semibold uppercase tracking-[0.24em] text-black transition hover:border-black hover:bg-black hover:text-white"
+              data-open-crm-popup="true"
+              className="intro-cta"
             >
               Book Your Free Intro Class
             </a>

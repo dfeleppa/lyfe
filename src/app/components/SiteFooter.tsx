@@ -23,8 +23,8 @@ export default function SiteFooter() {
                 {item.label}
               </a>
             ))}
-            <a href="/#trial" className="font-sans text-sm text-white/55 transition hover:text-white">
-              Free Intro Class
+            <a href="/#trial" data-open-crm-popup="true" className="font-sans text-sm text-white/55 transition hover:text-white">
+              Book Your Free Intro Class
             </a>
             <a href="/privacy-policy" className="font-sans text-sm text-white/55 transition hover:text-white">
               Privacy Policy

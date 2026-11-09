@@ -8,20 +8,12 @@ type SiteNavProps = {
   cta?: { label: string; href: string; openCrmPopup?: boolean };
 };
 
-const DEFAULT_CTA = { label: "Get Started", href: "/#trial", openCrmPopup: true };
+const DEFAULT_CTA = { label: "Book Your Free Intro Class", href: "/#trial", openCrmPopup: true };
 
 export default function SiteNav({ cta = DEFAULT_CTA }: SiteNavProps) {
-  const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const headerRef = useRef<HTMLElement | null>(null);
   const menuButtonRef = useRef<HTMLButtonElement | null>(null);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   useEffect(() => {
     if (!open) return;
@@ -62,17 +54,11 @@ export default function SiteNav({ cta = DEFAULT_CTA }: SiteNavProps) {
   return (
     <header
       ref={headerRef}
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        scrolled ? "px-3 pt-3 md:px-6" : "px-0 pt-0"
-      }`}
+      className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-black/95"
     >
-      <div
-        className={`mx-auto flex w-full max-w-7xl items-center justify-between border border-white/10 bg-black/70 px-6 py-4 backdrop-blur-xl transition-all duration-300 md:px-8 ${
-          scrolled ? "rounded-[28px] shadow-[0_24px_80px_rgba(0,0,0,0.35)]" : "rounded-none border-x-0 border-t-0"
-        }`}
-      >
+      <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-4 px-6 py-4 md:px-8">
         <a href="/" className="flex min-w-0 shrink-0 items-center">
-          <BrandLogo sizes="(min-width: 640px) 292px, 219px" className="w-48 max-w-full sm:w-64" />
+          <BrandLogo sizes="(min-width: 640px) 192px, 160px" className="w-40 max-w-full sm:w-48" />
         </a>
 
         <nav className="hidden items-center gap-6 xl:flex">
@@ -91,7 +77,7 @@ export default function SiteNav({ cta = DEFAULT_CTA }: SiteNavProps) {
           <a
             href={cta.href}
             data-open-crm-popup={cta.openCrmPopup ? "true" : undefined}
-            className="hidden whitespace-nowrap rounded-[4px] bg-pink-700 px-6 py-2.5 font-sans text-xs font-semibold uppercase tracking-widest text-white transition hover:bg-pink-800 xl:block"
+            className="intro-cta hidden whitespace-nowrap xl:inline-flex"
           >
             {cta.label}
           </a>
@@ -130,7 +116,7 @@ export default function SiteNav({ cta = DEFAULT_CTA }: SiteNavProps) {
             data-open-crm-popup={cta.openCrmPopup ? "true" : undefined}
             data-dialog-return-focus="mobile-menu-toggle"
             onClick={() => setOpen(false)}
-            className="mx-6 my-4 rounded-[4px] bg-pink-700 px-6 py-3 text-center font-sans text-xs font-semibold uppercase tracking-widest text-white transition hover:bg-pink-800"
+            className="intro-cta mx-6 my-4"
           >
             {cta.label}
           </a>
