@@ -56,7 +56,7 @@ function Hero() {
             Coach-led group fitness · Oceanside, NY
           </p>
           <h1 className="mt-6 font-display text-[clamp(2.75rem,6.4vw,5.5rem)] font-normal leading-[1.08] tracking-tightest text-white">
-            Get stronger.<br />Feel supported.<br /><em>Keep showing up.</em>
+            Get stronger.<br /><span className="text-[#ec4899]">Feel supported.</span><br /><em>Keep showing up.</em>
           </h1>
           <p className="mt-6 max-w-xl font-sans text-base leading-7 text-white/80 md:text-lg md:leading-8">
             Workouts adapted to your starting point. Coaches who guide you.
