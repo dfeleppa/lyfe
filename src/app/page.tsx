@@ -86,31 +86,35 @@ function Hero() {
 
 function FirstVisit() {
   const steps = [
-    { title: "Choose your class", body: "Fill out the short signup form, then choose your intro class time on the next page." },
-    { title: "Meet your coach", body: "Let your coach know you’re new. Share your experience and ask questions before you get started." },
-    { title: "Try one class, on us", body: "Follow a coached workout with movements adapted to your experience. Bring water and clothes you can move in." },
+    { title: "Pick your class", body: "Sign up, then choose your intro class time on the next page." },
+    { title: "Meet your coach", body: "Tell us where you’re starting. We’ll help you find your pace." },
+    { title: "Find your rhythm", body: "Try a coached workout with the group. Bring water and clothes you can move in." },
   ];
   return (
     <section id="first-visit" className="first-visit-overlap relative z-20 -mt-24 px-6 text-black md:-mt-32 md:px-12">
-      <div className="mx-auto max-w-6xl rounded-2xl border border-black/10 bg-[#fffdf9] p-6 shadow-[0_24px_64px_rgba(0,0,0,0.16)] sm:p-8 md:rounded-3xl md:p-12">
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-black/60">Your first visit</p>
-        <div className="mt-4 grid gap-6 lg:grid-cols-[1fr_1fr] lg:items-end">
-          <h2 className="max-w-xl font-display text-4xl leading-tight md:text-5xl">You don’t have to figure it out alone.</h2>
-          <p className="max-w-xl text-base leading-7 text-black/70">You don’t need to know every movement or already be in shape. We’ll help you find your starting point.</p>
+      <div className="mx-auto grid max-w-6xl overflow-hidden rounded-2xl border border-black/10 bg-[#fffdf9] shadow-[0_20px_60px_rgba(0,0,0,0.14)] md:rounded-3xl lg:grid-cols-[minmax(0,1fr)_320px]">
+        <div className="p-6 sm:p-8 md:p-10">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-black/55">Your first visit</p>
+          <h2 className="mt-4 max-w-xl font-display text-[clamp(2rem,3.5vw,3.25rem)] leading-[1.1] tracking-tight">Just show up.<br /><em>We’ll take it from here.</em></h2>
+          <p className="mt-5 max-w-lg text-sm leading-7 text-black/65">New to training or getting back into it? You don’t need to know the moves. That’s what your coach is here for.</p>
+          <ol className="mt-8 grid gap-6 sm:grid-cols-3">
+            {steps.map((step, index) => (
+              <li key={step.title} className="border-t border-black/15 pt-4">
+                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#f0ece5] text-xs font-semibold text-black/65">{index + 1}</span>
+                <h3 className="mt-4 text-sm font-semibold">{step.title}</h3>
+                <p className="mt-2 text-sm leading-6 text-black/65">{step.body}</p>
+              </li>
+            ))}
+          </ol>
         </div>
-        <ol className="mt-10 grid gap-8 md:grid-cols-3">
-          {steps.map((step, index) => (
-            <li key={step.title} className="border-t border-black/20 pt-5">
-              <span className="text-xs font-semibold text-black/50">0{index + 1}</span>
-              <h3 className="mt-3 text-lg font-semibold">{step.title}</h3>
-              <p className="mt-3 text-sm leading-7 text-black/70">{step.body}</p>
-            </li>
-          ))}
-        </ol>
-        <div className="mt-9 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:gap-6">
-          <a href="#trial" data-open-crm-popup="true" className="intro-cta">Book Your Free Intro Class</a>
-          <a href="/schedule" className="text-sm font-medium underline underline-offset-4">View the class schedule</a>
-        </div>
+        <aside aria-label="Your free intro class" className="flex flex-col justify-center border-t border-black/10 bg-[#efe9df] p-6 sm:p-8 lg:border-l lg:border-t-0">
+          <span className="text-xs font-semibold uppercase tracking-[0.16em] text-black/55">A place to start</span>
+          <p className="mt-5 font-display text-4xl leading-tight">One class.<br />On us.</p>
+          <p className="mt-4 text-sm leading-7 text-black/65">Meet the people. Try the workout. See how Lyfe feels for you.</p>
+          <a href="#trial" data-open-crm-popup="true" className="intro-cta mt-7 w-full">Book Your Free Intro Class</a>
+          <a href="/schedule" className="mt-4 text-center text-sm font-medium underline decoration-black/30 underline-offset-4 hover:decoration-black">View the class schedule</a>
+          <p className="mt-6 border-t border-black/15 pt-5 text-xs leading-6 text-black/60">Coach-led throughout.<br />Adapted to your experience.</p>
+        </aside>
       </div>
     </section>
   );
