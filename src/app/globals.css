@@ -268,7 +268,7 @@
   text-align: center;
   transition: background-color 150ms ease;
 }
-.intro-cta:hover { background: #9d174d; }
+.intro-cta:hover { background: #f472b6; }
 :where(a, button, summary):focus-visible {
   outline: 3px solid #ec4899;
   outline-offset: 4px;
