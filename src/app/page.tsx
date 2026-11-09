@@ -47,7 +47,7 @@ const PROGRAMS = [
 
 function Hero() {
   return (
-    <section id="top" className="relative overflow-hidden border-b border-white/10 pb-14 pt-32 md:pb-20 md:pt-40">
+    <section id="top" className="relative overflow-hidden pb-40 pt-32 md:pb-48 md:pt-40">
       <Image src="/hero.jpg" alt="Members together at Lyfe Fitness" fill priority fetchPriority="high" decoding="sync" quality={60} sizes="100vw" className="z-0 object-cover object-[65%_center] opacity-65" />
       <div className="pointer-events-none absolute inset-0 z-0 bg-[linear-gradient(90deg,rgba(7,7,9,0.9)_0%,rgba(7,7,9,0.65)_55%,rgba(7,7,9,0.25)_100%),linear-gradient(0deg,rgba(7,7,9,1),transparent_70%)]" />
       <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-12">
@@ -84,18 +84,6 @@ function Hero() {
   );
 }
 
-function TrustBar() {
-  return (
-    <div className="border-y border-white/10 bg-[#0d0d10]">
-      <ul className="mx-auto grid max-w-7xl grid-cols-1 gap-3 px-6 py-5 text-center text-xs font-medium uppercase tracking-[0.14em] text-white/75 sm:grid-cols-3 md:px-12">
-        <li>Coach-led from start to finish</li>
-        <li>Strength &amp; conditioning</li>
-        <li>Adapted to your experience</li>
-      </ul>
-    </div>
-  );
-}
-
 function FirstVisit() {
   const steps = [
     { title: "Choose your class", body: "Fill out the short signup form, then choose your intro class time on the next page." },
@@ -103,8 +91,8 @@ function FirstVisit() {
     { title: "Try one class, on us", body: "Follow a coached workout with movements adapted to your experience. Bring water and clothes you can move in." },
   ];
   return (
-    <section id="first-visit" className="border-b border-black/10 bg-[#f5f0e8] py-16 text-black md:py-20">
-      <div className="mx-auto max-w-7xl px-6 md:px-12">
+    <section id="first-visit" className="first-visit-overlap relative z-20 -mt-24 px-6 text-black md:-mt-32 md:px-12">
+      <div className="mx-auto max-w-6xl rounded-2xl border border-black/10 bg-[#fffdf9] p-6 shadow-[0_24px_64px_rgba(0,0,0,0.16)] sm:p-8 md:rounded-3xl md:p-12">
         <p className="text-xs font-semibold uppercase tracking-[0.2em] text-black/60">Your first visit</p>
         <div className="mt-4 grid gap-6 lg:grid-cols-[1fr_1fr] lg:items-end">
           <h2 className="max-w-xl font-display text-4xl leading-tight md:text-5xl">You don’t have to figure it out alone.</h2>
@@ -373,7 +361,6 @@ export default function LandingPage() {
       <SiteNav />
       <main>
       <Hero />
-      <TrustBar />
       <FirstVisit />
       <Difference />
       <Programs />

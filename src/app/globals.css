@@ -282,3 +282,13 @@
 }
 
 @layer components { .intro-cta { display: inline-flex; } }
+
+/* The first-visit card bridges the hero photograph and the warm next section. */
+.first-visit-overlap {
+  background: linear-gradient(to bottom, transparent 96px, #f5f0e8 96px);
+}
+@media (min-width: 768px) {
+  .first-visit-overlap {
+    background: linear-gradient(to bottom, transparent 128px, #f5f0e8 128px);
+  }
+}
